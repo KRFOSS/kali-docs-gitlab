@@ -96,7 +96,7 @@ Go back a menu and reboot the device. You should be greeted with LineageOS’ in
 You’re going to need couple things for this step.
 
 - [Magisk](https://github.com/topjohnwu/Magisk/releases/tag/v28.1)
-- boot.img from LineageOS zip file.
+- boot.img from LineageOS zip file
 - [TWRP](https://eu.dl.twrp.me/cheeseburger_dumpling/)
 
 Let’s start with creating a rooted boot image with Magisk. Download the apk and send it to your phone along with the boot.img file.
