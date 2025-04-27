@@ -8,25 +8,20 @@ author: ["i-liek-turtals",]
 
 ## Overview
 
-We’ll be covering how to install NetHunter on OnePlus 5T. A Windows 10 VM is used to make this guide. Steps are as follows:
+We’ll be covering how to install NetHunter on OnePlus 5T. Steps are as follows:
 
-- Backup & wipe your device
-- Enable Developer options, OEM Unlocking and USB debugging
+- Enable Developer options, OEM Unlocking and USB Debugging
 - Install LineageOS
-- Root the device with TWRP
+- Root the device with Magisk and TWRP
 - Install NetHunter
 
-We’re going to use a pre-made NetHunter image created for this device but in order to install it, we’ll be changing stock OxygenOS v10.0.1 (Android v10) to LineageOS v20 (Android 13).
+We’re going to use a pre-made NetHunter image created for this device but in order to install it, we’ll be changing stock OxygenOS v10.0.1 (Android v10) to LineageOS v20 (Android 13). A Windows 10 VM was used to create this guide but you should be able to follow the steps on Linux or MacOS.
+
+Before we begin, backup all your files, remove your Google account and disable security options (like PIN, fingerprint etc). Then wipe your phone by going into *Settings* > *System* > *Reset options* > *Erase all data (factory reset)*. After reboot, you don’t need to connect to WiFi, sign in with your Google account or set a PIN. Just skip every step. We’ll be changing the OS like I mentioned anyway.
 
 ## Developer Options, OEM Unlocking & USB Debug Mode
 
-Backup all your files, remove your Google account and disable security options (like PIN, fingerprint etc). Then wipe your phone by going into *Settings* > *System* > *Reset options* > *Erase all data (factory reset)*.
-
-After reboot, you don’t need to connect to WiFi, sign in with your Google account or set a PIN. Just skip every step. We’ll be changing the OS like I mentioned anyway.
-
-In order to enable Developer mode go to *Settings* > *About Phone* and tap *Build Number* 7 times. Now go back to *Settings* > *System* and you will see a new section called *Developer*.
-
-Under *Developer Options* you will need to enable *OEM unlocking* and *USB debugging*. While at it, you may want to enable *Advanced reboot* aswell for the sake of convenience. This will allow you to reboot to Bootloader or Fastboot modes from the power menu.
+In order to enable Developer mode go to *Settings* > *About Phone* and tap *Build Number* 7 times. Now go back to *Settings* > *System* and you will see a new section called *Developer*. Under *Developer Options* you will need to enable *OEM unlocking* and *USB debugging*. While at it, you may want to enable *Advanced reboot* aswell for the sake of convenience. This will allow you to reboot to Bootloader or Fastboot modes from the power menu.
 
 ## Installing LineageOS
 
@@ -113,7 +108,7 @@ Hit *Install* next to Magisk, hit *Select and Patch a File* and then pick the **
 
 Your rooted boot file should be in the same folder (`magisk_patched-***.img`). Back it up to your computer (just in case). Turn off your phone and disconnect it from your PC.
 
-Now it’s time to install TWRP. Hold `Vol up` and `Power` button to start the device in Fastboot mode. Connect your phone back to your PC (the reason I'm doing it this way is because my phone would ignore the fastboot or bootloader commands if it's connected to my PC but your milage may vary), go back to your terminal and type `fastboot devices` to confirm it’s in Fastboot mode. Then type `fastboot flash recovery filename.img` to flash TWRP.
+Now it’s time to install TWRP. Hold `Vol up` and `Power` button to start the device in Fastboot mode. Connect your phone back to your PC (the reason I'm doing it this way is because my phone would ignore the fastboot or bootloader commands if it's connected to my PC but your milage may vary), go back to your terminal and type `fastboot devices` to confirm you can communicate with it in Fastboot mode. Then type `fastboot flash recovery filename.img` to flash TWRP.
 
 ![](16.png)
 
@@ -129,13 +124,13 @@ This is the easiest part. Download NetHunter for OnePlus 5T from [kali.org](http
 
 ![](20.png)
 
-The installation process will take a while.
+The installation process will take a while to complete.
 
 ![](21.png)
 
 After you reboot the device, it may take a while to boot up to OS. Just be patient and don’t power off your device. We’ll fix this after the initial NetHunter setup. Connect your device to your WiFi if you haven’t already.
 
-First open *NetHunter Terminal* and close it. Then open *Magisk* > *Superuser* and enable *NetHunter* and *NetHunter Terminal*. Now you can open *NetHunter* and go through the initial setup process. After completion, open up *NetHunter Store* and update it aswell.
+First open *NetHunter Terminal* and close it. Then open *Magisk* > *Superuser* and enable *NetHunter* and *NetHunter Terminal*. Now you can open *NetHunter* and go through the initial setup process. After completion, update *NetHunter Store* aswell.
 
 ![](22.png)
 
@@ -143,6 +138,6 @@ That’s it. Your NetHunter is ready.
 
 ![](00.png)
 
-If your device takes a long time to boot to OS, go back to Recovery mode. Once you’re in TWRP, hit *Wipe* then select *Dalvik / ART Cache* and *Cache*. Finally swipe to wipe and reboot. It should boot up in seconds.
+**Note:** If your device takes a long time to boot to OS, go back to Recovery mode. Once you’re in TWRP, hit *Wipe* then select *Dalvik / ART Cache* and *Cache*. Finally swipe to wipe and reboot. It should boot up in seconds.
 
 ![](23.png) ![](24.png)
