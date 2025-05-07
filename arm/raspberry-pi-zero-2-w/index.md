@@ -14,10 +14,6 @@ The [Raspberry Pi Zero 2 W](https://www.raspberrypi.org/products/raspberry-pi-ze
 
 By default, the Kali Linux Raspberry Pi Zero W image contains the [**kali-linux-default** metapackage](/docs/general-use/metapackages/) similar to most other platforms. If you wish to install extra tools please refer to our [metapackages page](/docs/general-use/metapackages/).
 
-{{% notice info %}}
-The Raspberry Pi images use [Re4son](https://twitter.com/re4sonkernel)'s kernel, which includes the drivers for external Wi-Fi cards, TFT displays, and the [nexmon](https://github.com/seemoo-lab/nexmon) firmware for the built-in wireless card on the [Raspberry Pi 3](/docs/arm/raspberry-pi-3/) and [4](/docs/arm/raspberry-pi-4/). You will not need to download it and install it, and doing so will likely be a downgrade over the current installed kernel.
-{{% /notice %}}
-
 ## Kali on Raspberry Pi Zero 2 W - User Instructions
 
 If you're unfamiliar with the details of [downloading and validating a Kali Linux image](/docs/introduction/download-official-kali-linux-images/), or for [using that image to create a bootable device](/docs/usb/live-usb-install-with-windows/), it's strongly recommended that you refer to the more detailed procedures described in the specific articles on those subjects.
@@ -43,6 +39,43 @@ This process can take a while, depending on your PC, your microSD card's speed, 
 Once the _dd_ operation is complete, boot up the Raspberry Pi Zero 2 W with the microSD card plugged in.
 
 You should be able to [log in to Kali](/docs/introduction/default-credentials/).
+
+# Kali on Raspberry Pi Zero 2 W - Tips and Tricks
+
+To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)`  This is **not** the case on the Raspberry Pi Zero 2 W image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v7` and `linux-headers-rpi-v7l`. If you have removed them, you can add them back by running the following command:
+
+```console
+kali@kali:~$ sudo apt update
+kali@kali:~$ sudo apt install linux-headers-rpi-v7 linux-headers-rpi-v7l
+```
+
+- - -
+
+Due to the 512MB of ram limitation on the Raspberry Pi Zero 2 W, we default to the CLI. If you would like to attempt to use the desktop, you can change this with the following commands
+
+```console
+kali@kali:~$ sudo systemctl set-default graphical
+kali@kali:~$ sudo reboot
+```
+
+If you would like to switch back to CLI, the commands would be
+
+```console
+kali@kali:~$ sudo systemctl set-default multi-user
+kali@kali:~$ sudo reboot
+```
+
+- - -
+
+Kali uses LightDM with XFCE on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults.
+
+```console
+kali@kali:~$ sudo mv /etc/X11/Xorg.conf.d/99-vc4.conf ~
+```
+
+Another option may be that you may have to modify the config snippet. It is best to consult with whatever documentation your LCD may have.
+
+- - -
 
 # Kali on Raspberry Pi Zero 2 W Headless - Tips and Tricks
 

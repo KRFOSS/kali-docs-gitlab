@@ -10,17 +10,6 @@ The [Raspberry Pi 400](https://www.raspberrypi.org/products/raspberry-pi-400/) h
 
 By default, the Kali Linux Raspberry Pi 400 image contains the [**kali-linux-default** metapackage](/docs/general-use/metapackages/) similar to most other platforms. If you wish to install extra tools please refer to our [metapackages page](/docs/general-use/metapackages/).
 
-{{% notice info %}}
-The Raspberry Pi400 has a 64-bit processor and can run 64-bit images.
-Because it can run 64-bit images, you can choose either `Kali Linux RaspberryPi 2, 3, 4 and 400 (img.xz)` or `Kali Linux RaspberryPi 2 (v1.2), 3, 4 and 400 (64-Bit) (img.xz)` as the image to run, the latter being 64-bit.<br />
-<br />
-We recommend using the 32-bit image on Raspberry Pi devices as that gets far more testing, and a lot of documentation out there expects you to be running RaspberryPi OS which is 32-bit.
-{{% /notice %}}
-
-{{% notice info %}}
-The Raspberry Pi images use [Re4son](https://twitter.com/re4sonkernel)'s kernel, which includes the drivers for external Wi-Fi cards, TFT displays, and the [nexmon](https://github.com/seemoo-lab/nexmon) firmware for the built-in wireless card on the [Raspberry Pi 3](/docs/arm/raspberry-pi-3/) and [4](/docs/arm/raspberry-pi-4/). You will not need to download it and install it, and doing so will likely be a downgrade over the current installed kernel.
-{{% /notice %}}
-
 ## Kali on Raspberry Pi400 - User Instructions
 
 If you're unfamiliar with the details of [downloading and validating a Kali Linux image](/docs/introduction/download-official-kali-linux-images/), or for [using that image to create a bootable device](/docs/usb/live-usb-install-with-windows/), it's strongly recommended that you refer to the more detailed procedures described in the specific articles on those subjects.
@@ -62,7 +51,21 @@ kali@kali:~$ sudo systemctl enable --now hciuart.service
 kali@kali:~$ sudo systemctl enable --now bluetooth.service
 ```
 
+- - -
+
 The wireless chip on the Raspberry Pi 400 is **NOT** supported by [nexmon](https://github.com/seemoo-lab/nexmon), so if you are planning on doing wireless attacks or research, you will need to use an external wireless device.
+
+- - -
+
+Kali uses LightDM with XFCE on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults.
+
+```console
+kali@kali:~$ sudo mv /etc/X11/Xorg.conf.d/99-vc4.conf ~
+```
+
+Another option may be that you may have to modify the config snippet. It is best to consult with whatever documentation your LCD may have.
+
+- - -
 
 # Kali on Raspberry Pi400 Headless - Tips and Tricks
 
