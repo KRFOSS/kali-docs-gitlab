@@ -152,7 +152,7 @@ For GPL-3 licenses we do not have to copy the entirety as-is in the upstream lic
 
 Unfortunately, when we look at the license file from upstream we do not see any contact information or names. We will have to look elsewhere for it.
 
-If we look through the **[README.me](https://github.com/s0md3v/Photon/blob/master/README.md)** [on Photon's GitHub page](https://github.com/s0md3v/Photon/blob/master/README.md), we can see that `s0md3v` appears to be the sole maintainer as his [Twitter](https://twitter.com/s0md3v) is linked however no other maintainers are seen. If we look at [s0md3v's GitHub profile page](https://github.com/s0md3v), we notice that an email is shown _(if we are logged in)_! With this, we have the **maintainer name** and **email address** we can use to continue.
+If we look through the **[README.md](https://github.com/s0md3v/Photon/blob/master/README.md)** [on Photon's GitHub page](https://github.com/s0md3v/Photon/blob/master/README.md), we can see that `s0md3v` appears to be the sole maintainer as his [X](https://x.com/s0md3v) is linked however no other maintainers are seen. If we look at [s0md3v's GitHub profile page](https://github.com/s0md3v), we notice that an email is shown _(if we are logged in)_! With this, we have the **maintainer name** and **email address** we can use to continue.
 
 ### Dependencies/Maintainers
 
