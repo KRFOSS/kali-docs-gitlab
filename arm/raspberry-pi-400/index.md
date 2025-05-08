@@ -57,10 +57,10 @@ The wireless chip on the Raspberry Pi 400 is **NOT** supported by [nexmon](https
 
 - - -
 
-Kali uses LightDM with XFCE on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults.
+Kali uses LightDM with Xfce on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults:
 
 ```console
-kali@kali:~$ sudo mv /etc/X11/Xorg.conf.d/99-vc4.conf ~
+kali@kali:~$ sudo mv -v /etc/X11/Xorg.conf.d/99-vc4.conf ~
 ```
 
 Another option may be that you may have to modify the config snippet. It is best to consult with whatever documentation your LCD may have.

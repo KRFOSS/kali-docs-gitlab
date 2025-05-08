@@ -56,11 +56,12 @@ You should be able to [log in to Kali](/docs/introduction/default-credentials/).
 
 ## Kali on Raspberry Pi 2 v1.2 - Tips
 
-To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)`  This is **not** the case on the Raspberry Pi 5 image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v8` and `linux-headers-rpi-2712`. If you have removed them, you can add them back by running the following command:
+To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)` This is **not** the case on the Raspberry Pi 5 image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v8` and `linux-headers-rpi-2712`. If you have removed them, you can add them back by running the following commands:
 
 ```console
 kali@kali:~$ sudo apt update
-kali@kali:~$ sudo apt install linux-headers-rpi-2712 linux-headers-rpi-v8
+[...]
+kali@kali:~$ sudo apt install -y linux-headers-rpi-2712 linux-headers-rpi-v8
 ```
 
 - - -
@@ -74,10 +75,10 @@ options mt76-usb disable_usb_sg=1
 
 - - -
 
-Kali uses LightDM with XFCE on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults.
+Kali uses LightDM with Xfce on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults:
 
 ```console
-kali@kali:~$ sudo mv /etc/X11/Xorg.conf.d/99-vc4.conf ~
+kali@kali:~$ sudo mv -v /etc/X11/Xorg.conf.d/99-vc4.conf ~
 ```
 
 Another option may be that you may have to modify the config snippet. It is best to consult with whatever documentation your LCD may have.

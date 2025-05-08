@@ -46,11 +46,12 @@ There is no wireless on the Raspberry Pi, so you will need to use an external de
 
 - - -
 
-To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)`  This is **not** the case on the Raspberry Pi image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v6`. If you have removed them, you can add them back by running the following command:
+To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)` This is **not** the case on the Raspberry Pi image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v6`. If you have removed them, you can add them back by running the following commands:
 
 ```console
 kali@kali:~$ sudo apt update
-kali@kali:~$ sudo apt install linux-headers-rpi-v6
+[...]
+kali@kali:~$ sudo apt install -y linux-headers-rpi-v6
 ```
 
 - - -
