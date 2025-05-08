@@ -17,10 +17,6 @@ Because it can run 64-bit images, you can choose either `Kali Linux Raspberry Pi
 We recommend using the 32-bit image on Raspberry Pi devices as that gets far more testing, and a lot of documentation out there expects you to be running RaspberryPi OS which is 32-bit.
 {{% /notice %}}
 
-{{% notice info %}}
-The Raspberry Pi images use [Re4son](https://twitter.com/re4sonkernel)'s kernel, which includes the drivers for external Wi-Fi cards, TFT displays, and the [nexmon](https://github.com/seemoo-lab/nexmon) firmware for the built-in wireless card on the [Raspberry Pi 3](/docs/arm/raspberry-pi-3/) and [4](/docs/arm/raspberry-pi-4/). You will not need to download it and install it, and doing so will likely be a downgrade over the current installed kernel.
-{{% /notice %}}
-
 ## Kali on Raspberry Pi 3 - User Instructions
 
 If you're unfamiliar with the details of [downloading and validating a Kali Linux image](/docs/introduction/download-official-kali-linux-images/), or for [using that image to create a bootable device](/docs/usb/live-usb-install-with-windows/), it's strongly recommended that you refer to the more detailed procedures described in the specific articles on those subjects.
@@ -62,12 +58,26 @@ kali@kali:~$ sudo systemctl enable --now hciuart.service
 kali@kali:~$ sudo systemctl enable --now bluetooth.service
 ```
 
-If you are on the 5.10 or higher kernel, you can use mt76 chipset USB Wi-Fi devices, but they require creating a configuration file in `/etc/modprobe.d` with the following contents:
+- - -
+
+You can use mt76 chipset USB Wi-Fi devices, but they require creating a configuration file in `/etc/modprobe.d` with the following contents:
 
 ```plaintext
 # Load mt76usb without using scatter-gather which doesn't work on the RPi2 or RPi3 USB chipset
 options mt76-usb disable_usb_sg=1
 ```
+
+- - -
+
+Kali uses LightDM with XFCE on Xorg for the desktop by default. In our testing, we found that many of the HAT systems required setting up a config snippet for display to show up. If you are having issues getting output, it could be the opposite for you, and you may want to try removing the file `/etc/X11/Xorg.conf.d/99-vc4.conf` and allow Xorg to attempt to use the defaults.
+
+```console
+kali@kali:~$ sudo mv /etc/X11/Xorg.conf.d/99-vc4.conf ~
+```
+
+Another option may be that you may have to modify the config snippet. It is best to consult with whatever documentation your LCD may have.
+
+- - -
 
 ## Kali on Raspberry Pi 3 Headless - Tips and Tricks
 

@@ -14,10 +14,6 @@ The [Raspberry Pi 1](https://raspberrypi.org/) is a low-cost, credit-card-sized 
 
 By default, the Kali Linux Raspberry Pi 1 image contains the [**kali-linux-default** metapackage](/docs/general-use/metapackages/) similar to most other platforms. If you wish to install extra tools please refer to our [metapackages page](/docs/general-use/metapackages/).
 
-{{% notice info %}}
-The Raspberry Pi 1 images use [Re4son](https://twitter.com/re4sonkernel)'s kernel, which includes the drivers for external Wi-Fi cards, TFT displays, and the [nexmon](https://github.com/seemoo-lab/nexmon) firmware for the built-in wireless card on the [Raspberry Pi 3](/docs/arm/raspberry-pi-3/) and [4](/docs/arm/raspberry-pi-4/). You will not need to download it and install it, and doing so will likely be a downgrade over the current installed kernel.
-{{% /notice %}}
-
 ## Kali on Raspberry Pi 1 - User Instructions
 
 If you're unfamiliar with the details of [downloading and validating a Kali Linux image](/docs/introduction/download-official-kali-linux-images/), or for [using that image to create a bootable device](/docs/usb/live-usb-install-with-windows/), it's strongly recommended that you refer to the more detailed procedures described in the specific articles on those subjects.
@@ -47,6 +43,17 @@ You should be able to [log in to Kali](/docs/introduction/default-credentials/).
 ## Kali on the Raspberry Pi 1 - Tips
 
 There is no wireless on the Raspberry Pi, so you will need to use an external device for wireless.
+
+- - -
+
+To build external modules against the kernel, most instructions will state that you need to install header packages via `linux-headers-$(uname -r)`  This is **not** the case on the Raspberry Pi image. They are already included and do not follow that naming scheme, they are `linux-headers-rpi-v6`. If you have removed them, you can add them back by running the following command:
+
+```console
+kali@kali:~$ sudo apt update
+kali@kali:~$ sudo apt install linux-headers-rpi-v6
+```
+
+- - -
 
 ## Kali on Raspberry Pi 1 - Image Customization
 
