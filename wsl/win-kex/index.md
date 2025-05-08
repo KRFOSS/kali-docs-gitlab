@@ -23,7 +23,7 @@ This page details the steps to install Win-KeX in under 2 minutes.
 
 ## Installation
 
-All installation steps, up to the point where we install Win-KeX, are also explained in the 5 minute video guide by [NetworkChuck](https://twitter.com/NetWorkChuck): [New Kali Linux GUI on Windows 10 (WSL 2) // 2020.3 Release](https://www.youtube.com/watch?v=dgdOILL1184)
+All installation steps, up to the point where we install Win-KeX, are also explained in the 5 minute video guide by [@NetworkChuck](https://x.com/NetWorkChuck): [New Kali Linux GUI on Windows 10 (WSL 2) // 2020.3 Release](https://www.youtube.com/watch?v=dgdOILL1184)
 
 {{< youtube dgdOILL1184 >}}
 

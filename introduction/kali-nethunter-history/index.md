@@ -14,7 +14,7 @@ Kali NetHunter is made up of three parts:
 - App (and AppStore)
 - Kali Chroot
 
-Kali NetHunter was [first released in September 2014](https://twitter.com/kalilinux/status/514404154933260288) with v1.0, supporting just Nexus devices (5,7 and 10). There was a minor release of Kali NetHunter v1.1 in January 2015, and at the same time device support started to appear, such as OnePlus One and Nexus 4.
+Kali NetHunter was [first released in September 2014](https://x.com/kalilinux/status/514404154933260288) with v1.0, supporting just Nexus devices (5,7 and 10). There was a minor release of Kali NetHunter v1.1 in January 2015, and at the same time device support started to appear, such as OnePlus One and Nexus 4.
 
 Kali NetHunter v3 was the next major release in January 2016, which was a complete NetHunter app rewrite, allowing for more control and actions to be performed from it, build scripts and Android 5 and 6 support. Nexus 6 device also became supported.
 
