@@ -188,5 +188,20 @@ _Please adjust the precise time_ so that archive.kali.org doesn't get overloaded
 
 If you want to setup a private mirror, you can use the same tools as for the public mirror with the following differences:
 
-- you will not be able to use SSH push mirroring for the package repository, instead you have to put `~/bin/ftpsync sync:archive:kali` in the crontab of the user owning the mirror (`archvsync` in the above explanation).
-- you must use a non-kali.org mirror as the source mirror, almost all of them offer public rsync access (kali.org servers are restricted)
+- You will not be able to use SSH push mirroring for the package repository, instead you have to put `~/bin/ftpsync sync:archive:kali` in the crontab of the user owning the mirror (`archvsync` in the above explanation).
+- You must use a non-kali.org mirror as the source mirror, almost all of them offer public rsync access (kali.org servers are restricted).
+
+## Troubleshooting
+
+### Stale `.~tmp~` directories
+
+Symptom: the mirror sync fails every time, consistently, and the error logs show those lines:
+
+```
+rsync: connection unexpectedly closed (5757 bytes received so far) [generator]
+rsync error: error in rsync protocol data stream (code 12) at io.c(232) [generator=3.2.7]
+```
+
+Possible explanation and workaround, thanks to Stefan Nikolov:
+
+> There were some stale `.~tmp~` directories left behind by rsync (`--delay-updates`). [...] Our workaround is to manually delete the `.~tmp~` directories and resync.
