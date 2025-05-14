@@ -197,7 +197,7 @@ If you want to setup a private mirror, you can use the same tools as for the pub
 
 Symptom: the mirror sync fails every time, consistently, and the error logs show those lines:
 
-```
+```plaintext
 rsync: connection unexpectedly closed (5757 bytes received so far) [generator]
 rsync error: error in rsync protocol data stream (code 12) at io.c(232) [generator=3.2.7]
 ```
