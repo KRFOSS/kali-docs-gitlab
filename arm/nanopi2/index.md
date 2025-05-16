@@ -2,6 +2,7 @@
 title: NanoPi2
 description:
 icon:
+archived: "true"
 weight:
 author: ["steev",]
 ---
