@@ -10,7 +10,7 @@ In keeping with the [Kali Linux Network Services Policy](/docs/policy/kali-linux
 
 ## Quick way
 
-You an have everything up and running, by starting the **[PostgreSQL](https://www.postgresql.org/)** service and set it up just by doing:
+You can have everything up and running, by starting the **[PostgreSQL](https://www.postgresql.org/)** service and set it up just by doing:
 
 ```console
 kali@kali:~$ sudo msfdb init
@@ -77,7 +77,7 @@ postgres 157071 postgres    6u  IPv4 647183      0t0  TCP localhost:5432 (LISTEN
 
 
 UID          PID    PPID  C STIME TTY      STAT   TIME CMD
-postgres  157071       1  1 02:15 ?        Ss     0:00 /usr/lib/postgresql/13/bin/postgres -D /var/lib/postgresql/13/main -c config_file=/etc/postgresql/13/main/postgresql.con
+postgres  157071       1  1 02:15 ?        Ss     0:00 /usr/lib/postgresql/13/bin/postgres -D /var/lib/postgresql/13/main -c config_file=/etc/postgresql/13/main/postgresql.conf
 
 [i] No configuration file found
 kali@kali:~$
