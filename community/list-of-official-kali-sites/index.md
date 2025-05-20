@@ -215,7 +215,7 @@ We're on social platforms too, if you want to to follow us for any announcements
 - [Instagram](https://www.instagram.com/kalilinux/)
 <!--- [LinkedIn](https://linkedin.com/groups/4845751/)-->
 - [Mastodon](https://infosec.exchange/@kalilinux)
-- [X](https://X.com/kalilinux) _(formerly known as Twitter)_
+- [`X`](https://X.com/kalilinux) _(formerly known as Twitter)_
 
 <!--
 #1
@@ -239,12 +239,12 @@ We have our Kali Linux Facebook page through which we mirror blog posts and Kali
 
 These include the following marketplaces:
 
-- [Akamai Marketplace]https://www.linode.com/marketplace/apps/kali-linux/kali-linux/  _(formerly known as Linode Marketplace)_
+- [Akamai Marketplace](https://www.linode.com/marketplace/apps/kali-linux/kali-linux/) _(formerly known as Linode Marketplace)_
 - [Amazon AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-fznsw3f7mq7to)
 - [Docker Hub](https://hub.docker.com/r/kalilinux/kali-rolling)
-<!--- [Hashicorp Vagrant](https://portal.cloud.hashicorp.com/vagrant/discover/kalilinux) \<\!-- https://app.vagrantup.com/kalilinux --\> -->
 - [Microsoft App Store (WSL)](https://apps.microsoft.com/store/detail/kali-linux/9PKR34TNCV07?hl=en-us&gl=us)
 - [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kali-linux.kali?tab=Reviews)
+<!--- [Hashicorp Vagrant](https://portal.cloud.hashicorp.com/vagrant/discover/kalilinux) \<\!-- https://app.vagrantup.com/kalilinux --\> -->
 
 <!--
 ## Domains
