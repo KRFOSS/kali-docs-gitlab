@@ -6,21 +6,32 @@ weight:
 author: ["gamb1t",]
 ---
 
-Kali Linux is a large project made up of many different parts. One of the most popular questions that the Kali team receives is "How can I help?" To help answer that question, this page will contain all possible ways that community members can contribute.
+<!--
+Related pages:
+  - https://www.kali.org/docs/community/list-of-official-kali-sites/
+  - https://www.kali.org/community/
+  - https://www.kali.org/docs/community/contribute/
+-->
 
-# Community interactions
+Kali Linux is a large project made up of many different parts. One of the most popular questions that the Kali team receives is "**How can I help**?" To help answer that question, this page will contain all possible ways that community members can contribute.
+
+# Community Interactions
 
 ## Kali Community
 
-The Kali community is spread out through many different platforms and apps, however there are five official platforms we are on. The first is on GitLab, the second on Discord, the third IRC, the fourth our very own forums, and finally is our bug tracker. Helping in any of these communities is very much appreciated.
+The [Kali community](/community/) is spread out through many different platforms and apps, however there are five official platforms we are on. The first is on [GitLab](#gitlab), the second is our very own [forums](#forums), the third on [Discord](#discord), the fourth [IRC](#irc), and finally is our [bug tracker](#bug-tracker). Helping in any of these communities is very much appreciated.
 
 ### GitLab
 
-[GitLab](https://gitlab.com/kalilinux) is where all of our packages, docs pages, tool pages, build scripts, and more live. Everything is open source and contributions are encouraged. If something is inefficient, there is a typo somewhere, or you want to see a new feature added to Kali this is the place to go. If you know exactly what you want to change, please create a [merge request](https://gitlab.com/groups/kalilinux/-/merge_requests) doing so. If you don't know, you can create an [issue](https://gitlab.com/groups/kalilinux/-/issues) describing the issue or feature that you want changed.
+[GitLab](https://gitlab.com/kalilinux) is where all of [our packages](https://gitlab.com/kalilinux/packages/), [docs pages](https://gitlab.com/kalilinux/documentation/kali-docs), [tool pages](https://gitlab.com/kalilinux/documentation/kali-tools), [build-scripts](https://gitlab.com/kalilinux/build-scripts/), and more live. Everything is open source and contributions are encouraged. If something is inefficient, there is a typo somewhere, or you want to see a new feature added to Kali this is the place to go. If you know exactly what you want to change, please create a [merge request](https://gitlab.com/groups/kalilinux/-/merge_requests) doing so. If you don't know, you can create an [issue](https://gitlab.com/groups/kalilinux/-/issues) describing the issue or feature that you want changed.
 
 Example of a report about an outdated page:
 
 ![](gitlab.png)
+
+### Forums
+
+The [Kali Forums](https://forums.kali.org/) are a place where people can request support, share tools, give feedback, and much more. Anyone is able to go to our forums and help point others in the right direction or maybe even share a fix to an issue they've encountered themselves. The forums are a great place to help out as they are permanent. As long as the website is up, the information on it will always be able to be found. This is different to Discord, where information can be lost pretty easily.
 
 ### Discord
 
@@ -29,10 +40,6 @@ Discord is a real time chat app that encourages live discussion. The [Kali Linux
 ### IRC
 
 A lot like Discord, we have an [IRC server](/docs/community/kali-linux-irc-channel/) for users to ask questions and help each other out. Since the launch of our Discord server, most people prefer to communicate over there, however there can still be found someone who may know an answer to your question on the IRC server.
-
-### Forums
-
-The [Kali Forums](https://forums.kali.org/) are a place where people can request support, share tools, give feedback, and much more. Anyone is able to go to our forums and help point others in the right direction or maybe even share a fix to an issue they've encountered themselves. The forums are a great place to help out as they are permanent. As long as the website is up, the information on it will always be able to be found. This is different to Discord, where information can be lost pretty easily.
 
 ### Bug Tracker
 
@@ -94,35 +101,30 @@ The Kali team will occasionally request help with testing some specific devices 
 
 ### Hosting Kali Mirrors
 
-Mirrors are what helps get Kali to users all around the world. Mirrors host our files for things like installation isos or tool packages. The more mirrors we have in different parts of the world, the better the experience is for users. If the closest mirror is a few countries away, it will likely take a lot longer to perform an update than if there is a mirror in the same country as the update is being done. If you are in a position where you can **help to host a Kali mirror**, please refer to our **[Mirror Policy Page](/docs/community/setting-up-a-kali-linux-mirror/)** to learn more.
+Mirrors are what helps get Kali to users all around the world. Mirrors host our files for things like installation ISO files or tool packages. The more mirrors we have in different parts of the world, the better the experience is for users. If the closest mirror is a few countries away, it will likely take a lot longer to perform an update than if there is a mirror in the same country as the update is being done. If you are in a position where you can **help to host a Kali mirror**, please refer to our **[Mirror Policy Page](/docs/community/setting-up-a-kali-linux-mirror/)** to learn more.
 
 ### Porting Kali To A New Platform
 
-We are proud of the fact that you can find Kali on almost every type of system you can think of. From x64 computers to mobile phones to ARM single board computers, you can find Kali on a lot of different devices. However, we know that there are some devices out there that we currently don't support. If you have one of those devices, and want to see Kali on it, you can help contribute to Kali by helping us to develop Kali on that device. Depending on the platform, you may want to submit the request in a specific GitLab project. If the device is ARM-based, you should submit it to the [ARM](https://gitlab.com/kalilinux/build-scripts/kali-arm) build scripts project. The same is true for [cloud](https://gitlab.com/kalilinux/build-scripts/kali-cloud), [VM](https://gitlab.com/kalilinux/build-scripts/kali-vm), or [NetHunter](https://gitlab.com/kalilinux/nethunter/build-scripts).
+We are proud of the fact that you can find Kali on almost every type of system you can think of. From x64 computers to mobile phones to ARM single board computers, you can find Kali on a lot of different devices. However, we know that there are some devices out there that we currently don't support. If you have one of those devices, and want to see Kali on it, you can help contribute to Kali by helping us to develop Kali on that device. Depending on the platform, you may want to submit the request in a specific GitLab project. If the device is ARM-based, you should submit it to the [ARM](https://gitlab.com/kalilinux/build-scripts/kali-arm) build scripts project. The same is true for [cloud](https://gitlab.com/kalilinux/build-scripts/kali-cloud), [VM](https://gitlab.com/kalilinux/build-scripts/kali-vm), or [Kali NetHunter](https://gitlab.com/kalilinux/nethunter/build-scripts).
 
 ### Seeding Kali Torrents
 
-Users can get Kali a variety of ways. We have pre-built VM images, iso files to install it yourself, containers, and cloud instances. When users want to download a new Kali iso, they can do so either through our website using HTTP(S) or through torrent files. To help speed things up, we really appreciate it when people seed our torrents. What this means is that you **leave the .torrent file saved and a connection kept**, and you help to share the file to other users who are downloading through torrents. This helps to speed the process up for everyone. If you have the bandwidth to share, please consider seeding our torrents.
+Users can get Kali a variety of ways. We have pre-built VM images, ISO files to install it yourself, containers, and cloud instances. When users want to download a new Kali ISO, they can do so either through our website using HTTP(S) or through torrent files. We really appreciate it when people seed our torrents. What this means is that you **leave the .torrent file saved and a connection kept**, and you help to share the file to other users who are downloading through torrents. This helps to speed the process up for everyone. If you have the bandwidth to share, please consider seeding our torrents.
 
 Example of torrent seeding:
 
 ![](torrents.png)
 
+It is possible to automate this, by using our [Torrent RSS feed](/torrents.xml).
+
 # Kali Social Platforms
 
-Following us on social media and engaging with our content is a very easy way to help out! At the bottom of this page in the footer you can find all of our links to various platforms and social media. We currently are on:
+## Kali on Social Networks
 
-- [Facebook](https://www.facebook.com/kalilinux)
-- [Instagram](https://www.instagram.com/kalilinux/)
-- [Mastodon](https://infosec.exchange/@kalilinux)
-- [Twitter](https://twitter.com/kalilinux)
+Following us on social media and engaging with our content is a very easy way to help out! Either listed on our [Official Kali Linux Sites](/docs/community/list-of-official-kali-sites/#social-media-networks) page, or at the bottom of this page, in the footer, you can find all of our links to various platforms and social media.
 
-Something else that is helpful is leaving reviews or ratings on some of the platforms that we are on that you may use. These include the following marketplaces:
+## Marketplaces with Kali
 
-- [Amazon AWS](https://aws.amazon.com/marketplace/pp/prodview-fznsw3f7mq7to)
-- [Docker Hub](https://hub.docker.com/r/kalilinux/kali-rolling)
-- [Microsoft Azure](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/kali-linux.kali?tab=Reviews)
-- [Microsoft Store (WSL)](https://apps.microsoft.com/store/detail/kali-linux/9PKR34TNCV07?hl=en-us&gl=us)
+Something else that is helpful is leaving reviews or ratings on some of the 3rd party [external platforms that we are on](/docs/community/list-of-official-kali-sites/#marketplaces-and-stores) that you may use. These reviews help us and other users, so it is a good way to help out the community!
 
 _Please only do so if you use the platform that you are reviewing_.
-These reviews help us and other users, so it is a good way to help out the community!
