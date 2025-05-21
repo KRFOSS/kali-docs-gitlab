@@ -213,9 +213,9 @@ We're on social platforms too, if you want to to follow us for any announcements
 - [Bluesky](https://bsky.app/profile/kalilinux.bsky.social) <!-- https://kalilinux.bsky.social/ -->
 - [Facebook](https://www.facebook.com/KaliLinux/)
 - [Instagram](https://www.instagram.com/kalilinux/)
-<!--- [LinkedIn](https://linkedin.com/groups/4845751/)-->
 - [Mastodon](https://infosec.exchange/@kalilinux)
 - [`X`](https://X.com/kalilinux) _(formerly known as Twitter)_
+<!--- [LinkedIn](https://linkedin.com/groups/4845751/)-->
 
 <!--
 #1
