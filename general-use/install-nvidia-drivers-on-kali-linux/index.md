@@ -12,7 +12,7 @@ Live boot currently is not supported. The following documentation assumes an ins
 
 This document explains how to install NVIDIA GPU drivers and CUDA support, allowing integration with popular penetration testing tools. We will **not** be using **nouveau**, being the open-source driver for NVIDIA, instead we will installing the close-source from NVIDIA.
 
-This will cover a **[dedicated card (desktops users)](#dedicated)** and **[optimus (laptops and notebook users)](#optimus)**.
+This will cover a **[dedicated card (desktops users)](#dedicated-cards)** and **[optimus (laptops and notebook users)](#optimus-cards)**.
 
 We recommend that you do **not** attempt this in a Virtual Machine. It is [possible](https://mathiashueber.com/windows-virtual-machine-gpu-passthrough-ubuntu/), however its not straight forward, and should only be done if you have a deep understanding of Linux. It is not covered in this guide, as there are too many items to cover for everyone's environment and setup.
 

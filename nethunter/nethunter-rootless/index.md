@@ -72,7 +72,7 @@ _Tip: For a better viewing experience, enter a custom resolution under "Advanced
 
 ## NetHunter Editions:
 
-Please refer to [this table](/docs/nethunter/#1-0-nethunter-editions) for a comparison of the different NetHunter editions.
+Please refer to [this table](/docs/nethunter/#10-nethunter-editions) for a comparison of the different NetHunter editions.
 
 ## Tips:
 

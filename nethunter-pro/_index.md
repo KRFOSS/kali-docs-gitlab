@@ -14,7 +14,7 @@ author: ["ShubhamVis98",]
 
 - [Overview](#overview)
 - [NetHunter Pro Supported Devices](#20-nethunter-pro-supported-devices)
-- [Installing NetHunter Pro](#50-installing-nethunter-pro)
+- [Installing NetHunter Pro](#30-installing-nethunter-pro)
 
 ## Overview
 

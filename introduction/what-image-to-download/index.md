@@ -11,7 +11,7 @@ In this section, we will describe the process of installing Kali Linux on 64-bit
 #### Content
 
 - [Which image to choose](#which-image-to-choose)
-- [Which desktop environment and software collection to choose during installation](#which-desktop-environment-and-software-collection-to-choose-during-installation)
+- [Which desktop environment and software collection to choose during installation](#which-desktop-environment-and-metapackages-to-choose-during-installation)
 
 - - -
 
