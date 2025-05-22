@@ -8,7 +8,7 @@ author: ["v0lk3n",]
 
 ### CAN support
 
-CAN support will be needed for CAN Arsenal usage. Note that this documentations may be updated a lot since CAN Arsenal is in Experimental Version.
+CAN support will be needed for CARsenal usage.
 
 In section ***"Networking support"***:
 
@@ -98,7 +98,7 @@ In section ***"Device Drivers ---> USB support ---> USB Serial Converter support
 
 This would be used to get the chinese CAN Analyzer USB working with can-utils suite.
 
-Go to your kernel sources folder and clone as submodule can-isotp driver.
+Go to your kernel sources folder and clone as submodule usb-can driver.
 
 ```
 git submodule add https://github.com/V0lk3n/usb-can-2-module drivers/net/can/usb-can-2-module
