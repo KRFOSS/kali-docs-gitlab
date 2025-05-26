@@ -22,7 +22,7 @@ Win-KeX utilises [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxs
   - It should be included in standard Windows installations but if you receive an error complaining that it is missing, just download and install it
 - (Optional, but recommended) [VcXsrv running directly on the host](https://sourceforge.net/p/vcxsrv/wiki/VcXsrv%20%26%20Win10/)
   - [Setup VcXsrv](https://github.com/microsoft/WSL/issues/4106#issuecomment-502920377)
-  - Start -> Settings -> Update & Security -> Windows Security -> Open Windows Security
+  - Start -> Settings -> Privacy & security -> Windows Security -> Open Windows Security
     Firewall & network projection -> Allow an app through the firewall -> Change settings -> Select both entries of "VcXsrv windows server" -> OK
   - [Add inbound firewall rules to project the X server](https://x410.dev/cookbook/wsl/protecting-x410-public-access-for-wsl2-via-windows-defender-firewall/)
 <!--
