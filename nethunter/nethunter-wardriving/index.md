@@ -24,7 +24,7 @@ NetHunter’s Wardriving panel merges your Android device’s GPS and external r
 #### Interfaces
 
 - **Wireless interface**  
-  The wifi device that must already be in monitor-mode (e.g. `wlan0`).  
+  The Wi-Fi device that must already be in monitor-mode (e.g. `wlan0`).  
   *Enable monitor mode via `airmon-ng start wlan0` or Custom Commands ▶ Start wlan0 in Monitor Mode.*
 
 - **Bluetooth interface**  
