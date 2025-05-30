@@ -139,19 +139,29 @@ Now that you've either downloaded a NetHunter image or built one yourself, the n
 - Set up custom commands.
 - Initialize the Exploit-Database.
 
-## 7.0 Kali NetHunter Attacks and Features
+## 7.0 Kali NetHunter Application
 
-#### Kali NetHunter Application
+This is an Android APK that contains most of the Kali Nethunter userspace tools. It includes status information and tools to manage Nethunter itself (the kernel and the chroot), tools to  as well as a bunch of tools and attacks. 
+
+Attacks will be greyed out if the chroot is not running. Some of the attacks will prompt you to download additional requirements on first use.
+
+### Nethunter management
 
 - [**Home Screen**](/docs/nethunter/nethunter-home-screen/) - General information panel, network interfaces and HID device status.
 - [**Kali Chroot Manager**](/docs/nethunter/nethunter-chroot-manager/) - For managing chroot metapackage installations.
 - [**Settings**](/docs/nethunter/nethunter-settings/) - Select bootanimation, and modify various settings.
 - [**Kernel**](/docs/nethunter/nethunter-kernel/) - Search, download, and flash kernel
 - [**Modules**](/docs/nethunter/nethunter-modules/) - Load modules
+
+### Tools
+
 - [**Kali Services**](/docs/nethunter/nethunter-kali-services/) - Start / stop various chrooted services. Enable or disable them at boot time.
 - [**Custom Commands**](/docs/nethunter/nethunter-custom-commands/) - Add your own custom commands and functions to the launcher.
-- [**MAC Changer**](/docs/nethunter/nethunter-mac-changer/) - Change your Wi-Fi MAC address (only on certain devices)
+
+### Attacks
+
 - [**KeX Manager**](/docs/nethunter/nethunter-kex-manager/) - Set up an instant VNC session with your Kali chroot.
+- [**MAC Changer**](/docs/nethunter/nethunter-mac-changer/) - Change your Wi-Fi MAC address (only on certain devices)
 - [**Audio Manager**](/docs/nethunter/nethunter-audio/) - Enable audio for KeX.
 - [**USB Arsenal**](/docs/nethunter/nethunter-usbarsenal/) - Control the USB gadget configurations.
 - [**HID Attacks**](/docs/nethunter/nethunter-hid-attacks/) - Various HID attacks, Teensy style.
@@ -165,6 +175,9 @@ Now that you've either downloaded a NetHunter image or built one yourself, the n
 - [**NMap Scan**](/docs/nethunter/nethunter-nmap/) - Quick Nmap scanner interface.
 - [**Metasploit Payload Generator**](/docs/nethunter/nethunter-mpg/) - Generating Metasploit payloads on the fly.
 - [**Searchsploit**](/docs/nethunter/nethunter-searchsploit/) - Easy searching for exploits in [Exploit-Database](https://www.exploit-db.com/).
+- [**Pineapple Connector**] - Provide wifi via Android for a Hak5 pineapple over USB
+- [**Wardriving **](/docs/nethunter/nethunter-wardriving/) - Passively sniff nearby wifi networks
+- [**Deauth**] - Conduct wifi deauth attacks
 - [**CAN Arsenal**](/docs/nethunter/nethunter-canarsenal/) - CAN Bus testing, diagnosis or even car hacking.
 
 ## 8.0 Porting NetHunter to New Devices
