@@ -79,7 +79,7 @@ The following table illustrates the differences in functionality:
 |   NetHunter App    |         No         |      Yes       |    Yes    |
 |   Requires TWRP    |         No         |      Yes       |    Yes    |
 |   Requires Root    |         No         |      Yes       |    Yes    |
-|   WiFi Injection   |         No         |       No       |    Yes    |
+|  Wi-Fi Injection   |         No         |       No       |    Yes    |
 |    HID attacks     |         No         |       No       |    Yes    |
 |    BT Arsenal      |         No         |       No       |    Yes    |
 |    CAN Arsenal     |         No         |       No       |    Yes    |
@@ -175,9 +175,9 @@ Attacks will be greyed out if the chroot is not running. Some of the attacks wil
 - [**NMap Scan**](/docs/nethunter/nethunter-nmap/) - Quick Nmap scanner interface.
 - [**Metasploit Payload Generator**](/docs/nethunter/nethunter-mpg/) - Generating Metasploit payloads on the fly.
 - [**Searchsploit**](/docs/nethunter/nethunter-searchsploit/) - Easy searching for exploits in [Exploit-Database](https://www.exploit-db.com/).
-- [**Pineapple Connector**] - Provide wifi via Android for a Hak5 WiFi Pineapple over USB
-- [**Wardriving **](/docs/nethunter/nethunter-wardriving/) - Passively sniff nearby wifi networks
-- [**Deauth**] - Conduct wifi deauth attacks
+- [**Pineapple Connector**] - Provide Wi-Fi via Android for a Hak5 WiFi Pineapple over USB
+- [**Wardriving **](/docs/nethunter/nethunter-wardriving/) - Passively sniff nearby Wi-Fi networks
+- [**Deauth**] - Conduct Wi-Fi deauth attacks
 - [**CAN Arsenal**](/docs/nethunter/nethunter-canarsenal/) - CAN Bus testing, diagnosis or even car hacking.
 
 ## 8.0 Porting NetHunter to New Devices
