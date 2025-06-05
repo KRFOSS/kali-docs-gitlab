@@ -37,7 +37,7 @@ Once you've [downloaded and verified your Kali ISO files](/docs/introduction/dow
 If you would prefer to use [Etcher](#creating-a-bootable-kali-usb-drive-on-macosos-x-etcher), then follow the same directions as a Windows user. Note that the USB drive will have a path similar to /dev/disk2.
 
 {{% notice info %}}
-WARNING: Although the process of imaging Kali Linux onto a USB drive is very easy, you can just as easily overwrite a disk drive you didn't intend to with dd if you do not understand what you are doing, or if you specify an incorrect output path. Double-check what you're doing before you do it, it'll be too late afterwards.<br />
+WARNING: You can easily overwrite a disk drive you didn't intend to with `dd` if you do not understand what you are doing, or if you specify an incorrect output path. Double-check what you're doing before you do it, it'll be too late afterwards.<br />
 <br />
 **Consider yourself warned**.
 {{% /notice %}}
@@ -141,7 +141,7 @@ Additionally, the parameter "conv=fsync" makes sure that the data is physically 
 -->
 
 {{% notice info %}}
-While '/dev/diskX' is used in the command, the '/dev/diskX' should be replaced with the drive discovered previously. '/dev/diskX' will not overwrite any devices, and can safely be used in documentation to prevent accidental overwrites.<br />
+While '`/dev/diskX`' is used in the command, the '`/dev/diskX`' should be replaced with the drive discovered previously.<!-- '/dev/diskX' will not overwrite any devices, and can safely be used in documentation to prevent accidental overwrites.--><br />
 <br />
 **Please use the correct device name from the previous step**.
 {{% /notice %}}
