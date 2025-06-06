@@ -23,6 +23,8 @@ This guide assumes that you have already created a Kali Linux "Live" USB drive a
 You'll need to have root privileges to do this procedure, or the ability to escalate your privileges with `sudo`.
 {{% /notice %}}
 
+- - -
+
 In this example, we assume:
 
 - Your USB drive is `/dev/sdX` (last letter will probably be different). Check the connected USB drives with the command `lsblk` <!-- Alt: sudo fdisk -l --> and modify the device name in the `usb` variable before running the commands).
@@ -69,6 +71,9 @@ kali@kali:~$
 ```
 
 <!--
+
+Alt: sudo fdisk $usb <<< $(printf "n\np\n\n\n\nw")
+
 ## Example
 ```console
 kali@kali:~$ sudo fdisk $usb <<< $(printf "n\np\n\n\n\np\nw")
@@ -169,16 +174,6 @@ kali@kali:~$
 kali@kali:~$ usb=/dev/sdX
 kali@kali:~$
 kali@kali:~$ sudo mkfs.ext4 -L persistence ${usb}3
-[...]
-kali@kali:~$
-```
-
-<!--
-
-## Example
-
-```console
-kali@kali:~$ sudo mkfs.ext4 -L persistence ${usb}3
 mke2fs 1.47.2 (1-Jan-2025)
 Creating filesystem with 14114816 4k blocks and 3530752 inodes
 Filesystem UUID: ccb5cd13-3675-40ac-8b81-a684802a8dd0
@@ -193,7 +188,6 @@ Writing superblocks and filesystem accounting information: done
 
 kali@kali:~$
 ```
--->
 
 - - -
 
@@ -204,10 +198,15 @@ kali@kali:~$ usb=/dev/sdX
 kali@kali:~$
 kali@kali:~$ sudo mkdir -pv /mnt/my_usb
 mkdir: created directory '/mnt/my_usb'
-kali@kali:~$ sudo mount ${usb}3 /mnt/my_usb
+kali@kali:~$
+kali@kali:~$ sudo mount -v ${usb}3 /mnt/my_usb
+mount: /dev/sdX3 mounted on /mnt/my_usb.
+kali@kali:~$
 kali@kali:~$ echo "/ union" | sudo tee /mnt/my_usb/persistence.conf
 / union
-kali@kali:~$ sudo umount ${usb}3
+kali@kali:~$ sudo umount -v ${usb}3
+umount: /mnt/my_usb (/dev/sdX3) unmounted
+kali@kali:~$
 ```
 
 - - -
@@ -225,3 +224,163 @@ kali@kali:~$ reboot
 - You are able to write data anywhere and it will be kept
 - Able to mount the partition to see the data: `$ sudo mkdir -pv /mnt/my_usb; sudo mount ${usb}3 /mnt/my_usb; sudo ls -lahR /mnt/my_usb/rw/`
 -->
+
+## Multiple Persistence Stores
+
+At this point we should have the following partition structure:
+
+```console
+kali@kali:~$ sudo parted /dev/sdX print
+Model: SanDisk Extreme (scsi)
+Disk /dev/sdX: 62.7GB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:
+
+Number  Start   End     Size    Type     File system  Flags
+ 1      32.8kB  4927MB  4927MB  primary               boot, hidden
+ 2      4927MB  4932MB  4194kB  primary
+ 3      4933MB  62.7GB  57.8GB  primary
+
+kali@kali:~$
+```
+
+We can have multiple persistence stores on the USB drive, both encrypted or not... and choose which persistence store we want to load, at boot time.
+
+Let's delete the previous large partition, which filled up the rest of the drive, and create two additional non-encrypted store. We'll label and call it "work".
+
+- - -
+
+**0x00 - Manage partitions**.
+
+```console
+kali@kali:~$ sudo parted /dev/sdX
+GNU Parted 3.6
+Using /dev/sdX
+Welcome to GNU Parted! Type 'help' to view a list of commands.
+(parted)
+(parted) unit MiB
+(parted)
+(parted) print
+Model: SanDisk Extreme (scsi)
+Disk /dev/sdX: 59840MiB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:
+
+Number  Start    End       Size      Type     File system  Flags
+ 1      0.03MiB  4699MiB   4699MiB   primary               boot, hidden
+ 2      4699MiB  4703MiB   4.00MiB   primary
+ 3      4704MiB  59840MiB  55136MiB  primary
+
+(parted)
+(parted) rm 3
+(parted)
+```
+
+- - -
+
+**0x01 - Create additional partitions**.
+
+We'll create two 5GB (`5000 MiB`) of space:
+
+- Partition 3: `4704 MiB` + `5000 MiB` = `9704 MiB` (Which will hold the "work" data)
+- Partition 4: `9704 MiB` + `5000 MiB` = `14704 MiB` (Which will hold the "ctf" data)
+
+```console
+(parted) mkpart primary ext4 4704MiB 9704MiB
+(parted)
+(parted) mkpart primary ext4 9704MiB 14704MiB
+(parted)
+(parted) print
+Model: SanDisk Extreme (scsi)
+Disk /dev/sdX: 59840MiB
+Sector size (logical/physical): 512B/512B
+Partition Table: msdos
+Disk Flags:
+
+Number  Start    End       Size     Type     File system  Flags
+ 1      0.03MiB  4699MiB   4699MiB  primary               boot, hidden
+ 2      4699MiB  4703MiB   4.00MiB  primary
+ 3      4704MiB  9704MiB   5000MiB  primary  ext4
+ 4      9704MiB  14704MiB  5000MiB  primary  ext4
+
+(parted) quit
+Information: You may need to update /etc/fstab.
+
+kali@kali:~$
+```
+
+- - -
+
+**0x02 - Format and label partitions**:
+
+```console
+kali@kali:~$ sudo mkfs.ext4 /dev/sdX3
+mke2fs 1.47.2 (1-Jan-2025)
+Creating filesystem with 1280000 4k blocks and 320000 inodes
+Filesystem UUID: 9920a7b3-7abf-4cfe-9368-02b73edf2c1d
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+kali@kali:~$
+kali@kali:~$ sudo e2label /dev/sdX3 work
+kali@kali:~$
+
+
+kali@kali:~$ sudo mkfs.ext4 -L ctf /dev/sdX4
+mke2fs 1.47.2 (1-Jan-2025)
+Creating filesystem with 1280000 4k blocks and 320000 inodes
+Filesystem UUID: 1ba72717-1485-4e8b-ae7d-ff5b9d81c4b9
+Superblock backups stored on blocks:
+	32768, 98304, 163840, 229376, 294912, 819200, 884736
+
+Allocating group tables: done
+Writing inode tables: done
+Creating journal (16384 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+kali@kali:~$
+```
+
+- - -
+
+**0x03 - Mount these new partitions and create a persistence.conf on them**:
+
+```console
+kali@kali:~$ sudo mkdir -pv /mnt/my_usb{3,4}
+mkdir: created directory '/mnt/my_usb3'
+mkdir: created directory '/mnt/my_usb4'
+kali@kali:~$
+kali@kali:~$ sudo mount -v /dev/sdX3 /mnt/my_usb3
+mount: /dev/sdX3 mounted on /mnt/my_usb3.
+kali@kali:~$
+kali@kali:~$ sudo mount -v /dev/sdX4 /mnt/my_usb4
+mount: /dev/sdX4 mounted on /mnt/my_usb4.
+kali@kali:~$
+kali@kali:~$ echo "/ union" | sudo tee /mnt/my_usb{3,4}/persistence.conf
+/ union
+kali@kali:~$ sudo umount -v /mnt/my_usb3 /mnt/my_usb4
+umount: /mnt/my_usb3 unmounted
+umount: /mnt/my_usb4 unmounted
+kali@kali:~$
+```
+
+- - -
+
+Now you can you start any system, and set it to start from USB. When the boot menu appears, using the "tab" key, edit the persistence-label parameter to point to your preferred persistence store! We will select our "work" partition:
+
+```console
+kali@kali:~$ reboot
+```
+
+<!-- ![](kali-live-usb-persistence.jpg) -->
+
+<!-- ![](kali-live-usb-multi-persistence-default.png) -->
+
+![](kali-live-usb-multi-persistence-edited.png)
