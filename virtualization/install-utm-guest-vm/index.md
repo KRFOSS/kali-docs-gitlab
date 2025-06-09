@@ -22,13 +22,9 @@ Now we are only going to change one item, which is selecting our "Boot ISO Image
 
 ![](utm-setup-5.png)
 
-We won't change any of the settings here, and will just continue forward:
+We won't the default size here, and will just continue forward but you can increase or decrease it for your needs and [installation sizes](docs/installation/installation-sizes/):
 
 ![](utm-setup-6.png)
-
-Here we will be sure to lower or raise the size of the drive to what we will need. In our case, we will be lowering it to 20GB and continue:
-
-![](utm-setup-7.png)
 
 We again will skip changing anything on this page, however if you want a shared directory feel free to add it:
 
