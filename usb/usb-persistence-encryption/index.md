@@ -80,7 +80,7 @@ sdc      8:32   1 58.4G  0 disk
 ├─sdc2   8:34   1    4M  0 part
 └─sdc3   8:35   1 53.8G  0 part
 kali@kali:~$
-````
+```
 
 - - -
 
@@ -130,9 +130,14 @@ Creating journal (65536 blocks): done
 Writing superblocks and filesystem accounting information: done
 
 kali@kali:~$
+```
+
+<!--
+```console
 kali@kali:~$ sudo e2label /dev/mapper/my_usb persistence
 kali@kali:~$
 ```
+-->
 
 - - -
 
