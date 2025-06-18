@@ -15,7 +15,7 @@ The page is left for historical value.
 
 - - -
 
-![](2018.11-Kali-Gem_medium.png)
+![](Kali-Gem_medium.png)
 
 The [Gemini PDA](https://planetcom.squarespace.com/device/) is a multi-boot Android smartphone with a keyboard that supports the installation of up to three operating systems side-by-side (currently any three of the following: Android, Sailfish, Debian, Kali Linux).
 

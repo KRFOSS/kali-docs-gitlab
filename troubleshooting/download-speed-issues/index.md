@@ -15,21 +15,23 @@ Kali Linux operates off of a network of [community](/docs/community/kali-linux-m
 Now that we know how this happens we can determine which mirror we are actually getting sent to ourselves. We can do this in a couple of different ways. The first is to simply click [download](/get-kali/) and then in the downloads tab right click the download and copy the URL. This works for the majority of web browsers. The second option is to use `curl`:
 
 ```console
-kali@kali:~$ curl https://cdimage.kali.org/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>302 Found</title>
-</head><body>
-<h1>Found</h1>
-<p>The document has moved <a href="https://kali.download/base-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso">here</a>.</p>
-<hr>
-<address>Apache/2.4.10 (Debian) Server at cdimage.kali.org Port 443</address>
-</body></html>
+kali@kali:~$ curl -i https://cdimage.kali.org/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+HTTP/1.1 302 Found
+Server: nginx
+Date: Wed, 18 Jun 2025 10:52:17 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+Cache-Control: private, no-cache
+Link: <https://kali.download/base-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso>; rel=duplicate; pri=1; geo=ae
+Link: <https://ask4.mm.fcix.net/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso>; rel=duplicate; pri=2; geo=gb
+Link: <https://ftp.hands.com/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso>; rel=duplicate; pri=3; geo=gb
+Location: https://mirror.vinehost.net/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
 
 kali@kali:~$
 ```
 
-Here we can see that we were redirected to `kali.download`.
+Here we can see that we were redirected to `mirror.vinehost.net`.
 
 ### Submitting bugs
 
@@ -38,44 +40,46 @@ If the download speed is noticeably slow or the mirror is not working, we would 
 We can use `wget` to download the iso file and learn just how fast the download is taking. If we are on Windows, we can either get the download speed from the web browser or install [wget for Windows](https://medium.com/nerd-for-tech/using-wget-command-in-windows-10-environment-d766b8f526e9)
 
 ```console
-kali@kali:~$ wget https://kali.download/base-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
---2022-07-15 15:56:17--  https://kali.download/base-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
-Resolving kali.download (kali.download)... 104.18.103.100, 104.18.102.100, 2606:4700::6812:6764, ...
-Connecting to kali.download (kali.download)|104.18.103.100|:443... connected.
+kali@kali:~$ get https://kali.download/base-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+--2025-06-18 10:53:17--  https://kali.download/base-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+Resolving kali.download (kali.download)... 2606:4700::6811:fdef, 2606:4700::6811:feef, 104.17.254.239, ...
+Connecting to kali.download (kali.download)|2606:4700::6811:fdef|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 2944139264 (2.7G) [application/octet-stream]
-Saving to: ‘kali-linux-2022.4-installer-amd64.iso’
+Length: 4478939136 (4.2G) [application/octet-stream]
+Saving to: ‘kali-linux-2025.2-installer-amd64.iso’
 
-kali-linux-2022.4-installer-amd64.iso   6%[====>                                                                     ] 196.46M  31.6MB/s    eta 81s
+kali-linux-2025.2-installer-amd64.iso   6%[====>                                                                     ] 196.46M  31.6MB/s    eta 81s
 
 kali@kali:~$
 ```
 
 As we can see we are downloading at about 31.6MB/s and we are using the mirror link we got from the previous section.
 
+- - -
+
 Lets look at another example, this time with a connection from France:
 
 ```console
-kali@kali:~$ curl https://cdimage.kali.org/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
-<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
-<html><head>
-<title>302 Found</title>
-</head><body>
-<h1>Found</h1>
-<p>The document has moved <a href="https://archive-4.kali.org/kali-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso">here</a>.</p>
-<hr>
-<address>Apache/2.4.10 (Debian) Server at cdimage.kali.org Port 443</address>
-</body></html>
+kali@kali:~$ curl -i https://cdimage.kali.org/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+HTTP/1.1 302 Found
+Server: nginx
+Date: Wed, 18 Jun 2025 10:55:33 GMT
+Content-Type: text/html; charset=utf-8
+Content-Length: 0
+Connection: keep-alive
+Cache-Control: private, no-cache
+Link: <https://kali.download/base-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso>; rel=duplicate; pri=1; geo=ae
+Location: https://archive-4.kali.org/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
 
-kali@kali:~$ wget https://archive-4.kali.org/kali-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
---2022-07-15 16:09:44--  https://archive-4.kali.org/kali-images/kali-2022.4/kali-linux-2022.4-installer-amd64.iso
-Resolving archive-4.kali.org (archive-4.kali.org)... 176.31.228.102
-Connecting to archive-4.kali.org (archive-4.kali.org)|176.31.228.102|:443... connected.
+kali@kali:~$ wget https://archive-4.kali.org/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+--2025-06-18 10:56:00--  https://archive-4.kali.org/kali-images/kali-2025.2/kali-linux-2025.2-installer-amd64.iso
+Resolving archive-4.kali.org (archive-4.kali.org)... 2001:41d0:2:f566::, 176.31.228.102
+Connecting to archive-4.kali.org (archive-4.kali.org)|2001:41d0:2:f566::|:443... connected.
 HTTP request sent, awaiting response... 200 OK
-Length: 2944139264 (2.7G) [application/octet-stream]
-Saving to: ‘kali-linux-2022.4-installer-amd64.iso.1’
+Length: 4478939136 (4.2G) [application/octet-stream]
+Saving to: ‘kali-linux-2025.2-installer-amd64.iso’
 
-kali-linux-2022.4-installer-amd64.iso   0%[                                                                          ] 615.75K   610KB/s
+kali-linux-2025.2-installer-amd64.iso   0%[                                                                          ] 615.75K   610KB/s
 
 kali@kali:~$
 ```
@@ -84,4 +88,4 @@ Now that we know the download speed and the mirror link we can submit a [bug rep
 
 ### Using a different mirror
 
-We can consult back to the [community](/docs/community/kali-linux-mirrors/) mirrors and manually select a different mirror to see if our download speed improves. To do this we simply will copy the mirror link we want to use from the list and then change "README" to be `kali-2022.4/kali-linux-2022.4-installer-amd64.iso` or whichever download link we are using. We can see this in the previous section, right after `kali-images/`.
+We can consult back to the [community](/docs/community/kali-linux-mirrors/) mirrors and manually select a different mirror to see if our download speed improves. To do this we simply will copy the mirror link we want to use from the list and then change "README" to be `kali-2025.2/kali-linux-2025.2-installer-amd64.iso` or whichever download link we are using. We can see this in the previous section, right after `kali-images/`.

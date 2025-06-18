@@ -126,11 +126,11 @@ user@mbp ~ %
 
 - - -
 
-5. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.1-live-amd64.iso" and is in your current working directory.
+5. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.2-live-amd64.iso" and is in your current working directory.
 
 ```console
-user@mbp ~ % file kali-linux-2025.1-live-amd64.iso
-kali-linux-2025.1-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
+user@mbp ~ % file kali-linux-2025.2-live-amd64.iso
+kali-linux-2025.2-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
 user@mbp ~ %
 ```
 
@@ -168,7 +168,7 @@ user@mbp ~ %
 -->
 
 ```console
-$ sudo dd if=kali-linux-2025.1-live-amd64.iso of=/dev/rdiskX bs=4M status=progress
+$ sudo dd if=kali-linux-2025.2-live-amd64.iso of=/dev/rdiskX bs=4M status=progress
 ```
 
 {{% notice info %}}
