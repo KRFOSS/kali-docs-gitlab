@@ -65,7 +65,7 @@ $ sudo mount -o bind /dev /mnt/chroot/dev
 $ sudo mount -o bind /dev/pts /mnt/chroot/dev/pts
 $ sudo apt install -y qemu-user-static
 $ sudo cp /usr/bin/qemu-aarch64-static /mnt/chroot/usr/bin/
-```  
+```
 
 The last two commands will come in handy ready for initramfs later.
 
@@ -135,7 +135,7 @@ LABEL=BOOT      /boot           vfat    defaults          0       2
 
 ### Configure the encrypted partitions
 
-When using encrypted partitions, we need to edit, or create, if it doesn't exist, the `/etc/crypttab` file, which is used by cryptsetup to know what options are needed in order to unlock the encrypted device. 
+When using encrypted partitions, we need to edit, or create, if it doesn't exist, the `/etc/crypttab` file, which is used by cryptsetup to know what options are needed in order to unlock the encrypted device.
 
 Because this file doesn't exist, we will create the `/etc/crypttab` file, and fill it with the options we need:
 
@@ -465,7 +465,7 @@ $ sudo cryptsetup luksClose crypt
 $ sudo umount /mnt/chroot
 $ echo -e "d\n2\nw" | sudo fdisk /dev/sdX
 $ echo -e "n\np\n2\n\n\nw" | sudo fdisk /dev/sdX
-```  
+```
 
 ## Configure the encrypted partitions
 
@@ -479,7 +479,7 @@ Otherwise you will want to use the following which uses an older version of LUKS
 
 ```console
 $ sudo cryptsetup -v -y --pbkdf pbkdf2 --cipher aes-cbc-essiv:sha256 --key-size 256 luksFormat /dev/sdX2
-```  
+```
 
 ## Restore our data
 
@@ -491,7 +491,7 @@ $ sudo mkfs.ext4 /dev/mapper/crypt
 $ sudo mount /dev/mapper/crypt /mnt/encrypted/
 $ sudo rsync -avh /mnt/backup/* /mnt/encrypted/
 $ sync
-```  
+```
 
 - - -
 

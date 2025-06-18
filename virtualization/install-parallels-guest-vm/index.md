@@ -44,7 +44,7 @@ Either drag the ISO file or choose **Select a file...** to navigate to the downl
 
 Parallels does not recognize the OS on the ISO, so we will choose **Continue** to proceed anyway.
 
-![](parallels-08.png) 
+![](parallels-08.png)
 
 - - -
 

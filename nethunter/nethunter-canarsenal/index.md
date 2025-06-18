@@ -74,7 +74,7 @@ hlcand -F -S 500000 /dev/ttyUSB0
 
 Daemon to bridge CAN interfaces.
 
-***socketcand - Settings Prerequisite :*** 
+***socketcand - Settings Prerequisite :***
 
 Set "CAN Inteface" in Settings.
 
@@ -108,7 +108,7 @@ ldattach --debug --speed 38400 --eightbits --noparity --onestopbit --iflag -ICRN
 
 For bluetooth CAN adapter usage. Run it to bind bluetooth to your device.
 
-***Bind RFCOMM - Settings Prerequisite :*** 
+***Bind RFCOMM - Settings Prerequisite :***
 
 Set "Target" MAC address in Settings.
 
@@ -127,7 +127,7 @@ rfcomm bind <selected interface> <Target MAC Address>
 <img src="nethunter-carsenal-interfaces.png" width="300">
 
 
-***Start CAN Interface - Settings Prerequisite :*** 
+***Start CAN Interface - Settings Prerequisite :***
 
 Set "CAN Interface", "CAN Type" in Inteface. And optionally enable 'MTU' and 'txqueulen to set custom value'. If 'VCAN' is selected as type, nothing more is needed.
 
@@ -145,7 +145,7 @@ sudo ip link add dev <CAN Interface> type vcan
 The following command is executed to start interface.
 
 ```bash
-sudo ip link set <CAN Interface> up 
+sudo ip link set <CAN Interface> up
 ```
 
 If you wish to use custom MTU and txqueulen, the following commands is executed respectively.
@@ -153,16 +153,16 @@ If you wish to use custom MTU and txqueulen, the following commands is executed 
 ***MTU - Used command :***
 
 ```bash
-sudo ip link set <CAN Inteface> MTU <MTU Value> 
+sudo ip link set <CAN Inteface> MTU <MTU Value>
 ```
 
 ***txqueuelen - Used command :***
 
 ```bash
-sudo ip link set <CAN Inteface> txqueuelen <txqueuelen Value> 
+sudo ip link set <CAN Inteface> txqueuelen <txqueuelen Value>
 ```
 
-***Stop CAN Interface - Settings Prerequisite :*** 
+***Stop CAN Interface - Settings Prerequisite :***
 
 Set "CAN Interface" in Settings
 
@@ -214,7 +214,7 @@ vininfo check <vinNumber>
 Used to generate CAN Bus Traffic.
 
 
-***CanGen - Settings Prerequisite :*** 
+***CanGen - Settings Prerequisite :***
 
 Your desired CAN Interface should be started and set in Settings.
 
@@ -231,7 +231,7 @@ cangen <CAN Interface> -v
 Used to sniff CAN Bus Traffic.
 
 
-***CanSniffer - Settings Prerequisite :*** 
+***CanSniffer - Settings Prerequisite :***
 
 Your desired CAN Interface should be started and set in Settings.
 
@@ -248,9 +248,9 @@ cansniffer <CAN Interface>
 Used to dump CAN Bus traffic to an output file.
 
 
-***CanDump - Settings Prerequisite :*** 
+***CanDump - Settings Prerequisite :***
 
-Your desired CAN Interface should be started and set with "Output" path in Settings. 
+Your desired CAN Interface should be started and set with "Output" path in Settings.
 
 
 ***CanDump - Used command :***
@@ -265,9 +265,9 @@ candump <CAN Inteface> -f <Output Log>
 Used to replay a specific sequence to CAN bus.
 
 
-***CanSend - Settings Prerequisite :*** 
+***CanSend - Settings Prerequisite :***
 
-Your desired CAN Interface should be started and set with "Sequence" in Settings. 
+Your desired CAN Interface should be started and set with "Sequence" in Settings.
 
 ***CanSend - Used command :***
 
@@ -280,9 +280,9 @@ cansend <CAN Interface> <Sequence>
 Used to replay dumped sequences from a log file to CAN bus.
 
 
-***CanPlayer - Settings Prerequisite :*** 
+***CanPlayer - Settings Prerequisite :***
 
-Your desired CAN Interface should be started and set with "Input" path in Settings. 
+Your desired CAN Interface should be started and set with "Input" path in Settings.
 
 > CAN Interface will be taken from the Input Log, check that your interface is the same one. (If you dump with vcan0, you should replay with vcan0)
 
@@ -297,9 +297,9 @@ canplayer -I <Input Log>
 From can-utils suite, Asc2Log is used to convert ASC file format to the classic LOG.
 
 
-***Asc2Log - Settings Prerequisite :*** 
+***Asc2Log - Settings Prerequisite :***
 
-Set "Input" and "Output" path in Settings. 
+Set "Input" and "Output" path in Settings.
 
 
 ***Asc2Log - Used command :***
@@ -314,9 +314,9 @@ asc2log -I <Input Log> -O <Output File>
 From can-utils suite, Log2Asc is used to convert dumped LOG file to the ASC format.
 
 
-***Log2Asc - Settings Prerequisite :*** 
+***Log2Asc - Settings Prerequisite :***
 
-Your desired CAN Interface should be started and set with "Input", "Output" path in Settings. 
+Your desired CAN Interface should be started and set with "Input", "Output" path in Settings.
 
 
 ***Log2Asc - Used command :***
@@ -358,9 +358,9 @@ Used to find the exact sequence of the desired action from a log file.
 >This custom script will auto split a log files using head and tail. Replay theses with user input in loop using CanPlayer, until finding the exact sequence of the desired action. Finally it replay it using CanSend.
 
 
-***SequenceFinder - Settings Prerequisite :*** 
+***SequenceFinder - Settings Prerequisite :***
 
-Your desired CAN Interface should be started and set with "Input" path in Settings. 
+Your desired CAN Interface should be started and set with "Input" path in Settings.
 
 > CAN Interface will be taken from the Input Log, check that your interface is the same one. (If you dump with vcan0, you should replay with vcan0)
 
@@ -375,7 +375,7 @@ Your desired CAN Interface should be started and set with "Input" path in Settin
 
 Used to communicate with two machine on a CAN bus by Ethernet.
 
-***Cannelloni - Settings Prerequisite :*** 
+***Cannelloni - Settings Prerequisite :***
 
 Your desired CAN Interface should be set in Settings.
 
@@ -414,9 +414,9 @@ Mainly used for 'CAN USB Analyser' to Dump and Send sequence.
 
 
 
-***CAN-USB - Settings Prerequisite :*** 
+***CAN-USB - Settings Prerequisite :***
 
-Set "USB Device", "CAN Speed" and "Baudrate". 
+Set "USB Device", "CAN Speed" and "Baudrate".
 
 Then chose and set your advanced options.
 

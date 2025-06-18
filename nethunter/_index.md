@@ -141,7 +141,7 @@ Now that you've either downloaded a NetHunter image or built one yourself, the n
 
 ## 7.0 Kali NetHunter Application
 
-This is an Android APK that contains most of the Kali Nethunter userspace tools. It includes status information and tools to manage Nethunter itself (the kernel and the chroot), tools to  as well as a bunch of tools and attacks. 
+This is an Android APK that contains most of the Kali Nethunter userspace tools. It includes status information and tools to manage Nethunter itself (the kernel and the chroot), tools to  as well as a bunch of tools and attacks.
 
 Attacks will be greyed out if the chroot is not running. Some of the attacks will prompt you to download additional requirements on first use.
 

@@ -21,16 +21,16 @@ error: externally-managed-environment
 ╰─> To install Python packages system-wide, try apt install
     python3-xyz, where xyz is the package you are trying to
     install.
-    
+
     If you wish to install a non-Kali-packaged Python package,
     create a virtual environment using python3 -m venv path/to/venv.
     Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make
     sure you have pypy3-venv installed.
-    
+
     If you wish to install a non-Kali-packaged Python application,
     it may be easiest to use pipx install xyz, which will manage a
     virtual environment for you. Make sure you have pipx installed.
-    
+
     For more information, refer to the following:
     * https://www.kali.org/docs/general-use/python3-external-packages/
     * /usr/share/doc/python3.12/README.venv

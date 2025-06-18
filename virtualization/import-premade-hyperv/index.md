@@ -49,7 +49,7 @@ It seems that Hyper-V usually stores its Virtual Hard Disks at `C:\ProgramData\M
 At this point it seems that the screen resolution must be set at boot time, hence it needs to be configured in the kernel cmdine. To do so, we open a terminal, and run:
 
 ```console
-kali@kali:~$ sudoedit /etc/default/grub 
+kali@kali:~$ sudoedit /etc/default/grub
 ```
 
 In this file, we update the value of the `GRUB_CMDLINE_LINUX_DEFAULT` variable as below:

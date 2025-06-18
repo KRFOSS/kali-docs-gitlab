@@ -36,7 +36,7 @@ If you would like to use a Kali Docker image, we have a doc page for that [here]
 
 ```console
 kali@kali:~$ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list 
+  sudo tee /etc/apt/sources.list.d/docker.list
 ```
 
 Import the gpg key:

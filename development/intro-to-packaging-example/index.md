@@ -1024,17 +1024,17 @@ Let's try to understand the error `E: instaloader source: source-is-missing [doc
 kali@kali:~/kali/packages/instaloader$ lintian-explain-tags source-is-missing
 N:
 E: source-is-missing
-N: 
+N:
 N:   The source of the following file is missing. Lintian checked a few possible paths to find the source, and did not find it.
-N:   
+N:
 N:   Please repack your package to include the source or add it to "debian/missing-sources" directory.
-N:   
+N:
 N:   Please note, that very-long-line-length-in-source-file tagged files are likely tagged source-is-missing. It is a feature not a bug.
-N: 
+N:
 N:   Visibility: error
 N:   Show-Always: no
 N:   Check: files/source-missing
-N: 
+N:
 kali@kali:~/kali/packages/instaloader$
 ```
 

@@ -56,7 +56,7 @@ kali@kali:~$
 
 The lines that matter in the screenshot above are:
 - « _os-prober will be executed to detect other bootable partitions_ » which means that the command attempts to find os operating systems.
-- « _Found Debian GNU/Linux 12 (bookworm) on ..._ » which means that the other operating system (Debian in this case) was found. 
+- « _Found Debian GNU/Linux 12 (bookworm) on ..._ » which means that the other operating system (Debian in this case) was found.
 
 Assuming that all went well, the problem is fixed! Just reboot your machine, and this time the GRUB boot menu shows entries for both Kali Linux and Debian:
 

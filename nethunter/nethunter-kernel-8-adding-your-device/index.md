@@ -17,4 +17,4 @@ Useful example of a recent unofficial device support [merge request](https://git
 
 If you used the kernel builder, your new kernel image can be found in ***out/arch/arm64/boot/***, and your modules are in ***modules_out/lib/modules/***.
 
-Be sure to test if you can create a working NetHunter installer zip before submitting your commits. 
+Be sure to test if you can create a working NetHunter installer zip before submitting your commits.

@@ -10,7 +10,7 @@ As time moves on Antivirus and EDR programs are working to implement new capabil
 
 An antivirus signature is a sequence of bytes that are contained within a program. The files on your host system are scanned and the antivirus program compares them against there database that contains these signatures to see if there is a match. When a match is identified the file is quarantined and removed from the host system.
 
-Although the antivirus program is doing its job, there are some ways that we can protect our Kali Linux Virtual Machine from being quarantined by the host Antivirus Software. This process will focus on implementing these exclusions with Windows Security: 
+Although the antivirus program is doing its job, there are some ways that we can protect our Kali Linux Virtual Machine from being quarantined by the host Antivirus Software. This process will focus on implementing these exclusions with Windows Security:
 
 ## Setting an Exclusion Folder in Windows Security
 
@@ -18,7 +18,7 @@ Although the antivirus program is doing its job, there are some ways that we can
 This process will work on Windows 10 and Windows 11
 {{% /notice %}}
 
-In Windows you can stop Windows Security from alerting you or blocking your virtual machine by adding it to the exclusion list. To do this you need to go to the following: 
+In Windows you can stop Windows Security from alerting you or blocking your virtual machine by adding it to the exclusion list. To do this you need to go to the following:
 
 1. Select "Start"  > "Settings"  > "Update & Security"  > "Windows Security" > "Virus & threat protection".
 
@@ -36,7 +36,7 @@ In Windows you can stop Windows Security from alerting you or blocking your virt
 
 ![](run-kali-vm-windows-4.png)
 
-Now that the folder is set as an exclusion, Windows Security will not scan the folder that contains your Kali Linux Virtual Machine. 
+Now that the folder is set as an exclusion, Windows Security will not scan the folder that contains your Kali Linux Virtual Machine.
 
 ## References
 - https://support.microsoft.com/en-us/windows/add-an-exclusion-to-windows-security-811816c0-4dfd-af4a-47e4-c301afe13b26

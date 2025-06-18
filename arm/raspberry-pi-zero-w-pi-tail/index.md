@@ -57,14 +57,14 @@ Enable "wifi hotspot" or "usb tethering" on your phone and the Pi-Tail should co
 
 Open ConnectBot on your mobile and connect to the Pi-Tail. Configure port forwarding and fire up a vnc viewer of your choice and you can enjoy kali linux in all it’s glory on the go.
 
-Passwords:  
+Passwords:
 - ssh: `kali` / `kali`
 - vnc: `toortoor`
-  
+
 Default Wi-Fi:
 You can use the example config files. Just change your smartphone’s SSID to "`sepultura`" with the password "`R4t4m4h4tt4`" and your Pi-Tail will tether straight away.
 
-More info in [/boot/Pi-Tail.README](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.README) and [/boot/Pi-Tail.HOWTO](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.HOWTO)  
+More info in [/boot/Pi-Tail.README](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.README) and [/boot/Pi-Tail.HOWTO](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.HOWTO)
 
 ## Troubleshooting
 

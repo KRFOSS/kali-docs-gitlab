@@ -9,7 +9,7 @@ author: ["IamCOD3X",]
 Introduction
 This modules enables Audio in KeX session.
 
-Here is the step-by-step instructions for setting up and using the Audio Manager with Kali NetHunter. 
+Here is the step-by-step instructions for setting up and using the Audio Manager with Kali NetHunter.
 
 Follow the steps carefully to enable live audio streaming while using the Kali NetHunter GUI interface.
 

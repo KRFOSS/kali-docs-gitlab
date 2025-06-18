@@ -138,7 +138,7 @@ Chose *Advanced Options* and *Graphical Expert Install*. Execute the following i
 - *Load installer components from installation medium*, select `crypto-dm-modules`, `fdisk-udeb`, `mbr-udeb`, `parted-udeb`, `rescue-mode`.
 - *Detect network hardware*
 - *Configure the network*, make sure that you have network access at this stage.
-- *Set up users and passwords*, select *shadow passwords* and setup the main user that will be able to get root privileges via `sudo`. 
+- *Set up users and passwords*, select *shadow passwords* and setup the main user that will be able to get root privileges via `sudo`.
 - *Configure the clock*, note that when you choose *ntp* (the network time protocol), your machine will start polling once connected to a network which is perhaps undesirable for your installation
 
 Do not execute *Detect disks*. Rather press [Ctrl]+[Alt]+[F3] and then [Enter] in order to open a text console with root privileges. Now Connect the target USB drive on which we will install Kali Linux 2021.4. Use `ls /dev` before and after connecting in order to discover which device files it is associated with. In my case, the USB pen drive from which I have booted, is `/dev/sda`, and the target USB drive becomes `/dev/sdb`.
@@ -308,7 +308,7 @@ Note that in order to produce an EFI bootable USB drive, when we next boot the c
 Now we connect the USB pen drive that contains the Xubuntu 20.04.3 LTS live installation medium and boot from it, select *Try
 Xubuntu without installing* in order to get to the live system. Then we connect the USB drive that forms our installation target.
 
-Make sure that the Xubuntu live system has network access (this is done by the `NetworkManager` in the graphical interface). Open a terminal and call `ls /sys/firmware/efi/efivars` in order to confirm that we are indeed in EFI mode. If this directory were missing, we would be in legacy BIOS boot mode. 
+Make sure that the Xubuntu live system has network access (this is done by the `NetworkManager` in the graphical interface). Open a terminal and call `ls /sys/firmware/efi/efivars` in order to confirm that we are indeed in EFI mode. If this directory were missing, we would be in legacy BIOS boot mode.
 
 Again use `ls /dev` and `df` in order to find out to which device `/dev/sdx` our installation target is associated. We know that the Xubuntu live image is mounted at `/media/cdrom` (so this is *not* it) and that our target USB drive contains the 5 partitions that we created. In the following, I assume that again `/dev/sdb` corresponds to the installation target.
 
@@ -395,7 +395,7 @@ If you have a custom kernel configuration file, copy it to `~/src/linux-source-5
 $ cp /boot/config-5.14.0-kali4-amd64 ~/src/linux-source-5.15/.config
 ```
 
-The kernel is then configured as usual with 
+The kernel is then configured as usual with
 
 ```console
 $ cd ~/src/linux-source-5.15/

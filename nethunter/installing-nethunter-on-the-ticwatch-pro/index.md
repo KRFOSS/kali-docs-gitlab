@@ -17,15 +17,15 @@ All variants are supported (TicWatch Pro, Pro 2020, Pro 4G/LTE)
 3. Resize system partition in TWRP
 4. Flash and launch Magisk app to finish the rooting process
 5. Flash NetHunter
-6. Set NetHunter watch face 
+6. Set NetHunter watch face
 
 ## 1. Unlock the bootloader
 
-- Connect your watch to your PC with it's USB cable, and fire up a terminal. 
+- Connect your watch to your PC with it's USB cable, and fire up a terminal.
 - If you have set up your watch on the phone you can access settings, otherwise hold both buttons for a few seconds on the welcome screen.
 - Enable developer settings by going to System -> About -> tap Build number 10 times
 - Enable ADB, re-plug USB and accept debug from PC
-- Reboot into bootloader with `adb reboot bootloader` from the terminal 
+- Reboot into bootloader with `adb reboot bootloader` from the terminal
 - Unlock bootloader with `fastboot flashing unlock`
 
 ## 2. Flash vendor image, TWRP, and optimized WearOS
@@ -62,7 +62,7 @@ Please note Magisk 21.0 is recommended, included in the following link.
 - Make sure that the system partition is mounted: Mount -> System (make sure that "mount as RO" is disabled), some users report /system is not being mounted by NetHunter installer
 - Select Install -> ADB Sideload
 - `adb sideload` NetHunter image
-- Reboot 
+- Reboot
 - Start NetHunter app & chroot
 - Reboot
 

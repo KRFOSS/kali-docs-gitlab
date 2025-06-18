@@ -12,7 +12,7 @@ VMs are great. There are many upsides with using them. One of the being, able to
 
 VirtualBox is free and open source. There are a few other software such as QEMU, KVM/Xen with virt-manager. Then there is also [VMware Workstation & Fusion](/docs/virtualization/install-vmware-host/), which is a commercial software (there is VMware Player which is free but it is limited in features).
 
-VirtualBox is officially available in kali-rolling repositories. 
+VirtualBox is officially available in kali-rolling repositories.
 
 There are two ways to install `virtualbox`:
 

@@ -141,8 +141,8 @@ We can now **import** the `.tar.gz` we previously downloaded into the empty Git 
 
 ```console
 kali@kali:~/kali/packages/finalrecon$ gbp import-orig ~/kali/upstream/finalrecon_0.0~git20201107.0d41eb6.orig.tar.gz
-What will be the source package name? [finalrecon] 
-What is the upstream version? [0.0~git20201107.0d41eb6] 
+What will be the source package name? [finalrecon]
+What is the upstream version? [0.0~git20201107.0d41eb6]
 gbp:info: Importing '../upstream/finalrecon_0.0~git20201107.0d41eb6.orig.tar.gz' to branch 'upstream'...
 gbp:info: Source package is finalrecon
 gbp:info: Upstream version is 0.0~git20201107.0d41eb6
@@ -474,7 +474,7 @@ You can also add the **[common configuration for GitHub](https://wiki.debian.org
 kali@kali:~/kali/packages/finalrecon$ vim debian/watch
 kali@kali:~/kali/packages/finalrecon$
 kali@kali:~/kali/packages/finalrecon$ cat debian/watch
-version=4                                       
+version=4
 opts=mode=git,pgpmode=none \
   https://github.com/thewhiteh4t/FinalRecon HEAD
 
@@ -673,7 +673,7 @@ For more information on building Python libraries, see the [Debian resource](htt
 Here is a quick overview of the **commands needed to build the package**:
 
 ```plaintext
-mkdir -p ~/kali/upstream/ ~/kali/build-area/ ~/kali/packages/python-icmplib/ 
+mkdir -p ~/kali/upstream/ ~/kali/build-area/ ~/kali/packages/python-icmplib/
 wget https://github.com/ValentinBELYN/icmplib/archive/v1.2.2.tar.gz -O ~/kali/upstream/python-icmplib_1.2.2.orig.tar.gz
 cd ~/kali/packages/python-icmplib/
 git init

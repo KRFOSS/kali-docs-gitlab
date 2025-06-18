@@ -8,7 +8,7 @@ author: ["g0tmi1k"]
 
 ### About Kali Linux
 
-[Kali Linux](/) _(formerly known as [BackTrack Linux](https://www.backtrack-linux.org/))_ is an [open-source](/docs/policy/kali-linux-open-source-policy/), [Debian-based Linux](/docs/policy/kali-linux-relationship-with-debian/) distribution which allows users to perform advanced penetration testing and security auditing. It runs on multiple platforms and is freely available and accessible to both information security professionals and hobbyists. 
+[Kali Linux](/) _(formerly known as [BackTrack Linux](https://www.backtrack-linux.org/))_ is an [open-source](/docs/policy/kali-linux-open-source-policy/), [Debian-based Linux](/docs/policy/kali-linux-relationship-with-debian/) distribution which allows users to perform advanced penetration testing and security auditing. It runs on multiple platforms and is freely available and accessible to both information security professionals and hobbyists.
 
 This distribution has [several hundred tools, configurations, and scripts](/features/) with [industry-specific modifications](/docs/policy/penetration-testing-tools-policy/) that allow users to focus on tasks such as computer forensics, reverse engineering, and vulnerability detection, instead of dealing with unrelated activities.
 

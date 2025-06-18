@@ -14,7 +14,7 @@ By default, the Kali Linux Radxa Zero image contains the [**kali-linux-default**
 The Radxa Zero (sdcard) image has only been tested on the 2GB and 4GB variants.
 {{% /notice %}}
 
-<!-- 2022.2 didn't have an image, 2022.3 will 
+<!-- 2022.2 didn't have an image, 2022.3 will
 ## Kali on Radxa Zero - User Instructions
 
 If you're unfamiliar with the details of [downloading and validating a Kali Linux image](/docs/introduction/download-official-kali-linux-images/), or for [using that image to create a bootable device](/docs/usb/live-usb-install-with-windows/), it's strongly recommended that you refer to the more detailed procedures described in the specific articles on those subjects.

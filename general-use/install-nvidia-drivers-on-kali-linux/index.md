@@ -414,10 +414,10 @@ The following is user generated content. In general, the Kali team does not reco
 If `Hashcat` is not detected the GPU even after following the above steps then do the following:
 
 1. Go to https://www.nvidia.com/Download/index.aspx?lang=en-us & select your proper GPU driver to install.
-2. Run `sudo su -`. 
+2. Run `sudo su -`.
 3. Do `init 3` (which will disable the Linux desktop and switch to a text interface.).
 4. If you have already installed Nvidia drivers using a package manager like `apt`, `nala` etc. you have to remove them first. You can do `sudo apt remove nvidia*` which removed all of the previously installed Nvidia drivers. If you don't do this you'll get a warning when you try to run the next step & the installation will be aborted.
-5. Install the driver file by doing `sudo ./Nvidia-<your version>.run`. Follow the installation flow & choose appropriate options. 
+5. Install the driver file by doing `sudo ./Nvidia-<your version>.run`. Follow the installation flow & choose appropriate options.
 6. If the installation is successful Reboot by typing `sudo reboot`
 
 Now run `hashcat -I` & if everything goes well then `Hashcat` will detect the GPU now and the output will look something like this

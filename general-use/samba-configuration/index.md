@@ -12,7 +12,7 @@ However, if you would rather keep Samba as secure as possible using today's mode
 
 These settings can be changed easily using the `kali-tweaks` tool. Simply:
 
-- Open a terminal and run `kali-tweaks`. 
+- Open a terminal and run `kali-tweaks`.
 - From there, select the _Hardening_ menu.
 - Now you can choose between **Wide Compatibility** _(the default)_ and **Strong Security**.
 

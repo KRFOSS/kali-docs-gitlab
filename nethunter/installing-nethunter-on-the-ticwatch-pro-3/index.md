@@ -16,15 +16,15 @@ All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE) with a g
 2. Flash TWRP, WearOS image, Magisk, dm-verity disabler
 3. Finalise Magisk app to finish the rooting process
 4. Install NetHunter
-5. Set NetHunter watch face 
+5. Set NetHunter watch face
 
 ## 1. Unlock the bootloader
 
-- Connect your watch to your PC with a DIY USB cable or a [3D printed data dock](https://social.thangs.com/m/59021), and fire up a terminal. 
+- Connect your watch to your PC with a DIY USB cable or a [3D printed data dock](https://social.thangs.com/m/59021), and fire up a terminal.
 - If you have set up your watch on the phone you can access settings, otherwise hold both buttons for a few seconds on the welcome screen.
 - Enable developer settings by going to System -> About -> tap Build number 10 times
 - Enable ADB, re-plug USB and accept debug from PC
-- Reboot into bootloader with `adb reboot bootloader` from the terminal 
+- Reboot into bootloader with `adb reboot bootloader` from the terminal
 - Unlock bootloader with `fastboot oem unlock`
 
 ## 2. Flash TWRP, WearOS image, Magisk, dm-verity disabler
@@ -42,7 +42,7 @@ If you want to install OneOS:
 - Flash OneOS with `adb sideload`
 - Flash Mobvoi Apps package with `adb sideload`
 - If you have an Ultra, `adb sideload` the Ultra addon package.
-If you want to keep stock WearOS, continue from here. 
+If you want to keep stock WearOS, continue from here.
 - Make a copy of your Magisk apk file to Magisk-v24.3.zip
 - Flash Magisk with `adb sideload Magisk-v24.3.zip`
 - Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push disabler.zip /sdcard/` and Install via TWRP
@@ -60,7 +60,7 @@ If you want to keep stock WearOS, continue from here.
 - Reboot to recovery
 - Select Install -> ADB Sideload
 - Flash NetHunter image with `adb sideload`
-- Reboot 
+- Reboot
 - Start NetHunter app & chroot
 - Reboot
 

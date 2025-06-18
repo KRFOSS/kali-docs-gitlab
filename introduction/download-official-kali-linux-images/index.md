@@ -63,7 +63,7 @@ If you use this more complicated process and successfully validate your download
 
 If you're running on Linux, you probably already have [GPG](https://www.gnupg.org/) (GNU Privacy Guard) installed. If you're on Windows or macOS, you'll need to install the appropriate version for your platform.
 
-- If you're on a PC running Windows, download and install GPG4Win from [here](https://gpg4win.org/download.html). 
+- If you're on a PC running Windows, download and install GPG4Win from [here](https://gpg4win.org/download.html).
 - If you're on a Macintosh running macOS, download and install GPGTools from [here](https://gpgtools.org/). Alternatively, if you have [Homebrew](https://brew.sh) installed, just run `brew install gnupg`
 
 Once you've installed GPG, you'll need to download and import a copy of the Kali Linux official key. Do this with the following command:
@@ -120,25 +120,25 @@ The output should look like this:
 68f1117052bb0a6aa0fc0dee3b6525de1f5bccbd74c275fb050fe357a3f318a7  kali-linux-2025.2-live-amd64.iso
 ```
 
-On Windows, you can open the command prompt and run 
+On Windows, you can open the command prompt and run
 
 ```console
 certutil -?
-``` 
+```
 
 If certutil is available, you can run:
 
-```console 
+```console
 certutil -hashfile kali-linux-2025.2-live-amd64.iso sha256
 ```
 
 To verify your download. Certain versions of Windows do not have the native ability to calculate SHA256 checksums. If you do not have `certutil` installed, you can use a utility such as [Microsoft File Checksum Integrity Verifier](http://www.microsoft.com/en-us/download/details.aspx?id=11533) or [Hashtab](http://implbits.com/products/hashtab/) to verify your download.
 
-The resulting SHA256 signature: 
+The resulting SHA256 signature:
 
-```plaintext 
+```plaintext
 68f1117052bb0a6aa0fc0dee3b6525de1f5bccbd74c275fb050fe357a3f318a7
-``` 
+```
 
 Can be seen to match the signature displayed in the "sha256sum" section on the official download page for the 64-bit Intel architecture Kali Linux 2025.2 ISO image:
 
@@ -160,7 +160,7 @@ If the image is successfully authenticated, the response will look like this:
 kali-linux-2025.2-live-amd64.iso: OK
 ```
 
-For Windows, provided you have `certutil` you can use the command above and then manually check the contents of the txt file to see if the two SHA256 sums match. If `certutil` is not available, any of the tools stated above would be able to provide you the SHA256 sum of your download. 
+For Windows, provided you have `certutil` you can use the command above and then manually check the contents of the txt file to see if the two SHA256 sums match. If `certutil` is not available, any of the tools stated above would be able to provide you the SHA256 sum of your download.
 
 {{% notice info %}}
 IMPORTANT! If you are unable to verify the authenticity of the Kali Linux image you have downloaded as described in the preceding section, do NOT use it! Using it could endanger not only your own system, but any network you connect to as well as the other systems on that network. Stop, and ensure that you have downloaded the images from a legitimate Kali Linux mirror.

@@ -7,13 +7,13 @@ author: ["gamb1t","Fetti.Wop",]
 ---
 
 {{% notice info %}}
-You need to be running at least VMware Fusion 13.x.x. 
+You need to be running at least VMware Fusion 13.x.x.
 
 Due to a limitation of the VMware updater software, if you are on an earlier version, it will report that there are no updates available. You need to go to VMware's website and download and install manually.
 {{% /notice %}}
 
 
-We will first go to [Get Fusion](https://www.vmware.com/products/fusion.html) and select whether we would like to buy the Pro version, or start free. 
+We will first go to [Get Fusion](https://www.vmware.com/products/fusion.html) and select whether we would like to buy the Pro version, or start free.
 
 ![](vmwaretry.png)
 ![](vmwareregister.png)

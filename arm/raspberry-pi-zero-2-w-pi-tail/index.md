@@ -35,12 +35,12 @@ author: ["steev",]
 
 Optional:
 – Run "vncserver" in the Pi-Tail, fire up a vnc viewer on your phone and connect to
-127.0.0.1:5901  
+127.0.0.1:5901
 Note: Give it a few minutes when you connect for the first time. It’s going to be quicker next
 time around. It’s still much faster to stick to the command line though.
 For more info about how to tunnel a vnc connection through ssh, check out [this thread](https://whitedome.com.au/re4son/topic/vnc/).
 
-Read /boot/Pi-Tail.README & /boot/Pi-Tail.HOWTO for more information and tethering options  
+Read /boot/Pi-Tail.README & /boot/Pi-Tail.HOWTO for more information and tethering options
 
 - - -
 
@@ -59,14 +59,14 @@ Enable "wifi hotspot" or "usb tethering" on your phone and the Pi-Tail should co
 
 Open ConnectBot on your mobile and connect to the Pi-Tail. Configure port forwarding and fire up a vnc viewer of your choice and you can enjoy kali linux in all it’s glory on the go.
 
-Passwords:  
+Passwords:
 ssh: `root` / `toor`
 vnc: `toortoor`
-  
+
 Default Wi-Fi:
 You can use the example config files. Just change your smartphone’s SSID to "sepultura" with the password "R4t4m4h4tt4" and your Pi-Tail will tether straight away.
 
-More info in [/boot/Pi-Tail.README](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.README) and [/boot/Pi-Tail.HOWTO](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.HOWTO)  
+More info in [/boot/Pi-Tail.README](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.README) and [/boot/Pi-Tail.HOWTO](https://github.com/Re4son/RPi-Tweaks/blob/master/pi-tail/Pi-Tail.HOWTO)
 
 - - -
 

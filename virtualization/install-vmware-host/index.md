@@ -48,7 +48,7 @@ kali@kali:~$
 kali@kali:~$ file Downloads/vmware.bundle
 Downloads/vmware.bundle: a bash script executable (binary data)
 kali@kali:~$
-kali@kali:~$ ls -lah Downloads/vmware.bundle 
+kali@kali:~$ ls -lah Downloads/vmware.bundle
 -rw-r--r-- 1 kali kali 514M Oct  3 02:13 Downloads/vmware.bundle
 kali@kali:~$
 ```

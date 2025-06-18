@@ -14,7 +14,7 @@ Note that this is _not the default_. Out of the box, the SSH client in Kali Linu
 
 This setting can be changed easily using the `kali-tweaks` tool. Simply:
 
-- Open a terminal and run `kali-tweaks`. 
+- Open a terminal and run `kali-tweaks`.
 - From there, select the _Hardening_ menu.
 - Now you can choose between **Strong Security** _(the default)_ and **Wide Compatibility**.
 

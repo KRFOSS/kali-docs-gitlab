@@ -37,7 +37,7 @@ Navigate to ***"Networking support → Bluetooth subsystem support → Bluetooth
 
 Navigate to ***"Device Drivers → Staging -> Android "*** and configure the following items:
 
-- select ***"Android Binder IPC Driver"*** 
+- select ***"Android Binder IPC Driver"***
   (CONFIG_ANDROID_BINDER_IPC=y)
 
 ![](nh-kernel-bluetooth-binderfs-145.png)

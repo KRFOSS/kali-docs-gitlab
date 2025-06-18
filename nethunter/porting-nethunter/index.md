@@ -46,7 +46,7 @@ kali@kali:~$ git clone https://android.googlesource.com/platform/prebuilts/gcc/l
 kali@kali:~$ export ARCH=arm64
 kali@kali:~$ export SUBARCH=arm64
 kali@kali:~$ export CROSS_COMPILE=`pwd`/toolchain64/bin/aarch64-linux-android-
-kali@kali:~$ make your_device_codename                         
+kali@kali:~$ make your_device_codename
 kali@kali:~$ make -j$(nproc)
 ```
 

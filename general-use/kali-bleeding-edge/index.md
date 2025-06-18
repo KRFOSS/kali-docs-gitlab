@@ -10,7 +10,7 @@ author: ["rhertzog",]
 
 `kali-bleeding-edge` is the name of a [Kali
 repository](/docs/general-use/kali-branches/) that you can enable in your
-APT configuration to have access to packages built with the latest 
+APT configuration to have access to packages built with the latest
 version of the source code found in the upstream git repository.
 
 ## Use cases
@@ -106,7 +106,7 @@ kali-bleeding-edge is trivial with `apt install
 ```console
 kali@kali:~$ sudo apt install gitleaks/kali-bleeding-edge
 Reading package lists... Done
-Building dependency tree       
+Building dependency tree
 Reading state information... Done
 Selected version '7.4.0+git20210412.1.6f5ad9d-0kali1~jan+nus1' (http.kali.org [amd64]) for 'gitleaks'
 The following packages will be upgraded:
@@ -115,7 +115,7 @@ The following packages will be upgraded:
 Need to get 2504 kB of archives.
 After this operation, 0 B of additional disk space will be used.
 Get:1 http://kali.download/kali kali-bleeding-edge/main amd64 gitleaks amd64 7.4.0+git20210412.1.6f5ad9d-0kali1~jan+nus1 [2504 kB]
-Fetched 2504 kB in 2s (1257 kB/s)   
+Fetched 2504 kB in 2s (1257 kB/s)
 (Reading database ... 106991 files and directories currently installed.)
 Preparing to unpack .../gitleaks_7.4.0+git20210412.1.6f5ad9d-0kali1~jan+nus1_amd64.deb ...
 Unpacking gitleaks (7.4.0+git20210412.1.6f5ad9d-0kali1~jan+nus1) over (7.4.0-0kali1) ...
@@ -147,7 +147,7 @@ the same way, except that you set the target distribution to kali-rolling:
 ```console
 kali@kali:~$ $ sudo apt install gitleaks/kali-rolling
 Reading package lists... Done
-Building dependency tree       
+Building dependency tree
 Reading state information... Done
 Selected version '7.4.0-0kali1' (kali-rolling [amd64]) for 'gitleaks'
 The following packages will be DOWNGRADED:
@@ -155,9 +155,9 @@ The following packages will be DOWNGRADED:
 0 upgraded, 0 newly installed, 1 downgraded, 0 to remove and 282 not upgraded.
 Need to get 2504 kB of archives.
 After this operation, 0 B of additional disk space will be used.
-Do you want to continue? [Y/n] 
+Do you want to continue? [Y/n]
 Get:1 http://kali.download/kali kali-rolling/main amd64 gitleaks amd64 7.4.0-0kali1 [2504 kB]
-Fetched 2504 kB in 2s (1060 kB/s)   
+Fetched 2504 kB in 2s (1060 kB/s)
 dpkg: warning: downgrading gitleaks from 7.4.0+git20210412.1.6f5ad9d-0kali1~jan+nus1 to 7.4.0-0kali1
 (Reading database ... 106747 files and directories currently installed.)
 Preparing to unpack .../gitleaks_7.4.0-0kali1_amd64.deb ...

@@ -11,9 +11,9 @@ There is currently a potential issue with the current version of the qemu-user-s
 
 ```console
 kali@kali:~$ wget https://snapshot.debian.org/archive/debian/20240509T024809Z/pool/main/q/qemu/qemu-user-static_8.2.3%2Bds-2_arm64.deb
-kali@kali:~$ 
+kali@kali:~$
 kali@kali:~$ sudo apt install ./qemu-user-static_8.2.3+ds-2_arm64.deb
-kali@kali:~$ 
+kali@kali:~$
 ```
 
 {{% /notice %}}
