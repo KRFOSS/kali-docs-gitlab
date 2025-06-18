@@ -6,7 +6,7 @@ weight:
 author: ["gamb1t",]
 ---
 
-As of release 2022.3 Kali is back on Azure. With this return we will discuss how to get Kali on Azure.
+As of Kali 2022.3, Kali is back on Azure. With this return we will discuss how to get Kali on Azure.
 
 The very first thing to do is create an [Azure](https://portal.azure.com/#home) account. Only once we see the following screen are we able to proceed with setting up a Kali VM.
 

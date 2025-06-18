@@ -72,8 +72,9 @@ $ fastboot flash boot nethunterpro*boot-{model}-{variant}.img
 $ fastboot erase dtbo # if your device has dtbo partition
 ```
 
-##### NOTE:
-    - If your device has A/B partitions, you can choose the slot while flashing, e.g., `fastboot flash boot_a nethunterpro*boot-{model}-{variant}.img`.
-    - Run `fastboot getvar current-slot` to get the active slot in fastboot.
-    - Run `fastboot set_active {a or b}` to change the active slot.
-    - Do not forget to erase the dtbo before booting.
+##### Note:
+
+- If your device has A/B partitions, you can choose the slot while flashing, e.g., `fastboot flash boot_a nethunterpro*boot-{model}-{variant}.img`.
+- Run `fastboot getvar current-slot` to get the active slot in fastboot.
+- Run `fastboot set_active {a or b}` to change the active slot.
+- Do not forget to erase the dtbo before booting.

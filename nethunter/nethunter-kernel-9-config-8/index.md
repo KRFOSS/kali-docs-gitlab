@@ -157,7 +157,7 @@ Under ***"CAN bus subsystem support ---> CAN Device Drivers"***
 
 ### ELM327 (Optional)
 
-This driver should be build as module! To get the ability to load it using ```sudo insmod elmcan.ko accept_flaky_uart=1``` if needed.
+This driver should be build as module! To get the ability to load it using `sudo insmod elmcan.ko accept_flaky_uart=1` if needed.
 
 #### Kernel 6.0 or Higher
 
