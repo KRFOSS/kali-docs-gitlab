@@ -64,7 +64,7 @@ user has the required rights: it needs to be part either of the `docker`
 group (which has direct write access to the Docker socket) or of the
 `kaboxer` group (which can get the required permissions with `sudo`).
 
-If you installed Kali 2020.4 or newer, the initial user created during
+If you installed [Kali 2020.4](/blog/kali-linux-2020-4-release/) or newer, the initial user created during
 installation should already be part of the `kaboxer` group and have the
 required privileges. You can check with the command `groups`:
 

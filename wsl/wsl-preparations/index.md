@@ -425,7 +425,7 @@ PS C:\Users\Win> Add-AppxPackage .\kali-linux.AppxBundle
 
 ### WSL helper-script (--install)
 
-_Due to a known issue with Windows 10 before November 2022 patches, this method may install an out-dated version of Kali on WSL (Kali 2019.2). It is recommended to use "Microsoft Store. Later versions, including Windows 11 are unaffected._
+_Due to a known issue with Windows 10 before November 2022 patches, this method may install an out-dated version of Kali on WSL ([Kali 2019.2](/blog/kali-linux-2019-2-release/)). It is recommended to use "Microsoft Store. Later versions, including Windows 11 are unaffected._
 <!-- https://github.com/microsoft/WSL/pull/8774 -->
 
 Using a command line prompt:

@@ -8,7 +8,7 @@ author: ["gamb1t",]
 
 # Non-root user
 
-With 2020.1 Kali has swapped to a privileged non-root user by default. This means that root has no password set, and the account created during installation is the one to use. It is possible to re-enable access to the root user, however this is not recommended.
+With [2020.1](/blog/kali-linux-2020-1-release/) Kali has swapped to a privileged non-root user by default. This means that root has no password set, and the account created during installation is the one to use. It is possible to re-enable access to the root user, however this is not recommended.
 
 # Sudo?
 

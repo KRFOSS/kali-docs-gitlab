@@ -52,7 +52,7 @@ kali@kali:~$ git clone git://gitlab.com/kalilinux/packages/gcc-arm-eabi-linaro-4
 kali@kali:~$ export CROSS_COMPILE=~/arm-stuff/kernel/toolchains/gcc-arm-eabi-linaro-4.6.2/bin/arm-eabi-
 ```
 
-Then simply invoke the build script for the specific platform. So, for a Raspberry Pi build of Kali Linux 2016.2, execute the commands:
+Then simply invoke the build script for the specific platform. So, for a Raspberry Pi build of [Kali Linux 2016.2](/blog/kali-linux-2016-2-release/), execute the commands:
 
 ```console
 kali@kali:~$ cd ~/

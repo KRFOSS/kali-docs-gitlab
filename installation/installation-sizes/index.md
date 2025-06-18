@@ -21,4 +21,4 @@ The following table shows the **total size** of the installation based on which 
 | [kali-linux-everything](/tools/kali-meta/#kali-linux-everything) | 34G  | 35G   | 36G  | 34G      |
 <!--| kali-linux-headless   |      |       |      |          |-->
 
-_Above were done during February 2024, for Kali 2024.1._
+_Above were done during February 2024, for [Kali 2024.1](/blog/kali-linux-2024-1-release/)._

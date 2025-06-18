@@ -31,4 +31,4 @@ kali@kali:~$
 
 - - -
 
-This policy is since Kali Linux 2020.1. Here is our [previous root policy](/docs/policy/kali-linux-root-user-policy/).
+This policy is since [Kali Linux 2020.1](/blog/kali-linux-2020-1-release/). Here is our [previous root policy](/docs/policy/kali-linux-root-user-policy/).

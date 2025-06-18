@@ -18,12 +18,12 @@ Kali NetHunter was [first released in September 2014](https://x.com/kalilinux/st
 
 Kali NetHunter v3 was the next major release in January 2016, which was a complete NetHunter app rewrite, allowing for more control and actions to be performed from it, build scripts and Android 5 and 6 support. Nexus 6 device also became supported.
 
-Kali NetHunter then joined the **rolling release** with 2019.2 release in May 2019, where 13 devices where supported, with a mixture of Android 4 to 9. From this point, Kali NetHunter matched the release points of Kali Linux, with each of them adding more devices support, image and overall features.
+Kali NetHunter then joined the **rolling release** with [2019.2](/blog/kali-linux-2019-2-release/) release in May 2019, where 13 devices where supported, with a mixture of Android 4 to 9. From this point, Kali NetHunter matched the release points of Kali Linux, with each of them adding more devices support, image and overall features.
 
 - - -
 
 In July 2019, the **Kali NetHunter store**, went public, allowing for a place of dedicated information security focused apps to be located.
 
-With the release of Kali NetHunter 2019.4, **NetHunter KeX** was launched, giving a "full Kali desktop on Android phones".
+With the release of [Kali NetHunter 2019.4](/blog/kali-linux-2019-4-release/), **NetHunter KeX** was launched, giving a "full Kali desktop on Android phones".
 
 ![](kali-kex-theme.gif)

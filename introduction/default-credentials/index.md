@@ -54,4 +54,4 @@ Some tools shipped with Kali, will use their own default hardcoded credentials (
 
 - - -
 
-For versions of Kali Linux older than 2020.1, here is our [previous credential information](/docs/introduction/kali-linux-default-passwords/) and [root policy](/docs/policy/kali-linux-root-user-policy/) information.
+For versions of Kali Linux older than [2020.1](/blog/kali-linux-2020-1-release/), here is our [previous credential information](/docs/introduction/kali-linux-default-passwords/) and [root policy](/docs/policy/kali-linux-root-user-policy/) information.

@@ -16,6 +16,6 @@ This change was announced in a [blog post](/blog/end-of-i386-kernel-and-images/)
 
 ## Using old i386 images
 
-The last Kali Linux release that supported the i386 architecture was `2024.3`. At the moment, those images are still available for download at <https://kali.download/base-images/kali-2024.3/>.
+The last Kali Linux release that supported the i386 architecture was [2024.3](/blog/kali-linux-2024-3-release/). At the moment, those images are still available for download at <https://kali.download/base-images/kali-2024.3/>.
 
 After they get removed from the mirrors, users can still use [old.kali.org](https://old.kali.org/kali-images/kali-2024.3/) and download the last i386 images from there.

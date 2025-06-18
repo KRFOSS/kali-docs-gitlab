@@ -48,7 +48,7 @@ kali@kali:~$
 ## SSH client: Support for GSS-API
 
 {{% notice info %}}
-This is for users of Kali Linux who have upgraded their system and lost this functionality. The package is pre-installed in Kali Linux starting in 2024.4.
+This is for users of Kali Linux who have upgraded their system and lost this functionality. The package is pre-installed in Kali Linux starting in [2024.4](/blog/kali-linux-2024-4-release/).
 
 As of September 23, 2024, this package currently only contains a changelog. This package is a placeholder for when the GSS-API changes occur in the OpenSSH package.
 {{% /notice %}}

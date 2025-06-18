@@ -10,7 +10,7 @@ Have you ever wished you could travel back in time after deleting that all impor
 
 Well, you better read on, because now you can!
 
-All it takes is to install Kali Linux version 2022.1 or newer with btrfs as file system and to enable snapshotting  after installation.
+All it takes is to install [Kali Linux 2022.1](/blog/kali-linux-2022-1-release/) or newer with btrfs as file system and to enable snapshotting  after installation.
 
 You can even boot into any of your saved snapshots via the boot menu and easily rollback to a previous system state:
 

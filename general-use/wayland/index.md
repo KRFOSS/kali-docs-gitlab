@@ -66,7 +66,7 @@ Note that, after switching to Wayland, there is now an option to choose between 
 
 ### KDE
 
-Since Kali Linux 2023.1<!-- ie. plasma-desktop 4:5.27.0-1 -->, Wayland is the default display server for the KDE desktop.
+Since [Kali Linux 2023.1](/blog/kali-linux-2023-1-release/)<!-- ie. plasma-desktop 4:5.27.0-1 -->, Wayland is the default display server for the KDE desktop.
 
 If this is causing issues for you (ie. if some applications are not displayed nicely, or if you notice any graphical issues that were not there before), you can try to use the legacy X11 server instead. This is something you can choose from the login screen: at the bottom-left corner of the screen, click on _Desktop Session_ and choose _Plasma (X11)_.
 

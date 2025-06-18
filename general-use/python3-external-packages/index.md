@@ -8,7 +8,7 @@ author: ["arnaudr",]
 
 ## Introduction: say good-bye to `pip install`
 
-Starting Kali Linux 2024.4, using `pip` to install external Python packages _is strongly discouraged_. Instead, we recommend using `pipx`. On the surface, it provides a similar user experience, but under the hood it overcomes the one outstanding issue with pip: the lack of environment isolation.
+Starting [Kali Linux 2024.4](/blog/kali-linux-2024-4-release/), using `pip` to install external Python packages _is strongly discouraged_. Instead, we recommend using `pipx`. On the surface, it provides a similar user experience, but under the hood it overcomes the one outstanding issue with pip: the lack of environment isolation.
 
 If you try to use `pip` to perform system-wide installs (`sudo pip install`) or user home directory installs (`pip install --user`), you'll get this message:
 
@@ -139,7 +139,7 @@ And it works already!
 
 ### Install pipx
 
-From Kali Linux 2024.4, `pipx` should be pre-installed. If ever it's not the case, you can install it via `apt` as usual:
+From [Kali Linux 2024.4](/blog/kali-linux-2024-4-release/), `pipx` should be pre-installed. If ever it's not the case, you can install it via `apt` as usual:
 
 ```console
 ┌──(kali㉿kali)-[~]
@@ -150,7 +150,7 @@ From Kali Linux 2024.4, `pipx` should be pre-installed. If ever it's not the cas
 
 `~/.local/bin` is the directory where `pipx` installs Python applications. It needs to be in the `PATH` environment variable, so that when you install, for example, an application `xyz` via pipx, you can then run it simply by typing `xyz` in the terminal.
 
-From Kali Linux 2024.4, `~/.local/bin` should already be in the `PATH`. You can check that by opening a terminal and running the command:
+From [Kali Linux 2024.4](/blog/kali-linux-2024-4-release/), `~/.local/bin` should already be in the `PATH`. You can check that by opening a terminal and running the command:
 
 ```console
 ┌──(kali㉿kali)-[~]

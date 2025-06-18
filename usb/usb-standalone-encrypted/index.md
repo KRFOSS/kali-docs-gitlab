@@ -8,7 +8,7 @@ author: ["voidyourwarranty",]
 
 # Standalone Kali Linux 2021.4 Installation on a USB Drive, Fully Encrypted
 
-These instructions allow you to create a fully encrypted standalone installation of Kali Linux 2021.4 on an external USB drive. By this, I mean an installation that
+These instructions allow you to create a fully encrypted standalone installation of [Kali Linux 2021.4](/blog/kali-linux-2021-4-release/) on an external USB drive. By this, I mean an installation that
 - is fully encrypted using luks, including encryption of the boot and swap partitions,
 - runs on any 64bit Intel/AMD machine that can boot from a USB drive, either using EFI boot or legacy boot,
 - does not involve any "live" system, i.e. the system that boots from the USB drive does not need to `chroot` to a RAM disk; the present Kali installation runs on the external drive as it would do on an internal disk; in particular, you can install further packages with `apt-get install <something>`, you can edit configuration files, and all these changes are permanent even if you boot from this USB drive on a different machine the next time; you can also compile a custom kernel and install it on the USB drive.
