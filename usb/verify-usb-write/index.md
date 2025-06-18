@@ -58,4 +58,4 @@ Finally try booting from the USB.
 
 ### Checksum mismatch
 
-This means that your iso file was corrupted during download. Re-download the kali iso and then write it again on the USB.
+This means that your iso file was corrupted during download. Re-download the Kali iso and then write it again on the USB.

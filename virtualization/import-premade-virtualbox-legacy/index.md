@@ -29,4 +29,4 @@ We can verify the settings that will be set here, and if we need to change any w
 
 ![](import-vbox-4.png)
 
-We now just need to agree to the license agreement, and then we are all done. From here we can boot the VM and use it as normal. Remember the default login is kali for the user and kali for the password!
+We now just need to agree to the license agreement, and then we are all done. From here we can boot the VM and use it as normal. Remember the default login is `kali` for the user and `kali` for the password!

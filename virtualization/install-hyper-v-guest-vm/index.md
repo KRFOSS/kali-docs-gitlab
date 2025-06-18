@@ -41,17 +41,17 @@ In the case of this machine, the only change needed was for the number of virtua
 
 ##### Hyper-V:
 
-Ensure that your kali linux virtual machine is powered off.
+Ensure that your Kali Linux virtual machine is powered off.
 
 - - -
 
-Right click on your kali linux virtual machine in Hyper-V Manager and click on settings.
+Right click on your Kali Linux virtual machine in Hyper-V Manager and click on settings.
 
 ![](hyper-v-1.png)
 
 - - -
 
-Now click on the virtual hard drive that contain your kali linux virtual machine.
+Now click on the virtual hard drive that contain your Kali Linux virtual machine.
 Now click on Edit button on the dialog box on the right.
 
 ![](hyper-v-2.png)

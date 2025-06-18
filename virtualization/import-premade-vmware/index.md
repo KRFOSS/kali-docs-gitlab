@@ -30,4 +30,4 @@ We select this then we are able to continue forward:
 
 ![](import-vmware-3.png)
 
-We can verify the settings that will be set here, and if we need to change any we can. Once we are happy we can select boot the VM and use it as normal. Remember the default login is kali for the user and kali for the password!
+We can verify the settings that will be set here, and if we need to change any we can. Once we are happy we can select boot the VM and use it as normal. Remember the default login is `kali` for the user and `kali` for the password!

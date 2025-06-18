@@ -190,7 +190,7 @@ Privileged containers are containers created by root and running as root. They a
 Installing a privileged Kali Linux container on a Kali host only requires to:
 
 1. Install and setup lxc
-2. Download the kali image from the image server
+2. Download the Kali image from the image server
 3. Start the container
 4. Attach to the container
 
@@ -267,7 +267,7 @@ The setup it slightly more involved:
 
 1. Install and setup lxc
 2. Setup LXC for unprivileged containers
-3. Download the kali image from the image server
+3. Download the Kali image from the image server
 4. Start the container
 5. Install some additional packages
 6. Create non-root user

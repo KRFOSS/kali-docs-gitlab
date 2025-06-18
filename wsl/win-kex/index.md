@@ -115,7 +115,7 @@ Choose amongst these options:
 },
 ```
 
-**Advanced Win-KeX in window mode with sound - Kali icon and start in kali home directory**:
+**Advanced Win-KeX in window mode with sound - Kali icon and start in Kali home directory**:
 
 Copy the `kali-menu.png` icon across to your windows picture directory and add the icon and start directory to your WT config:
 
@@ -145,7 +145,7 @@ Copy the `kali-menu.png` icon across to your windows picture directory and add t
 
 - - -
 
-**Advanced Win-KeX in seamless mode with sound - Kali icon and start in kali home directory**:
+**Advanced Win-KeX in seamless mode with sound - Kali icon and start in Kali home directory**:
 
 Copy the `kali-menu.png` icon across to your windows picture directory and add the icon and start directory to your WT config:
 
@@ -175,7 +175,7 @@ Copy the `kali-menu.png` icon across to your windows picture directory and add t
 
 - - -
 
-**Advanced Win-KeX in ESM mode with sound - Kali icon and start in kali home directory**:
+**Advanced Win-KeX in ESM mode with sound - Kali icon and start in Kali home directory**:
 
 Copy the `kali-menu.png` icon across to your windows picture directory and add the icon and start directory to your WT config:
 

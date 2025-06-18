@@ -140,7 +140,7 @@ Now, we're ready to assemble our third-stage chroot.
 
 #### 3rd Stage chroot
 
-This is where your specific customizations come in. Your **$packages** list is installed, as are keymaps, a default kali user password of "kali" is set, and other configuration changes and fixes are applied:
+This is where your specific customizations come in. Your **$packages** list is installed, as are keymaps, a default Kali user password of "kali" is set, and other configuration changes and fixes are applied:
 
 ```console
 kali@kali:~$ export MALLOC_CHECK_=0 # workaround for LP: #520465

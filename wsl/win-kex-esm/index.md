@@ -28,7 +28,7 @@ The disadvantage of using `--ip` is that you have to re-enter the ESM password e
 
 **NOTE**: ESM mode is the default Win-KeX mode on ARM devices so `--esm` can be omitted in all commands on this page if you are running Windows on ARM.
 
-- You will be prompted to set an RDP server password during first launch. This is the password of the kali user you would like to login with. The password is store in the Windows credential store and can be changed later via: `kex --esm --passwd`
+- You will be prompted to set an RDP server password during first launch. This is the password of the Kali user you would like to login with. The password is store in the Windows credential store and can be changed later via: `kex --esm --passwd`
 
 Tick "Don't ask me again" and confirm the following warnings:
 
@@ -41,7 +41,7 @@ This will start the Win-KeX server and launch the Win-KeX client in full screen 
 ### Start Root Session
 
 - Start Win-KeX as root in window mode via: `sudo kex --esm`
-- You will be prompted to set an ESM server password during first launch. This is the password for the kali root user.
+- You will be prompted to set an ESM server password during first launch. This is the password for the Kali root user.
   - The password can be changed later via: `sudo kex --esm --passwd`
 
 This will start the Win-KeX server as root and launch the Win-KeX client in full screen mode.

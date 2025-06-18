@@ -22,7 +22,7 @@ Kali NetHunter Pro is an advanced, fully-featured version of Kali Linux specific
 
 What's in Kali NetHunter Pro?
 
-- Almost every tool available that you use in your kali desktop.
+- Almost every tool available that you use in your Kali desktop.
 
 - Kali NetHunter Pro also provides Desktop Experience with HDMI out on supported devices like PinePhone and PinePhone Pro.
 

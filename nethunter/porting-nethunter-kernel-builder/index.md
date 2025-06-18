@@ -18,7 +18,7 @@ Let's assume that you've already followed the directions on the [main docs page]
 
 ## Kernel Version
 
-If your device is older, please check to make sure your kernel version is 3.4+ and above. With the switch to kali rolling we are starting to see errors inside chroot where the kernel is not able to support loading Kali.
+If your device is older, please check to make sure your kernel version is 3.4+ and above. With the switch to Kali rolling we are starting to see errors inside chroot where the kernel is not able to support loading Kali.
 
 ## Finding Kernel Sources
 
