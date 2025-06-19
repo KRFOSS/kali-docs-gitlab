@@ -6,23 +6,9 @@ weight: 45
 author: ["Re4son", "yesimxev",]
 ---
 
-##### Kali NetHunter is a free & Open-source **Mobile Penetration Testing Platform** for Android devices, based on Kali Linux.
+**Kali NetHunter is a free & Open-source **Mobile Penetration Testing Platform** for Android devices, based on Kali Linux.**
 
 ![](NetHunter-xiaomi-mi-9t.png)
-
-## Content:
-
-- [Overview](#overview)
-- [NetHunter Editions](#10-nethunter-editions)
-- [NetHunter Supported Devices and ROMs](#20-nethunter-supported-devices-and-roms)
-- [Downloading NetHunter](#30-downloading-nethunter)
-- [Building NetHunter](#40-building-nethunter)
-- [Installing NetHunter](#50-installing-nethunter-on-top-of-android)
-- [Post Installation Setup](#60-post-installation-setup)
-- [Kali NetHunter Attacks and Features](#70-kali-nethunter-attacks-and-features)
-- [Porting NetHunter to New Devices](#80-porting-nethunter-to-new-devices)
-- [Known Working Hardware](#90-known-working-hardware)
-- [NetHunter Apps](#100-nethunter-apps)
 
 ## Overview
 
