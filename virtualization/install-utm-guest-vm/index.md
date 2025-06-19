@@ -22,7 +22,7 @@ Now we are only going to change one item, which is selecting our "Boot ISO Image
 
 ![](utm-setup-5.png)
 
-We won't the default size here, and will just continue forward but you can increase or decrease it for your needs and [installation sizes](docs/installation/installation-sizes/):
+We won't the default size here, and will just continue forward but you can increase or decrease it for your needs and [installation sizes](/docs/installation/installation-sizes/):
 
 ![](utm-setup-6.png)
 
