@@ -37,6 +37,7 @@ NetHunter Pro is specifically designed to work seamlessly on a select range of A
 - Poco F1 (beryllium)
 - OnePlus 6 (enchilada)
 - OnePlus 6T (fajita)
+- Nothing Phone 1 (spacewar)
 - Xiaomi Mi MIX 2S (polaris)
 - SHIFT SHIFT6mq (axolotl)
 
@@ -49,7 +50,7 @@ Official release of Kali NetHunter Pro images for supported devices can be downl
 ##### Installation steps for PinePhone/Pro Devices
 
 ```console
-$ tar -xpf kali-nethunterpro-2025.2-pinephone-phosh.img.tar.xz
+$ xz -d kali-nethunterpro-2025.2-pinephone-phosh.img.xz
 $ dd if=kali-nethunterpro-2025.2-pinephone-phosh.img of=/dev/mmcblkX bs=1M oflag=sync status=progress
 ```
 
@@ -59,14 +60,14 @@ $ dd if=kali-nethunterpro-2025.2-pinephone-phosh.img of=/dev/mmcblkX bs=1M oflag
 
 ```console
 # Install on SDCard:
-$ tar -xpf kali-nethunterpro-2025.2-sdm845.tar.xz
+$ xz -d kali-nethunterpro-2025.2-sdm845.img.xz
 $ simg2img flash userdata nethunterpro-*-sdm845*rootfs.img rootfs_ext4.img
 $ dd if=rootfs_ext4.img of={sdcard_block_device} bs=1M oflag=sync status=progress
 $ fastboot flash boot nethunterpro*boot-{model}-{variant}.img
 $ fastboot erase dtbo # if your device has dtbo partition
 
 # Install on EMMC (fastboot method):
-$ tar -xpf kali-nethunterpro-2025.2-sdm845.tar.xz
+$ xz -d kali-nethunterpro-2025.2-sdm845.img.xz
 $ fastboot flash userdata nethunterpro-*-sdm845*rootfs.img
 $ fastboot flash boot nethunterpro*boot-{model}-{variant}.img
 $ fastboot erase dtbo # if your device has dtbo partition
