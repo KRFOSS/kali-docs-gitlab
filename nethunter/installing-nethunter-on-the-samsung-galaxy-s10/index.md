@@ -237,7 +237,7 @@ Once flashing complete, reboot to system
 
 ### Nexmon Setup
 
-Download Nexmon Magisk module by <a href="">@yesimxev</a>.
+Download Nexmon Magisk module by <a href="https://gitlab.com/yesimxev">yesimxev</a>.
 
 Nexmon S10 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/nexmon-s10.zip">Download</a>
 
@@ -359,7 +359,7 @@ Confrim everything is working by looking at Nethunter app > Wardriving, if you s
 # Credits
 
 Special thanks to :
-- <a href="">Yesimxev</a> for help and support on Galaxy S10
-- <a href="">Arti</a> for help and support on Galaxy S10
+- <a href="https://gitlab.com/yesimxev">Yesimxev</a> for help and support on Galaxy S10
+- **Arti** for help and support on Galaxy S10
 - <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
 - <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
