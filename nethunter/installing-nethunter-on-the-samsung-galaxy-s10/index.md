@@ -78,7 +78,9 @@ Inside Developer Mode, enable USB Debugging.
 Download LineageOS build, Recovery and MindTheGapps.
 
 LineageOS 22.2 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/lineage-22.2-20250627-nightly-beyond1lte-signed.zip">Download</a>
+
 Recovery : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/recovery.img">Download</a>
+
 MindTheGapps : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/MindTheGapps-15.0.0-arm64-20250214_082511.zip">Download</a>
 
 ### Flash Recovery
@@ -88,6 +90,13 @@ Boot your device in Download mode. And flash recovery using Heimdall, you can fo
 ```bash
 heimdall flash --RECOVERY recovery.img --no-reboot
 ```
+> If you come from Stock ROM, you may need to flash VBMETA as well, boot back to Download mode and flash vbmeta using heimdall
+>
+> vbmeta : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/vbmeta.img">Download</a>
+>
+>```bash
+> heimdall flash --VBMETA vbmeta.img --no-reboot
+>```
 
 ### Flash LineageOS ROM
 
@@ -228,7 +237,7 @@ Once flashing complete, reboot to system
 
 ### Nexmon Setup
 
-Download Nexmon Magisk module by @yesimxev.
+Download Nexmon Magisk module by <a href="">@yesimxev</a>.
 
 Nexmon S10 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/nexmon-s10.zip">Download</a>
 
@@ -346,3 +355,11 @@ adb shell pm grant com.google.android.gms android.permission.ACCESS_FINE_LOCATIO
 ```
 
 Confrim everything is working by looking at Nethunter app > Wardriving, if you see GPS coordination you are all set.
+
+# Credits
+
+Special thanks to :
+- <a href="">Yesimxev</a> for help and support on Galaxy S10
+- <a href="">Arti</a> for help and support on Galaxy S10
+- <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
+- <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
