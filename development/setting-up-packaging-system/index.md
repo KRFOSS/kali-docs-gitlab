@@ -3,7 +3,7 @@ title: Setting up a system for packaging
 description:
 icon:
 weight: 10
-author: ["gamb1t", "Funeoz"]
+author: ["gamb1t", "Funeoz",]
 ---
 
 ## VM or install?
