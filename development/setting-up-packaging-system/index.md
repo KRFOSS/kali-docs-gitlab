@@ -22,7 +22,7 @@ We will install tools that we will use later for packaging.
 kali@kali:~$ sudo apt update
 [...]
 kali@kali:~$
-kali@kali:~$ sudo apt install -y sbuild apt-file gitk git-lfs myrepos debhelper devscripts dput-ng lintian quilt
+kali@kali:~$ sudo apt install -y sbuild apt-file gitk git-lfs myrepos debhelper devscripts dput lintian quilt
 [...]
 kali@kali:~$
 ```
