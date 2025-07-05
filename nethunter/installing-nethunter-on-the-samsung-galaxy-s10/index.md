@@ -43,6 +43,7 @@ author: ["v0lk3n",]
 # Installation
 
 Let's start installation. You will walk through the following steps :
+- Flash Stock Rom
 - OEM Unlocking
 - Flash LineageOS and Recovery
 - Root the device
@@ -50,6 +51,28 @@ Let's start installation. You will walk through the following steps :
 - Flash Kali Nethunter and it's kernel
 - Flash bootloader removing warning at boot
 - Final tweaks and troubleshooting
+
+## Flash Stock Rom
+
+If you need to roll back to stock, or wish to have a clean start for installation (recommended).
+Download your firmware here :
+
+https://www.sammobile.com/samsung/galaxy-s10/firmware/SM-G973F/
+
+Unzip the content and you will end with something like this :
+
+```bash
+AP_G973FXXSGHWC1_CL25257816_QB62768582_REV01_user_low_ship_meta_OS12.tar.md5
+BL_G973FXXSGHWC1_CL25257816_QB62768582_REV01_user_low_ship.tar.md5
+CP_G973FXXSGHWB3_CP23788344_CL25257816_QB62585640_REV01_user_low_ship.tar.md5
+CSC_OXM_G973FOXMGHWA3_CL25257816_QB61057831_REV01_user_low_ship.tar.md5 <= (Wipe data / Factory reset RECOMMENDED)
+HOME_CSC_OXM_G973FOXMGHWA3_CL25257816_QB61057831_REV01_user_low_ship.tar.md5 <= (Keep your data)
+```
+
+Boot the phone to Download mode, if you fail to do it because it try to boot even without OS, just wait the boot to automatically go to download mode.
+
+Flash the stock rom, example on linux using odin4 : https://github.com/Adrilaw/OdinV4
+
 
 ## OEM Unlocking
 
@@ -75,11 +98,13 @@ Inside Developer Mode, enable USB Debugging.
 
 ## ROM Flashing
 
-Download LineageOS build, Recovery and MindTheGapps.
+Download LineageOS build, vbmeta, Recovery and MindTheGapps.
 
 LineageOS 22.2 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/lineage-22.2-20250627-nightly-beyond1lte-signed.zip">Download</a>
 
 Recovery : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/recovery.img">Download</a>
+
+vbmeta : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/vbmeta.img">Download</a>
 
 MindTheGapps : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/MindTheGapps-15.0.0-arm64-20250214_082511.zip">Download</a>
 
@@ -87,16 +112,10 @@ MindTheGapps : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exyno
 
 Boot your device in Download mode. And flash recovery using Heimdall, you can follow the <a href="https://wiki.lineageos.org/devices/beyond1lte/install/#preparing-for-installation">LineageOS install guide</a> for that part.
 
+
 ```bash
-heimdall flash --RECOVERY recovery.img --no-reboot
+ heimdall flash --RECOVERY recovery.img --VBMETA vbmeta.img --no-reboot
 ```
-> If you come from Stock ROM, you may need to flash VBMETA as well, boot back to Download mode and flash vbmeta using heimdall
->
-> vbmeta : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/vbmeta.img">Download</a>
->
->```bash
-> heimdall flash --VBMETA vbmeta.img --no-reboot
->```
 
 ### Flash LineageOS ROM
 
