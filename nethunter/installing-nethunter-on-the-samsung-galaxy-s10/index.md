@@ -170,31 +170,6 @@ It will prompt to finish the installation, say yes and chose "Direct Installatio
 
 When finished, reboot.
 
-## Magisk Module
-
-Download Magisk Overlayfs module.
-
-Magisk Overlayfs : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/magisk-overlayfs-release.zip">Download</a>
-
-Download PlayIntegrityFix module.
-
-PlayIntegrityFix : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/PlayIntegrityFix_v3.3-inject-manual.zip">Download</a>
-
-Push the package to your android device.
-
-```bash
-adb push magisk-overlayfs-release.zip /sdcard/
-adb push PlayIntegrityFix_v3.3-inject-manual.zip /sdcard/
-```
-
-Open magisk, navigate to "Modules > Install from storage" and select Magisk Overlayfs module. Press "Ok" to install and reboot once install complete.
-
-Open magisk again, then in settings enable "Zygisk".
-
-Navigate to "Modules > Install from storage" and select PlayIntegrityFix module. Press "Ok" to install and reboot once install complete.
-
-
-
 ## Nethunter
 
 My favorite way is to build installer myself. But you may also <a href="https://kali.download/nethunter-images/kali-2025.2/kali-nethunter-2025.2-beyond1lte-los-fifteen-full.zip">download it</a> if you wish to.
@@ -251,6 +226,30 @@ adb -d sideload kernel-nethunter-20250629_173026-beyond1lte-los-fifteen.zip
 You will have a warning on your phone saying "Signature verification failed Install anyway?" press "Yes", and wait for Nethunter Kernel flashing to complete.
 
 Once flashing complete, reboot to system
+
+## Magisk Modules
+
+Download Magisk Overlayfs module.
+
+Magisk Overlayfs : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/magisk-overlayfs-release.zip">Download</a>
+
+Download PlayIntegrityFix module.
+
+PlayIntegrityFix : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/PlayIntegrityFix_v3.3-inject-manual.zip">Download</a>
+
+Push the package to your android device.
+
+```bash
+adb push magisk-overlayfs-release.zip /sdcard/
+adb push PlayIntegrityFix_v3.3-inject-manual.zip /sdcard/
+```
+
+Open magisk, navigate to "Modules > Install from storage" and select Magisk Overlayfs module. Press "Ok" to install and reboot once install complete.
+
+Open magisk again, then in settings enable "Zygisk".
+
+Navigate to "Modules > Install from storage" and select PlayIntegrityFix module. Press "Ok" to install and reboot once install complete.
+
 
 ## Nexmon
 
@@ -360,20 +359,6 @@ Move modules from /sdcard to /system/lib.
 # From NH Android Root Terminal
 mv /sdcard/modules /system/lib
 ```
-
-## Fix GPS
-
-Install Google Maps and open it, use the functionallity to locate you and give the permission requested.
-
-Using adb or Android Root Shell, give the location permission to gms.
-
-```bash
-adb root
-adb shell pm grant com.google.android.gms android.permission.ACCESS_COARSE_LOCATION
-adb shell pm grant com.google.android.gms android.permission.ACCESS_FINE_LOCATION
-```
-
-Confrim everything is working by looking at Nethunter app > Wardriving, if you see GPS coordination you are all set.
 
 # Credits
 
