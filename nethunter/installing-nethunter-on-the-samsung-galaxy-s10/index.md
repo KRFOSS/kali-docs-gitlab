@@ -43,6 +43,7 @@ author: ["v0lk3n",]
 # Installation
 
 Let's start installation. You will walk through the following steps :
+- Flash Stock Rom
 - OEM Unlocking
 - Flash LineageOS and Recovery
 - Root the device
@@ -50,6 +51,28 @@ Let's start installation. You will walk through the following steps :
 - Flash Kali Nethunter and it's kernel
 - Flash bootloader removing warning at boot
 - Final tweaks and troubleshooting
+
+## Flash Stock Rom
+
+If you need to roll back to stock, or wish to have a clean start for installation (recommended).
+Download your firmware here :
+
+https://www.sammobile.com/samsung/galaxy-s10/firmware/SM-G973F/
+
+Unzip the content and you will end with something like this :
+
+```bash
+AP_G973FXXSGHWC1_CL25257816_QB62768582_REV01_user_low_ship_meta_OS12.tar.md5
+BL_G973FXXSGHWC1_CL25257816_QB62768582_REV01_user_low_ship.tar.md5
+CP_G973FXXSGHWB3_CP23788344_CL25257816_QB62585640_REV01_user_low_ship.tar.md5
+CSC_OXM_G973FOXMGHWA3_CL25257816_QB61057831_REV01_user_low_ship.tar.md5 <= (Wipe data / Factory reset RECOMMENDED)
+HOME_CSC_OXM_G973FOXMGHWA3_CL25257816_QB61057831_REV01_user_low_ship.tar.md5 <= (Keep your data)
+```
+
+Boot the phone to Download mode, if you fail to do it because it try to boot even without OS, just wait the boot to automatically go to download mode.
+
+Flash the stock rom, example on linux using odin4 : https://github.com/Adrilaw/OdinV4
+
 
 ## OEM Unlocking
 
@@ -75,18 +98,23 @@ Inside Developer Mode, enable USB Debugging.
 
 ## ROM Flashing
 
-Download LineageOS build, Recovery and MindTheGapps.
+Download LineageOS build, vbmeta, Recovery and MindTheGapps.
 
 LineageOS 22.2 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/lineage-22.2-20250627-nightly-beyond1lte-signed.zip">Download</a>
+
 Recovery : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/recovery.img">Download</a>
+
+vbmeta : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/vbmeta.img">Download</a>
+
 MindTheGapps : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/MindTheGapps-15.0.0-arm64-20250214_082511.zip">Download</a>
 
 ### Flash Recovery
 
 Boot your device in Download mode. And flash recovery using Heimdall, you can follow the <a href="https://wiki.lineageos.org/devices/beyond1lte/install/#preparing-for-installation">LineageOS install guide</a> for that part.
 
+
 ```bash
-heimdall flash --RECOVERY recovery.img --no-reboot
+ heimdall flash --RECOVERY recovery.img --VBMETA vbmeta.img --no-reboot
 ```
 
 ### Flash LineageOS ROM
@@ -141,31 +169,6 @@ Once flashing complete, reboot to system and open Magisk app.
 It will prompt to finish the installation, say yes and chose "Direct Installation" as methode.
 
 When finished, reboot.
-
-## Magisk Module
-
-Download Magisk Overlayfs module.
-
-Magisk Overlayfs : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/magisk-overlayfs-release.zip">Download</a>
-
-Download PlayIntegrityFix module.
-
-PlayIntegrityFix : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/PlayIntegrityFix_v3.3-inject-manual.zip">Download</a>
-
-Push the package to your android device.
-
-```bash
-adb push magisk-overlayfs-release.zip /sdcard/
-adb push PlayIntegrityFix_v3.3-inject-manual.zip /sdcard/
-```
-
-Open magisk, navigate to "Modules > Install from storage" and select Magisk Overlayfs module. Press "Ok" to install and reboot once install complete.
-
-Open magisk again, then in settings enable "Zygisk".
-
-Navigate to "Modules > Install from storage" and select PlayIntegrityFix module. Press "Ok" to install and reboot once install complete.
-
-
 
 ## Nethunter
 
@@ -224,11 +227,35 @@ You will have a warning on your phone saying "Signature verification failed Inst
 
 Once flashing complete, reboot to system
 
+## Magisk Modules
+
+Download Magisk Overlayfs module.
+
+Magisk Overlayfs : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/magisk-overlayfs-release.zip">Download</a>
+
+Download PlayIntegrityFix module.
+
+PlayIntegrityFix : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/PlayIntegrityFix_v3.3-inject-manual.zip">Download</a>
+
+Push the package to your android device.
+
+```bash
+adb push magisk-overlayfs-release.zip /sdcard/
+adb push PlayIntegrityFix_v3.3-inject-manual.zip /sdcard/
+```
+
+Open magisk, navigate to "Modules > Install from storage" and select Magisk Overlayfs module. Press "Ok" to install and reboot once install complete.
+
+Open magisk again, then in settings enable "Zygisk".
+
+Navigate to "Modules > Install from storage" and select PlayIntegrityFix module. Press "Ok" to install and reboot once install complete.
+
+
 ## Nexmon
 
 ### Nexmon Setup
 
-Download Nexmon Magisk module by @yesimxev.
+Download Nexmon Magisk module by <a href="https://gitlab.com/yesimxev">yesimxev</a>.
 
 Nexmon S10 : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/releases/download/nethunter-22.2/nexmon-s10.zip">Download</a>
 
@@ -333,16 +360,10 @@ Move modules from /sdcard to /system/lib.
 mv /sdcard/modules /system/lib
 ```
 
-## Fix GPS
+# Credits
 
-Install Google Maps and open it, use the functionallity to locate you and give the permission requested.
-
-Using adb or Android Root Shell, give the location permission to gms.
-
-```bash
-adb root
-adb shell pm grant com.google.android.gms android.permission.ACCESS_COARSE_LOCATION
-adb shell pm grant com.google.android.gms android.permission.ACCESS_FINE_LOCATION
-```
-
-Confrim everything is working by looking at Nethunter app > Wardriving, if you see GPS coordination you are all set.
+Special thanks to :
+- <a href="https://gitlab.com/yesimxev">Yesimxev</a> for help and support on Galaxy S10
+- **Arti** for help and support on Galaxy S10
+- <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
+- <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
