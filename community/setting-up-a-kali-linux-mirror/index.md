@@ -60,7 +60,7 @@ A mirror site is expected to make the files available over HTTP and RSYNC so tho
 If you don't have yet an account dedicated for the mirrors, create such an account (here we call it `archvsync`):
 
 ```console
-$ sudo adduser --disabled-password archvsync
+$ sudo adduser --disabled-password --shell /bin/bash archvsync
 Adding user 'archvsync' ...
 [...]
 Is the information correct? [Y/n]
@@ -140,7 +140,7 @@ $ wget -O - -q https://archive.kali.org/pushmirror.pub >> ~/.ssh/authorized_keys
 $ chmod 0600 ~/.ssh/authorized_keys
 ```
 
-If you have not unpacked the ftpsync.tar.gz in the home directory, then you must adjust accordingly the `~/bin/ftpsync` path, which is hard-coded in `.ssh/authorized_keys`.
+If you have not unpacked `ftpsync.tar.gz` in the home directory, then you must adjust accordingly the `~/bin/ftpsync` path, which is hard-coded in `.ssh/authorized_keys`.
 
 ## Making it Public - Getting in Contact
 
@@ -192,6 +192,16 @@ If you want to setup a private mirror, you can use the same tools as for the pub
 - You must use a non-kali.org mirror as the source mirror, almost all of them offer public rsync access (kali.org servers are restricted).
 
 ## Troubleshooting
+
+### Run ftpsync manually
+
+For testing, it can be useful to trigger a run of ftpsync manually. This is done as such:
+
+```
+$ whoami
+archvsync
+$ ~/bin/ftpsync sync:archive:kali
+```
 
 ### Stale `.~tmp~` directories
 
