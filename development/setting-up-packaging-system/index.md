@@ -3,7 +3,7 @@ title: Setting up a system for packaging
 description:
 icon:
 weight: 10
-author: ["gamb1t",]
+author: ["gamb1t", "Funeoz",]
 ---
 
 ## VM or install?
@@ -16,13 +16,13 @@ It's important to set up a development environment. The easiest way to go about 
 
 ## Installing packages
 
-We will install tools that we will use later for packaging. [`packaging-dev`](https://packages.debian.org/sid/packaging-dev) is a metapackage, and will install many of the proper packages that are needed:
+We will install tools that we will use later for packaging. 
 
 ```console
 kali@kali:~$ sudo apt update
 [...]
 kali@kali:~$
-kali@kali:~$ sudo apt install -y packaging-dev sbuild apt-file gitk git-lfs myrepos
+kali@kali:~$ sudo apt install -y sbuild apt-file gitk git-lfs myrepos debhelper devscripts dput lintian quilt
 [...]
 kali@kali:~$
 ```
@@ -265,7 +265,7 @@ Finally, we just need to add our user to the group and do one last change:
 ```console
 kali@kali:~$ sudo sbuild-adduser $USER
 kali@kali:~$
-kali@kali:~$ cat <<'EOF' > ~/.sbuildrc
+kali@kali:~$ cat <<'EOF' > ~/.config/sbuild/config.pl
 $build_arch_all = 1;
 $build_source = 1;
 $run_lintian = 1;
