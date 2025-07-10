@@ -6,7 +6,7 @@ weight: 211
 author: ["gamb1t", "arnaudr"]
 ---
 
-Importing the [Kali VirtualBox image](/get-kali/#kali-virtual-machines) is very easy.
+Importing the [Kali VirtualBox image](/get-kali/#kali-virtual-machines) is very straightforward.
 
 We first need to extract the VirtualBox image:
 

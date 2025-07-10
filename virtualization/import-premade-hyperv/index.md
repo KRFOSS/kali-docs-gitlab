@@ -6,27 +6,41 @@ weight: 216
 author: ["arnaudr", "gamb1t",]
 ---
 
-Importing the [Kali Hyper-V image](/get-kali/#kali-virtual-machines) is very easy.
+Importing the [Kali Hyper-V image](/get-kali/#kali-virtual-machines) is very straightforward.
 
-We first need to extract the Hyper-V image. For that we need to use the [official 7z app](https://www.7-zip.org/). Note if we are on Windows 11 the option will be hidden behind the context menu "Show more options".
+We first need to extract the Hyper-V image. For that we need to use the [official 7z app](https://www.7-zip.org/).
+
+{% notice info %}}
+Note: If we are on Windows 11 the option will be hidden behind the context menu "Show more options".
+{{% /notice %}}
 
 ![](import-hyperv-1.png)
+
+- - -
 
 We just unzipped a directory named `kali-linux-<VERSION>-hyperv-amd64`. Then we double-click on the file `install-vm.bat` file. If we're not administrator, we will get a popup window asking for approval, we click Yes:
 
 ![](import-hyperv-2.png)
 
+- - -
+
 After approving the popup, a console appears, and the script run a series of steps in order to setup the Kali Linux Virtual Machine. If all goes well, we should see the following screen:
 
 ![](import-hyperv-3.png)
+
+- - -
 
 We then launch the Hyper-V Manager, right-click on the Kali VM, click Start, then right-click again and click Connect. We should see the usual Kali login screen, or rather, just have a glimpse of it, before a popup window appear in the foreground:
 
 ![](import-hyperv-4.png)
 
+- - -
+
 We click Connect, and a new login screen appears. The default credentials are `kali` and `kali` as usual:
 
 ![](import-hyperv-5.png)
+
+- - -
 
 That's it! We are now logged in our Kali VM!
 
