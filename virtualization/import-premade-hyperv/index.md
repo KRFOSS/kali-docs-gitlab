@@ -10,7 +10,7 @@ Importing the [Kali Hyper-V image](/get-kali/#kali-virtual-machines) is very str
 
 We first need to extract the Hyper-V image. For that we need to use the [official 7z app](https://www.7-zip.org/).
 
-{% notice info %}}
+{{% notice info %}}
 Note: If we are on Windows 11 the option will be hidden behind the context menu "Show more options".
 {{% /notice %}}
 
