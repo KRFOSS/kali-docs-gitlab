@@ -37,7 +37,7 @@ NetHunter Pro is specifically designed to work seamlessly on a select range of A
 - Poco F1 (beryllium)
 - OnePlus 6 (enchilada)
 - OnePlus 6T (fajita)
-- Nothing Phone 1 (spacewar)
+- Nothing Phone 1 (spacewar) (Pre-release, Not Tested)
 - Xiaomi Mi MIX 2S (polaris)
 - SHIFT SHIFT6mq (axolotl)
 
