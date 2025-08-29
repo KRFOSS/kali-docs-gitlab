@@ -165,6 +165,11 @@ If you limit network traffic, please make sure the following has been allowed to
 - RSYNC (873/TCP) - <archive.kali.org> (aka `192.99.45.140` and `2607:5300:60:508c::`)
 - RSYNC (873/TCP) - <http.kali.org> (aka `54.39.128.230` and `2607:5300:203:3fe6::`)
 
+Additionnaly, as `archive.kali.org` will soon be moved to another machine, please allow the following IP addresses:
+
+- SSH (22/TCP) - <rhea.kali.org> (aka `148.113.211.220` and `2607:5300:214:dc00::`)
+- RSYNC (873/TCP) - <rhea.kali.org> (aka `148.113.211.220` and `2607:5300:214:dc00::`)
+
 ### Set Up cron to Manually Mirror ISO Images
 
 The ISO images repository does not use push mirroring so you must schedule a daily rsync run. We provide a `bin/mirror-kali-images` script, which is ready to use, and that you can add in the crontab of your dedicated user. You just have to configure `etc/mirror-kali-images.conf`:
