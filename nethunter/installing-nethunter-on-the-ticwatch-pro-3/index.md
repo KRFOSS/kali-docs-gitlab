@@ -8,7 +8,7 @@ author: ["yesimxev",]
 
 ![](NetHunter-TicWatchPro3.png)
 
-All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE) with a generic installer as of now.
+All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE).
 
 # From unpacking to running NetHunter in 5 steps:
 
@@ -29,7 +29,7 @@ All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE) with a g
 
 ## 2. Flash TWRP, WearOS image, Magisk, dm-verity disabler
 
-Please note that Magisk 24.3 is recommended.
+Please note that Magisk **24.3** is recommended. OneOS is also recommended for wireless injection, as the system files will be replaced on Stock WearOS after reboot.
 
 - Again enable ADB, and reboot to bootloader with `adb reboot bootloader`
 - Disable vbmeta verification: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`
@@ -38,21 +38,23 @@ Please note that Magisk 24.3 is recommended.
 - Select Wipe -> Next page -> Advanced Wipe -> Format Data
 - Reboot to recovery
 - Select "Install -> ADB Sideload"
-If you want to install OneOS:
+If you want to install OneOS (recommended or wireless injection):
 - Flash OneOS with `adb sideload`
 - Flash Mobvoi Apps package with `adb sideload`
 - If you have an Ultra, `adb sideload` the Ultra addon package.
-If you want to keep stock WearOS, continue from here.
+If you want to keep Stock WearOS, continue from here.
 - Make a copy of your Magisk apk file to Magisk-v24.3.zip
 - Flash Magisk with `adb sideload Magisk-v24.3.zip`
-- Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push disabler.zip /sdcard/` and Install via TWRP
+- Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push Disable-DM-Verity_ForceEncrypt.zip /sdcard/` and install via TWRP
 - Reboot & do initial setup (pair with your phone through WearOS app)
 
-## 3. Finalise Magisk app to finish the rooting process
+## 3. Finalise Magisk app to finish rooting
 
 - Enable ADB again
+- Set density so app menu buttons will be reachable on OneOS `adb shell wm density 300`
 - Finalise Magisk installation with app install `adb install Magisk-v24.3.apk`
 - Launch Magisk Manager
+- Find the settings on top right corner (a bit tricky to reach)
 - You may want to disable auto-update, set grant access in auto response, and disable toast notifications for easier navigation in the future
 
 ## 4. Install NetHunter
@@ -60,16 +62,18 @@ If you want to keep stock WearOS, continue from here.
 - Reboot to recovery
 - Select Install -> ADB Sideload
 - Flash NetHunter image with `adb sideload`
+- Flash Magisk zip with `adb sideload`
 - Reboot
-- Start NetHunter app & chroot
+- Start NetHunter app & chroot (it may reboot after first start)
 - Reboot
 
-## 5. Set NetHunter watch face
+Hijacker and Nexmon install guide can be found on [Kali Forums](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
+
+## 5. Set NetHunter watch face (optional)
 
 - Install Facer onto your phone and watch from Play Store
 - Search for NetHunter
 - Select & Sync
-- Set density so NetHunter app menu buttons will be reachable on OneOS `adb shell wm density 300`
 
 ### Enjoy Kali NetHunter on the TicWatch Pro 3
 
@@ -85,11 +89,11 @@ If you want to keep stock WearOS, continue from here.
 
 ## Additional recommended apps
 
-- TotalCommander: useful for selecting eg. a Ducky script, use "adb install" method
-Download link: https://www.totalcommander.ch/android/tcandroid323-armeabi.apk
+- [TotalCommander](https://www.totalcommander.ch/android/tcandroid323-armeabi.apk): useful for selecting eg. a Ducky script, use "adb install" method
 
 ## Supported features
 
+- Monitor mode with injection - [install guide](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
 - Kali services
 - Custom Commands
 - Bluetooth Arsenal
@@ -102,10 +106,8 @@ Download link: https://www.totalcommander.ch/android/tcandroid323-armeabi.apk
 
 ## Upcoming features (not guaranteed)
 
-- Nexmon, as the chipset is supported, needs some time - ETA 2024.2
 - Router Keygen (to be optimised)
-- Hijacker (if nexmon succeeds) - ETA 2024.2
-- Mifare Classic Tool (need to build OS with android.hardware.nfc enabled) - ETA 2024.4
+- Mifare Classic Tool (need to build OS with android.hardware.nfc enabled)
 
 ## Hardware limitations
 
