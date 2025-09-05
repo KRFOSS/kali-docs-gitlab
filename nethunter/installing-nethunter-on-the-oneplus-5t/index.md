@@ -70,7 +70,7 @@ Now go back to your phone and hit `Vol down` twice. You’ll see *Recovery mode*
 
 This time you’ll be greeted with LineageOS’ Recovery screen.
 
-![](08.png)
+![](08.jpg)
 
 Hit *Apply update* then *Apply from ADB*. Now put the LineageOS v20 zip file you downloaded to the adb folder and push it to your device with `adb -d sideload filename.zip`.
 
@@ -78,7 +78,7 @@ Hit *Apply update* then *Apply from ADB*. Now put the LineageOS v20 zip file you
 
 It should start installing. After completion, you should see a log like this:
 
-![](10.png)
+![](10.jpg)
 
 At this point you should install *Google Apps* (like Play Store etc) if you’d like to use them before you boot into LineageOS but since I’m going to be using this device purely for NetHunter, I skipped that step.
 

@@ -161,9 +161,15 @@ $ rsync -qaH ftp.halifax.rwth-aachen.de::kali-images /srv/mirrors/kali-images/ &
 
 If you limit network traffic, please make sure the following has been allowed to access your services:
 
-- SSH (22/TCP) - <archive.kali.org> (aka `192.99.45.140` and `2607:5300:60:508c::`)
-- RSYNC (873/TCP) - <archive.kali.org> (aka `192.99.45.140` and `2607:5300:60:508c::`)
+- SSH (22/TCP) - <archive.kali.org> (aka `148.113.211.220` and `2607:5300:214:dc00::`)
+- RSYNC (873/TCP) - <archive.kali.org> (aka `148.113.211.220` and `2607:5300:214:dc00::`)
 - RSYNC (873/TCP) - <http.kali.org> (aka `54.39.128.230` and `2607:5300:203:3fe6::`)
+
+<!-- arnaudr: drop the note below, starting Jan. 2026, no need to keep that documented here) -->
+
+{{% notice info %}}
+For mirrors that have been with us for a long time, note that archive.kali.org used to go by the following IP addresses: IPv4: `192.99.45.140` and IPv6: `2607:5300:60:508c::`. If you still have it allowed in your firewall, it's time to drop it.
+{{% /notice %}}
 
 ### Set Up cron to Manually Mirror ISO Images
 
