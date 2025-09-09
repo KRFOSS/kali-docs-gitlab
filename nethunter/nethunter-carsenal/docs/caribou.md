@@ -35,7 +35,7 @@ author: ["v0lk3n",]
     - read_mem
     - auto
 - <a href="https://github.com/CaringCaribou/caringcaribou/blob/master/documentation/uds_fuzz.md" target="_blank">UDS_Fuzz</a>
-    - >delay_fuzzer
+    - delay_fuzzer
     - seed_randomness_fuzzer
 - <a href="https://github.com/CaringCaribou/caringcaribou/blob/master/documentation/xcp.md" target="_blank">XCP</a>
 	- discovery
