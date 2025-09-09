@@ -6,7 +6,7 @@ weight:
 author: ["v0lk3n",]
 ---
 
-<img src="../assets/canusb.gif" alt="CARsenal CAN-USB">
+<p style="text-align: center"><img src="../assets/canusb.gif" width="350" alt="CARsenal CAN-USB"></p>
 
 > Command is updated when configuring settings.
 
