@@ -161,10 +161,9 @@ Attacks will be greyed out if the chroot is not running. Some of the attacks wil
 - [**NMap Scan**](/docs/nethunter/nethunter-nmap/) - Quick Nmap scanner interface.
 - [**Metasploit Payload Generator**](/docs/nethunter/nethunter-mpg/) - Generating Metasploit payloads on the fly.
 - [**Searchsploit**](/docs/nethunter/nethunter-searchsploit/) - Easy searching for exploits in [Exploit-Database](https://www.exploit-db.com/).
-- [**Pineapple Connector**] - Provide Wi-Fi via Android for a Hak5 WiFi Pineapple over USB
-- [**Wardriving **](/docs/nethunter/nethunter-wardriving/) - Passively sniff nearby Wi-Fi networks
-- [**Deauth**] - Conduct Wi-Fi deauth attacks
-- [**CAN Arsenal**](/docs/nethunter/nethunter-canarsenal/) - CAN Bus testing, diagnosis or even car hacking.
+- **Pineapple Connector** - Provide Wi-Fi via Android for a Hak5 WiFi Pineapple over USB
+- [**Wardriving**](/docs/nethunter/nethunter-wardriving/) - Passively sniff nearby Wi-Fi networks
+- [**CARsenal**](/docs/nethunter/nethunter-carsenal/) - Automotive Security tools.
 
 ## 8.0 Porting NetHunter to New Devices
 
