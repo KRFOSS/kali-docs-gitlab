@@ -68,7 +68,7 @@ The following table illustrates the differences in functionality:
 |  Wi-Fi Injection   |         No         |       No       |    Yes    |
 |    HID attacks     |         No         |       No       |    Yes    |
 |    BT Arsenal      |         No         |       No       |    Yes    |
-|    CAN Arsenal     |         No         |       No       |    Yes    |
+|    CARsenal        |         No         |       No       |    Yes    |
 
 The installation of NetHunter Rootless is documented here:
 [NetHunter-Rootless](/docs/nethunter/nethunter-rootless/)
