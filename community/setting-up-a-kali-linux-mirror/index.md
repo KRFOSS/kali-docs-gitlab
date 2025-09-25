@@ -118,7 +118,7 @@ Now we need to create a configuration file. We start from a template and we edit
 ```console
 $ whoami
 archvsync
-$ cp etc/ftpsync.conf.sample etc/ftpsync-kali.conf
+$ cp etc/ftpsync-kali.conf.sample etc/ftpsync-kali.conf
 $ vim etc/ftpsync-kali.conf
 $ grep -E '^[^#]' etc/ftpsync-kali.conf
 MIRRORNAME=`hostname -f`
