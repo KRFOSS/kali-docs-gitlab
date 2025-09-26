@@ -81,4 +81,3 @@ kali@kali:~$ sudo update-grub
 ```
 
 Then reboot the VM to test.
-

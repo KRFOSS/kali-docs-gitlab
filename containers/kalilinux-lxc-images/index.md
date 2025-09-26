@@ -19,10 +19,10 @@ author: ["re4son",]
 
 ## Overview
 
-**Kali Linux containers are the ideal solution to**
+**Kali Linux containers are the ideal solution to**:
 
-- **run Kali Linux within other Linux distributions**
-- **provide isolated environments for development or testing activities**
+- **Run Kali Linux within other Linux distributions**
+- **Provide isolated environments for development or testing activities**
 
 **without the overhead of virtual machines**.
 **Docker is the preferred solution for applications whilst LXC/LXD are preferred for entire systems**.
