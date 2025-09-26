@@ -222,6 +222,7 @@ We're on social platforms too, if you want to to follow us for any announcements
 - [Facebook](https://www.facebook.com/KaliLinux/)
 - [Instagram](https://www.instagram.com/kalilinux/)
 - [Mastodon](https://infosec.exchange/@kalilinux)
+- [Substack](https://kalilinux.substack.com/)
 - [`X`](https://X.com/kalilinux) _(formerly known as Twitter)_
 <!--- [LinkedIn](https://linkedin.com/groups/4845751/)-->
 
