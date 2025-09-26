@@ -190,6 +190,12 @@ Used to monitor the status of our systems and services.
 
 Our BitTorrent tracker used only for images.
 
+- - -
+
+**[artifacts.kali.org](https://artifacts.kali.org/)**
+
+Any large artifacts from CI jobs.
+
 ## External
 
 **[gitlab.com/kalilinux](https://gitlab.com/kalilinux/)**
