@@ -160,11 +160,13 @@ This runs various daily checks to help QA Kali.
 
 - - -
 
-**[janitor.kali.org](https://janitor.kali.org/)**
+<!--
+Kali Bot - **[janitor.kali.org](https://janitor.kali.org/)**
 
 This is what builds the packages for our [bleeding edge branch](/docs/general-use/kali-bleeding-edge/).
 
 - - -
+-->
 
 **[qa.kali.org](https://qa.kali.org/)**
 

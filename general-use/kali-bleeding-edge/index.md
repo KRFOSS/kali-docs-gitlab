@@ -130,8 +130,8 @@ upstream commit, `<number>` is a simple increment to cater for multiple
 versions in the same day, and `<commit>` is a short commit identifier).
 The Debian revision contains `~jan+nus<X>` indicating that this is
 a "new uptsream snapshot" (`nus`) that was created by the [Janitor
-Bot](https://salsa.debian.org/jelmer/debian-janitor) (which powers the
-[Kali Bot](https://janitor.kali.org/)). The tilde ensures that this
+Bot](https://salsa.debian.org/jelmer/debian-janitor) (which used to powers the
+**Kali Bot**. The tilde ensures that this
 sorts lower than any subsequent manual release of the same version.
 
 Be aware that once you have installed a package from kali-bleeding-edge,

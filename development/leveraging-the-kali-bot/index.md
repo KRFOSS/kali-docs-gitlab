@@ -4,6 +4,7 @@ description:
 icon:
 weight: 21
 author: ["rhertzog",]
+archived: "true"
 ---
 
 Kali is putting lots of efforts in building automation to help maintain an
