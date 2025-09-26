@@ -168,7 +168,7 @@ This is what builds the packages for our [bleeding edge branch](/docs/general-us
 - - -
 -->
 
-**[qa.kali.org](https://qa.kali.org/)**
+**qa.kali.org**
 
 A lab to help manually test Kali for its QA process.
 
