@@ -126,11 +126,11 @@ user@mbp ~ %
 
 - - -
 
-5. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.2-live-amd64.iso" and is in your current working directory.
+5. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.3-live-amd64.iso" and is in your current working directory.
 
 ```console
-user@mbp ~ % file kali-linux-2025.2-live-amd64.iso
-kali-linux-2025.2-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
+user@mbp ~ % file kali-linux-2025.3-live-amd64.iso
+kali-linux-2025.3-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
 user@mbp ~ %
 ```
 
@@ -149,26 +149,26 @@ While '`/dev/diskX`' is used in the command, the '`/dev/diskX`' should be replac
 We will replace "/dev/diskX" with "/dev/**r**diskX" _(extra `r`)_ **to improve the write speeds**.
 <!--
 ```console
-user@mbp ~ % time sudo dd if=Downloads/kali-linux-2025.2-installer-netinst-amd64.iso of=/dev/rdisk4 bs=4M status=progress
+user@mbp ~ % time sudo dd if=Downloads/kali-linux-2025.3-installer-netinst-amd64.iso of=/dev/rdisk4 bs=4M status=progress
 Password:
   654311424 bytes (654 MB, 624 MiB) transferred 5.032s, 130 MB/s
 161+1 records in
 161+1 records out
 677380096 bytes transferred in 5.245105 secs (129145193 bytes/sec)
-sudo dd if=Downloads/kali-linux-2025.2-installer-netinst-amd64.iso  bs=4M   0.01s user 0.22s system 2% cpu 7.902 total
+sudo dd if=Downloads/kali-linux-2025.3-installer-netinst-amd64.iso  bs=4M   0.01s user 0.22s system 2% cpu 7.902 total
 user@mbp ~ %
-user@mbp ~ % time sudo dd if=Downloads/kali-linux-2025.2-installer-netinst-amd64.iso of=/dev/disk4 bs=4M status=progress
+user@mbp ~ % time sudo dd if=Downloads/kali-linux-2025.3-installer-netinst-amd64.iso of=/dev/disk4 bs=4M status=progress
   675282944 bytes (675 MB, 644 MiB) transferred 53.047s, 13 MB/s
 161+1 records in
 161+1 records out
 677380096 bytes transferred in 53.276447 secs (12714438 bytes/sec)
-sudo dd if=Downloads/kali-linux-2025.2-installer-netinst-amd64.iso  bs=4M   0.01s user 2.08s system 3% cpu 53.321 total
+sudo dd if=Downloads/kali-linux-2025.3-installer-netinst-amd64.iso  bs=4M   0.01s user 2.08s system 3% cpu 53.321 total
 user@mbp ~ %
 ```
 -->
 
 ```console
-$ sudo dd if=kali-linux-2025.2-live-amd64.iso of=/dev/rdiskX bs=4M status=progress
+$ sudo dd if=kali-linux-2025.3-live-amd64.iso of=/dev/rdiskX bs=4M status=progress
 ```
 
 {{% notice info %}}

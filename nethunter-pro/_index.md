@@ -50,8 +50,8 @@ Official release of Kali NetHunter Pro images for supported devices can be downl
 ##### Installation steps for PinePhone/Pro Devices
 
 ```console
-$ xz -d kali-nethunterpro-2025.2-pinephone-phosh.img.xz
-$ dd if=kali-nethunterpro-2025.2-pinephone-phosh.img of=/dev/mmcblkX bs=1M oflag=sync status=progress
+$ xz -d kali-nethunterpro-2025.3-pinephone-phosh.img.xz
+$ dd if=kali-nethunterpro-2025.3-pinephone-phosh.img of=/dev/mmcblkX bs=1M oflag=sync status=progress
 ```
 
 ##### Installation steps for QCOM Android Devices
@@ -60,14 +60,14 @@ $ dd if=kali-nethunterpro-2025.2-pinephone-phosh.img of=/dev/mmcblkX bs=1M oflag
 
 ```console
 # Install on SDCard:
-$ xz -d kali-nethunterpro-2025.2-sdm845.img.xz
+$ xz -d kali-nethunterpro-2025.3-sdm845.img.xz
 $ simg2img flash userdata nethunterpro-*-sdm845*rootfs.img rootfs_ext4.img
 $ dd if=rootfs_ext4.img of={sdcard_block_device} bs=1M oflag=sync status=progress
 $ fastboot flash boot nethunterpro*boot-{model}-{variant}.img
 $ fastboot erase dtbo # if your device has dtbo partition
 
 # Install on EMMC (fastboot method):
-$ xz -d kali-nethunterpro-2025.2-sdm845.img.xz
+$ xz -d kali-nethunterpro-2025.3-sdm845.img.xz
 $ fastboot flash userdata nethunterpro-*-sdm845*rootfs.img
 $ fastboot flash boot nethunterpro*boot-{model}-{variant}.img
 $ fastboot erase dtbo # if your device has dtbo partition
