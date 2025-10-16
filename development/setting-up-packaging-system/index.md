@@ -124,13 +124,13 @@ kali@kali:~$ grep -q DEBFULLNAME ~/.profile \
   || echo "export DEBFULLNAME='First Last'" >> ~/.aliases
 kali@kali:~$
 kali@kali:~$ grep -q DEBEMAIL ~/.profile \
-  || echo export DEBEMAIL=email@domain.com >> ~/.aliases
+  || echo "export DEBEMAIL=email@domain.com" >> ~/.aliases
 kali@kali:~$
 ```
 
 **Be sure to replace `email@domain.com` with your email, and ensure it is the same one used with your GPG key, if that was setup**.
 
-We now need to set up git-buildpackage/[`gbp buildpackage`](https://manpages.debian.org/testing/git-buildpackage/gbp-buildpackage.1.en.html):
+We now need to set up `gbp` aka. [git-buildpackage](https://manpages.debian.org/testing/git-buildpackage/gbp-buildpackage.1.en.html):
 
 ```console
 kali@kali:~$ cat <<EOF > ~/.gbp.conf
@@ -232,25 +232,24 @@ kali@kali:~$
 Finally, we can configure `quilt` (a tool to manage patches):
 
 ```console
-kali@kali:~$ cat << EOF > ~/.quiltrc
+kali@kali:~$ cat <<EOF > ~/.quiltrc
 export QUILT_PATCHES=debian/patches
-QUILT_PUSH_ARGS="--color=auto"
 QUILT_DIFF_ARGS="--no-timestamps --no-index -p ab --color=auto"
+QUILT_DIFF_OPTS="-p"
+QUILT_PUSH_ARGS="--color=auto"
 QUILT_REFRESH_ARGS="--no-timestamps --no-index -p ab"
-QUILT_DIFF_OPTS='-p'
 EOF
 kali@kali:~$
 ```
 
-## sbuild
+## Sbuild
 
 `sbuild` is the tool that we use to build packages in an isolated build environment.
 
 We must configure it as such:
 
 ```
-cat <<'EOF' > ~/.config/sbuild/config.pl
-
+kali@kali:~$ cat <<'EOF' > ~/.config/sbuild/config.pl
 # build 'Architecture: all' packages
 $build_arch_all = 1;
 # build the source package
@@ -279,15 +278,17 @@ push @{$unshare_mmdebstrap_extra_args}, "kali-*", [
   '--include=kali-archive-keyring',
   '--setup-hook=sed -i s/https/http/ "$1"/etc/apt/sources.list',
 ];
+EOF
+kali@kali:~$
 ```
 
 The configuration above can be adjusted a bit for your needs, below we give some tips.
 
-If you want to speed up your builds, you can comment out the line `$unshare_tmpdir_template = ...`. In that case, sbuild performs the builds in `/tmp/`, which exists entirely in memory (RAM + SWAP), so the build won't touch your disk. While it can boost build times, it has one serious caveat: **for big packages it can fill up your RAM and fail**. This can be mitigated by increasing the size of your SWAP area.
+If you want to speed up your builds, you can comment out the line `$unshare_tmpdir_template = ...`. In that case, sbuild performs the builds in `/tmp/`, which exists entirely in memory (RAM + SWAP), so the build won't touch your disk. While it can boost build times, it has one serious caveat: **for big packages it can fill up your RAM and fail!** This can be mitigated by increasing the size of your SWAP area.
 
 When a build fails, it can be useful to get a shell in the build environment. This can be done automatically by adding this snippet to your `~/.config/sbuild/config.pl`:
 
-```
+```perl
 # get a shell when the build fails
 $external_commands = {
   "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ],
@@ -314,7 +315,7 @@ kali            http://kali.download/kali
 
 Finally, we must configure sbuild to use the caching proxy. This is done by adding this snippet to your `~/.config/sbuild/config.pl`:
 
-```
+```perl
 # use a caching proxy
 push @{$unshare_mmdebstrap_extra_args}, "*", [
   '--aptopt=Acquire::HTTP::Proxy "http://localhost:9999";',
