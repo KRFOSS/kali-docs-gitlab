@@ -275,15 +275,15 @@ $unshare_tmpdir_template = "/var/tmp/sbuild.XXXXXXXXXX";
 
 # adjust chroots for Kali
 push @{$unshare_mmdebstrap_extra_args}, "kali-*", [
-  '--mirror=http://http.kali.org/kali',
   '--components=main contrib non-free non-free-firmware',
-  '--include=kali-archive-keyring'
+  '--include=kali-archive-keyring',
+  '--setup-hook=sed -i s/https/http/ "$1"/etc/apt/sources.list',
 ];
 ```
 
 The configuration above can be adjusted a bit for your needs, below we give some tips.
 
-If you want to speed up your builds, you can comment out the line `$unshare_tmpdir_template = ...`. In that case, sbuild performs the builds in `/tmp/`, which exists entirely in RAM, so the build won't touch your disk. While it can boost build times, it has one serious caveat: **for big packages it can fill up your RAM and fail**. This can be mitigated by increasing the size of your SWAP area.
+If you want to speed up your builds, you can comment out the line `$unshare_tmpdir_template = ...`. In that case, sbuild performs the builds in `/tmp/`, which exists entirely in memory (RAM + SWAP), so the build won't touch your disk. While it can boost build times, it has one serious caveat: **for big packages it can fill up your RAM and fail**. This can be mitigated by increasing the size of your SWAP area.
 
 When a build fails, it can be useful to get a shell in the build environment. This can be done automatically by adding this snippet to your `~/.config/sbuild/config.pl`:
 
