@@ -22,7 +22,7 @@ We will install tools that we will use later for packaging.
 kali@kali:~$ sudo apt update
 [...]
 kali@kali:~$
-kali@kali:~$ sudo apt install -y sbuild apt-file gitk git-lfs myrepos debhelper devscripts dput lintian quilt schroot
+kali@kali:~$ sudo apt install -y sbuild mmdebstrap uidmap apt-file gitk git-lfs myrepos debhelper devscripts dput lintian quilt
 [...]
 kali@kali:~$
 ```
@@ -117,31 +117,9 @@ kali@kali:~$
 
 ## Setting up files
 
-We now need to set up git-buildpackage/[`gbp buildpackage`](https://manpages.debian.org/testing/git-buildpackage/gbp-buildpackage.1.en.html):
+First, we need to set `DEBFULLNAME` and `DEBEMAIL` in our environment:
 
 ```console
-kali@kali:~$ cat <<EOF > ~/.gbp.conf
-[DEFAULT]
-pristine-tar = True
-cleaner = /bin/true
-
-[buildpackage]
-sign-tags = True
-export-dir = $HOME/kali/build-area/
-ignore-branch = True
-ignore-new = True
-
-[import-orig]
-filter-pristine-tar = True
-
-[pq]
-patch-numbers = False
-
-[dch]
-multimaint-merge = True
-ignore-branch = True
-EOF
-kali@kali:~$
 kali@kali:~$ grep -q DEBFULLNAME ~/.profile \
   || echo "export DEBFULLNAME='First Last'" >> ~/.aliases
 kali@kali:~$
@@ -151,6 +129,34 @@ kali@kali:~$
 ```
 
 **Be sure to replace `email@domain.com` with your email, and ensure it is the same one used with your GPG key, if that was setup**.
+
+We now need to set up git-buildpackage/[`gbp buildpackage`](https://manpages.debian.org/testing/git-buildpackage/gbp-buildpackage.1.en.html):
+
+```console
+kali@kali:~$ cat <<EOF > ~/.gbp.conf
+[DEFAULT]
+pristine-tar = True
+cleaner = /bin/true
+
+[buildpackage]
+export-dir = $HOME/kali/build-area/
+ignore-branch = True
+ignore-new = True
+sign-tags = True
+
+[dch]
+ignore-branch = True
+multimaint-merge = True
+
+[import-orig]
+filter-pristine-tar = True
+sign-tags = True
+
+[pq]
+patch-numbers = False
+EOF
+kali@kali:~$
+```
 
 We enable `pristine-tar` by default as we will use this tool to (efficiently) store a copy of the upstream tarball in the Git repository. We also set `export-dir` so that package builds happen outside of the git checkout directory.
 
@@ -165,14 +171,18 @@ uid           [ultimate] First Last <email@domain.com>
 sub   rsa2048 2019-01-01 [E] [expires: 2021-12-21]
 kali@kali:~$
 kali@kali:~$ cat <<EOF > ~/.devscripts
-DEBRELEASE_UPLOADER=dput
 DEBRELEASE_DEBS_DIR=$HOME/kali/build-area/
-DEBCHANGE_RELEASE_HEURISTIC=changelog
+DEBRELEASE_UPLOADER=dput
+
+DEBCHANGE_AUTO_NMU=no
 DEBCHANGE_MULTIMAINT_MERGE=yes
 DEBCHANGE_PRESERVE=yes
-DEBUILD_LINTIAN_OPTS="--color always -I"
-DEBCHANGE_AUTO_NMU=no
+DEBCHANGE_RELEASE_HEURISTIC=changelog
+
 DEBSIGN_KEYID=ABC123DE45678F90123G4567HIJK890LM12345N6
+
+DEBUILD_LINTIAN_OPTS="--color always -I"
+
 USCAN_DESTDIR=$HOME/kali/upstream/
 EOF
 kali@kali:~$
@@ -219,64 +229,72 @@ kali@kali:~$ grep mergechangelogs ~/.config/git/attributes \
 kali@kali:~$
 ```
 
-## sbuild
-
-We also will need to set up sbuild. Although this isn't too difficult, it does require some extra setup:
+Finally, we can configure `quilt` (a tool to manage patches):
 
 ```console
-kali@kali:~$ sudo mkdir -pv /srv/chroots/
-kali@kali:~$
-kali@kali:~$ cd /srv/chroots/
-kali@kali:/srv/chroots$ sudo sbuild-createchroot \
-  --merged-usr \
-  --keyring=/usr/share/keyrings/kali-archive-keyring.gpg \
-  --arch=amd64 \
-  --components=main,contrib,non-free,non-free-firmware \
-  --include=kali-archive-keyring \
-  kali-dev \
-  kali-dev-amd64-sbuild \
-  http://http.kali.org/kali
-kali@kali:/srv/chroots$
-kali@kali:/srv/chroots$ cd ~/
-kali@kali:~$
-```
-
-Once that is done, we need to edit `/etc/schroot/chroot.d/kali-dev-amd64-sbuild*`, note that "\*" is used as it will generate the last bit randomly.
-_Alternatively, use TAB auto-completion_:
-
-```console
-kali@kali:~$ echo "source-root-groups=root,sbuild" | sudo tee -a /etc/schroot/chroot.d/kali-dev-amd64-sbuild*
-kali@kali:~$
-kali@kali:~$ cat /etc/schroot/chroot.d/kali-dev-amd64-sbuild*
-[kali-dev-amd64-sbuild]
-description=Debian kali-dev/amd64 autobuilder
-groups=root,sbuild
-root-groups=root,sbuild
-profile=sbuild
-type=directory
-directory=/srv/chroots/kali-dev-amd64-sbuild
-union-type=overlay
-source-root-groups=root,sbuild
-kali@kali:~$
-```
-
-Finally, we just need to add our user to the group and do one last change:
-
-```console
-kali@kali:~$ sudo sbuild-adduser $USER
-kali@kali:~$
-kali@kali:~$ cat <<'EOF' > ~/.config/sbuild/config.pl
-$build_arch_all = 1;
-$build_source = 1;
-$run_lintian = 1;
-$lintian_opts = ['-I'];
+kali@kali:~$ cat << EOF > ~/.quiltrc
+export QUILT_PATCHES=debian/patches
+QUILT_PUSH_ARGS="--color=auto"
+QUILT_DIFF_ARGS="--no-timestamps --no-index -p ab --color=auto"
+QUILT_REFRESH_ARGS="--no-timestamps --no-index -p ab"
+QUILT_DIFF_OPTS='-p'
 EOF
 kali@kali:~$
 ```
 
-_Reboot_
+## sbuild
 
-## Approx
+`sbuild` is the tool that we use to build packages in an isolated build environment.
+
+We must configure it as such:
+
+```
+cat <<'EOF' > ~/.config/sbuild/config.pl
+
+# build 'Architecture: all' packages
+$build_arch_all = 1;
+# build the source package
+$build_source = 1;
+# do not run the clean target on the host
+$clean_source = 0;
+# run lintian, show informational tags
+$run_lintian = 1;
+$lintian_opts = ['-I'];
+
+# enable network access during builds
+$enable_network = 1;
+
+# use the unshare backend
+$chroot_mode = "unshare";
+# keep the chroot tarball for a week
+$unshare_mmdebstrap_auto_create = 1;
+$unshare_mmdebstrap_keep_tarball = 1;
+$unshare_mmdebstrap_max_age = 604800;
+# perform the builds in /var/tmp/
+$unshare_tmpdir_template = "/var/tmp/sbuild.XXXXXXXXXX";
+
+# adjust chroots for Kali
+push @{$unshare_mmdebstrap_extra_args}, "kali-*", [
+  '--mirror=http://http.kali.org/kali',
+  '--components=main contrib non-free non-free-firmware',
+  '--include=kali-archive-keyring'
+];
+```
+
+The configuration above can be adjusted a bit for your needs, below we give some tips.
+
+If you want to speed up your builds, you can comment out the line `$unshare_tmpdir_template = ...`. In that case, sbuild performs the builds in `/tmp/`, which exists entirely in RAM, so the build won't touch your disk. While it can boost build times, it has one serious caveat: **for big packages it can fill up your RAM and fail**. This can be mitigated by increasing the size of your SWAP area.
+
+When a build fails, it can be useful to get a shell in the build environment. This can be done automatically by adding this snippet to your `~/.config/sbuild/config.pl`:
+
+```
+# get a shell when the build fails
+$external_commands = {
+  "build-failed-commands" => [ [ '%SBUILD_SHELL' ] ],
+};
+```
+
+## Approx (caching proxy)
 
 When building a package with a sbuild, a lot of time (and bandwidth) is spent downloading the build dependencies. To speed up this step, it's possible to use a caching proxy, such as `approx`:
 
@@ -292,25 +310,15 @@ debian-security	http://security.debian.org/debian-security
 kali            http://kali.download/kali
 ```
 
-Finally, we just need to add a line of configuration inside our chroot, so that apt is configured to use the proxy:
+**Do NOT use http://http.kali.org/kali above, it is not suitable to be the backend of a caching proxy, and it might cause transient failures (hash sum mismatch). Use kali.download, or a mirror located in your surroundings.**
 
-```console
-kali@kali:~$ sudo sbuild-shell source:kali-dev-amd64-sbuild
-I: /bin/sh
-# echo 'Acquire::HTTP::Proxy "http://localhost:9999";' > /etc/apt/apt.conf.d/01proxy
-# exit
-kali@kali:~$
+Finally, we must configure sbuild to use the caching proxy. This is done by adding this snippet to your `~/.config/sbuild/config.pl`:
+
+```
+# use a caching proxy
+push @{$unshare_mmdebstrap_extra_args}, "*", [
+  '--aptopt=Acquire::HTTP::Proxy "http://localhost:9999";',
+];
 ```
 
-## Quilt (Managing Patches)
-
-```console
-kali@kali:~$ cat << EOF > ~/.quiltrc
-export QUILT_PATCHES=debian/patches
-QUILT_PUSH_ARGS="--color=auto"
-QUILT_DIFF_ARGS="--no-timestamps --no-index -p ab --color=auto"
-QUILT_REFRESH_ARGS="--no-timestamps --no-index -p ab"
-QUILT_DIFF_OPTS='-p'
-EOF
-kali@kali:~$
-```
+For the change to take effect immediately, remove your build environments (`rm ~/.cache/sbuild/*`), so that sbuild can recreate it with this new configuration option.
