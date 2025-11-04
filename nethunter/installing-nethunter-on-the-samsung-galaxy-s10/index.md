@@ -3,7 +3,7 @@ title: Installing NetHunter on the Samsung Galaxy S10
 description:
 icon:
 weight:
-author: ["v0lk3n",]
+author: ["v0lk3n","yesimxev",]
 ---
 
 # Informations
@@ -54,7 +54,8 @@ Let's start installation. You will walk through the following steps :
 
 ## Flash Stock Rom
 
-If you need to roll back to stock, or wish to have a clean start for installation (recommended).
+If you need to roll back to stock, or wish to have a clean start for installation (recommended). If you have the latest update installed and don't want a clean flash, skip to the next step.
+
 Download your firmware here :
 
 https://www.sammobile.com/samsung/galaxy-s10/firmware/SM-G973F/
@@ -89,11 +90,11 @@ Inside Developer Mode, search for OEM unlocking option and enable it. Go into fa
 
 ## USB Debugging
 
-Boot your device, configure it. Enable Developer Mode again.
+Boot your device, do initial setup. Enable Developer Mode again and connect to wifi.
 
 Open "Settings > About phone > Software Information", then spam click on "Build Number" until enabling Developer Mode.
 
-Inside Developer Mode, enable USB Debugging.
+In developer mode, confirm that it says "Bootloader is unlocked" under OEM unlocking. Enable USB Debugging.
 
 
 ## ROM Flashing
@@ -110,7 +111,7 @@ MindTheGapps : <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exyno
 
 ### Flash Recovery
 
-Boot your device in Download mode. And flash recovery using Heimdall, you can follow the <a href="https://wiki.lineageos.org/devices/beyond1lte/install/#preparing-for-installation">LineageOS install guide</a> for that part.
+Boot your device in Download mode using the "Vol- and Bixby key" while connecting to PC with USB cable. Flash recovery using Heimdall, you can follow the <a href="https://wiki.lineageos.org/devices/beyond1lte/install/#preparing-for-installation">LineageOS install guide</a> for that part.
 
 
 ```bash
@@ -119,7 +120,7 @@ Boot your device in Download mode. And flash recovery using Heimdall, you can fo
 
 ### Flash LineageOS ROM
 
-Once the recovery flashed, shutdown your device by holding "Vol- and Power key" for 7 seconds, and then directly boot to recovery by holding "Vol+, Bixby and Power key".
+Once the recovery flashed, reboot your device by holding "Vol- and Power key" for 7 seconds, and then directly boot to recovery by holding "Vol+, Bixby and Power key" so recovery won't be wiped.
 
 Once booted into Recovery, navigate to "Factory reset" and Format everything.
 
@@ -137,7 +138,7 @@ adb -d sideload MindTheGapps-15.0.0-arm64-20250214_082511.zip
 
 You will have a warning on your phone saying "Signature verification failed Install anyway?" press "Yes", and wait for MindTheGapps flashing to complete.
 
-Once finished, press "Reboot System Now" and configure your device. Connect to WiFi (needed for rooting step).
+Once finished, press "Reboot System Now" and do initial setup again. Connect to WiFi (needed for rooting step).
 
 Enable Developer Mode again.
 
@@ -166,13 +167,15 @@ You will have a warning on your phone saying "Signature verification failed Inst
 
 Once flashing complete, reboot to system and open Magisk app.
 
-It will prompt to finish the installation, say yes and chose "Direct Installation" as methode.
+It will prompt to finish the installation, say yes and chose "Direct Installation" as method.
 
 When finished, reboot.
 
 ## Nethunter
 
 My favorite way is to build installer myself. But you may also <a href="https://kali.download/nethunter-images/kali-2025.3/kali-nethunter-2025.3-beyond1lte-los-fifteen-full.zip">download it</a> if you wish to.
+
+If you don't want to build your own installer, skip to the next step.
 
 First let's build from source.
 
@@ -227,7 +230,7 @@ You will have a warning on your phone saying "Signature verification failed Inst
 
 Once flashing complete, reboot to system
 
-## Magisk Modules
+## Magisk Modules (optional)
 
 Download Magisk Overlayfs module.
 
@@ -265,21 +268,21 @@ Push the module to your device.
 adb push nexmon-s10.zip /sdcard/
 ```
 
-Open Magisk, navigate to "Modules > Install from Storage" and selecte Nexmon S10 module.
+Open Magisk, navigate to "Modules > Install from Storage" and select Nexmon S10 module.
 
 Wait for installation to complete and reboot your phone.
 
 ### Nexmon Usage
 
-Start Monitor mode
+Start Monitor mode in Android terminal
 
 ```bash
 $ svc wifi disable
 $ ifconfig wlan0 up
-$ nexutil -g0x613 -i -v2
+$ nexutil -s0x613 -i -v2
 ```
 
-You can make custom command to make that setup easier.
+You can make custom command in NetHunter app to make that setup easier.
 
 <img src="custom_nexutil_command.jpg" width="300">
 
@@ -290,20 +293,32 @@ $ nexutil -m0
 $ svc wifi enable
 ```
 
-### Hijacker Setup
+Run airodump in Kali terminal (export is needed in every new terminal window)
 
-You should turn off WiFi before openning Hijacker app.
+```bash
+$ export LD_PRELOAD=/lib/kalilibnexmon.so
+$ airodump-ng wlan0
+```
+
+kalilibnexmon.so : <a href="https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-kernels/-/raw/main/ten/angler-los/system/lib64/kalilibnexmon.so">Download</a>
+
+Copy to chroot as /lib/kalilibnexmon.so
+
+### Hijacker Setup
 
 Open Hijacker app and configure the following Settings.
 
 | Settings  | Value |
 | :--------------- | -----:|
 | Prefix | LD_PRELOAD=/data/user/0/com.hijacker/files/lib/libnexmon.so |
-| Enable Monitor Mode | ifconfig wlan0 up; nexutil -g0x613 -i -v2 |
-| Disable Monitor Mode | nexutil -m0 |
+| Enable Monitor Mode | if [ `dumpsys wifi | grep "Wi-Fi is" | cut -d" " -f3` == "enabled" ]; then svc wifi disable; sleep 2; ifconfig wlan0 up; fi; nexutil -s0x613 -i -v2 |
+| Disable Monitor Mode | nexutil -m0; svc wifi enable |
 | Start Monitor Mode on Airodump Start | ✅ |
 | Band | Both |
 
+If your wifi was connected to 5Ghz, it may show only that channel at start. Just press stop + start icon to scan again, so you see all 2.4Ghz channels.
+
+Although 5Ghz is supported, you need to manually change channels in Android terminal using `nexutil -k36/80` for channel 36, `nexutil -k40/80` for channel 40 and so on. This feautre will be added to Hijacker app.
 
 # Bonus : Flash splashscreen
 
@@ -321,49 +336,12 @@ Boot to Recovery and navigate to "Apply update > Apply from ADB" and flash splas
 adb -d sideload G97X_Splash_Screen_Changer_by_SoLdieR9312_splash.zip
 ```
 
-Wait flashing to complete and reboot your phone.
-
-# Troubleshooting
-
-## Fix modules
-
-Modules may need to be manually pushed.
-
-You can find the modules inside the nethunter installer zip 
-
-```bash
-nethunter-20250629_171321-beyond1lte-los-fifteen-kalifs_full.zip/kernel-nethunter.zip/modules/system/lib/modules
-```
-
-Extract "modules" folder to your computer and push it in /sdcard/
-
-```bash
-# From Computer using ADB
-adb push modules /sdcard/
-```
-
-From your phone, open Nethunter Terminal, press the three dot "New Session... > New Root Shell"
-
-> Mount from Nethunter Android Root Terminal, not from adb shell, overlayfs will not allow to mount from there.
-
-Mount /system/lib
-
-```bash
-# From NH Android Root Terminal
-mount -o rw,remount /system/lib
-```
-
-Move modules from /sdcard to /system/lib.
-
-```bash
-# From NH Android Root Terminal
-mv /sdcard/modules /system/lib
-```
+Wait flashing to complete, and it will automatically reboot your phone.
 
 # Credits
 
 Special thanks to :
-- <a href="https://gitlab.com/yesimxev">Yesimxev</a> for help and support on Galaxy S10
+- <a href="https://gitlab.com/yesimxev">yesimxev</a> for help and support on Galaxy S10
 - **Arti** for help and support on Galaxy S10
 - <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
 - <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
