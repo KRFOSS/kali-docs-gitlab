@@ -282,10 +282,6 @@ $ ifconfig wlan0 up
 $ nexutil -s0x613 -i -v2
 ```
 
-You can make custom command in NetHunter app to make that setup easier.
-
-<img src="custom_nexutil_command.jpg" width="300">
-
 Stop Monitor mode
 
 ```bash
