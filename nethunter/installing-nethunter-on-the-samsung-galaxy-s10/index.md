@@ -196,14 +196,6 @@ $ ./build.py -k beyond1lte-los -14 -fs full
 $ ./build.py -k beyond1lte-los -15 -fs full
 ## LOS 22.2
 $ ./build.py -k beyond1lte-los-22.2 -15 -fs full
-
-# Build Kernel Only
-## LOS 21
-$ ./build.py -k beyond1lte-los -14 -i
-## LOS 22.1
-$ ./build.py -k beyond1lte-los -15 -i
-## LOS 22.2
-$ ./build.py -k beyond1lte-los-22.2 -15 -i
 ```
 
 Push installer to your device.
@@ -216,19 +208,6 @@ Open Magisk, navigate to "Modules > Install from Storage", selecte nethunter ins
 
 Wait for nethunter installation to finish, and reboot when prompted.
 
-### Flash Kernel on Recovery - Optional but Recommended
-
-I recommend also to reboot to Recovery, and flash Kernel Only.
-
-Reboot to recovery and navigate to "Apply update > Apply from ADB" and flash Nethunter Kernel.
-
-```bash
-adb -d sideload kernel-nethunter-20250629_173026-beyond1lte-los-fifteen.zip
-```
-
-You will have a warning on your phone saying "Signature verification failed Install anyway?" press "Yes", and wait for Nethunter Kernel flashing to complete.
-
-Once flashing complete, reboot to system
 
 ## Magisk Modules (optional)
 
@@ -307,7 +286,7 @@ Open Hijacker app and configure the following Settings.
 | Settings  | Value |
 | :--------------- | -----:|
 | Prefix | LD_PRELOAD=/data/user/0/com.hijacker/files/lib/libnexmon.so |
-| Enable Monitor Mode | if [ `dumpsys wifi | grep "Wi-Fi is" | cut -d" " -f3` == "enabled" ]; then svc wifi disable; sleep 2; ifconfig wlan0 up; fi; nexutil -s0x613 -i -v2 |
+| Enable Monitor Mode | if [ \`dumpsys wifi \| grep "Wi-Fi is" \| cut -d" " -f3\` == "enabled" ]; then svc wifi disable; sleep 2; ifconfig wlan0 up; fi; nexutil -s0x613 -i -v2 |
 | Disable Monitor Mode | nexutil -m0; svc wifi enable |
 | Start Monitor Mode on Airodump Start | ✅ |
 | Band | Both |
