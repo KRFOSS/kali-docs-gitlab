@@ -69,3 +69,4 @@ Unfortunately for various reasons why, we can't always keep every tool in Kali. 
 | [wifitap](https://pkg.kali.org/pkg/wifitap) | 2019-09-19 | Python 2 ([#1](https://gitlab.com/kalilinux/packages/wifitap/-/issues/1)) |
 | [wol-e](https://pkg.kali.org/pkg/wol-e) | 2019-09-19 | Python 2 ([#1](https://gitlab.com/kalilinux/packages/wol-e/-/issues/1)) |
 | [xprobe](https://pkg.kali.org/pkg/xprobe) | 2022-08-09 | Unmaintained and obsolete tool ([#1](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1016899)) |
+| [yersinia](https://pkg.kali.org/pkg/yersinia) | 2025-11-07 | Unmaintained ([#1](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1075697)) |
