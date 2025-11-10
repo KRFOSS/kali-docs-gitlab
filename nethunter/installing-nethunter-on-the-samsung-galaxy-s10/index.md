@@ -36,9 +36,10 @@ author: ["v0lk3n","yesimxev",]
 | :--------------- | -----:|
 | <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-21">LineageOS 21 (A14)</a> | Old |
 | <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.1">LineageOS 22.1 (A15)</a> | Old |
-| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.2">LineageOS 22.2 (A15)</a> | Recommended |
+| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.2">LineageOS 22.2 (A15)</a> | Old |
+| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-23.0">LineageOS 23.0 (A16)</a> | New |
 
-> This guide will use LineageOS 22.2
+> This guide will use LineageOS 22.2 but have same install process than other versions
 
 # Installation
 
@@ -192,10 +193,10 @@ Cloning into 'kernels'...
 # Build full installer
 ## LOS 21
 $ ./build.py -k beyond1lte-los -14 -fs full
-## LOS 22.1
-$ ./build.py -k beyond1lte-los -15 -fs full
 ## LOS 22.2
-$ ./build.py -k beyond1lte-los-22.2 -15 -fs full
+$ ./build.py -k beyond1lte-los -15 -fs full
+## LOS 23.0
+$ ./build.py -k beyond1lte-los -16 -fs full
 ```
 
 Push installer to your device.
@@ -314,6 +315,8 @@ adb -d sideload G97X_Splash_Screen_Changer_by_SoLdieR9312_splash.zip
 Wait flashing to complete, and it will automatically reboot your phone.
 
 # Credits
+
+Kernels and documentation maintened by <a href="https://linktr.ee/v0lk3n">V0lk3n</a>
 
 Special thanks to :
 - <a href="https://gitlab.com/yesimxev">yesimxev</a> for help and support on Galaxy S10
