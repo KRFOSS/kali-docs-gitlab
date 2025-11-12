@@ -322,8 +322,10 @@ Wait flashing to complete, and it will automatically reboot your phone.
 
 Kernels and documentation maintened by <a href="https://linktr.ee/v0lk3n">V0lk3n</a>
 
+Nexmon module made by <a href="https://gitlab.com/yesimxev">yesimxev</a>
+
 Special thanks to :
-- <a href="https://gitlab.com/yesimxev">yesimxev</a> for help and support on Galaxy S10
 - **Arti** for help and support on Galaxy S10
+- <a href="https://github.com/akabul0us">Akabulous</a> for providing up to date RTL drivers and help
 - <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
 - <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
