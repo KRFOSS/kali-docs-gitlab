@@ -21,7 +21,11 @@ author: ["v0lk3n","yesimxev",]
 | Injection | ✅ |
 | ATH9K_HTC | ✅ |
 | RTL88XX | ✅ |
+| RTL8812AU | ✅ |
+| RTL8821AU | ✅ |
+| RTL8814AU | ✅ |
 | RTL8188EUS (Module) | ✅ |
+| RTL88x2BU | ✅ |
 | NFS | ✅ |
 | CAN (optional modules included) | ✅ |
 | Nexmon Monitor | ✅ |
