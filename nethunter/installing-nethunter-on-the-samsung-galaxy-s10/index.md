@@ -21,7 +21,11 @@ author: ["v0lk3n","yesimxev",]
 | Injection | ✅ |
 | ATH9K_HTC | ✅ |
 | RTL88XX | ✅ |
+| RTL8812AU | ✅ |
+| RTL8821AU | ✅ |
+| RTL8814AU | ✅ |
 | RTL8188EUS (Module) | ✅ |
+| RTL88x2BU | ✅ |
 | NFS | ✅ |
 | CAN (optional modules included) | ✅ |
 | Nexmon Monitor | ✅ |
@@ -36,9 +40,10 @@ author: ["v0lk3n","yesimxev",]
 | :--------------- | -----:|
 | <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-21">LineageOS 21 (A14)</a> | Old |
 | <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.1">LineageOS 22.1 (A15)</a> | Old |
-| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.2">LineageOS 22.2 (A15)</a> | Recommended |
+| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.2">LineageOS 22.2 (A15)</a> | Old |
+| <a href="https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-23.0">LineageOS 23.0 (A16)</a> | New |
 
-> This guide will use LineageOS 22.2
+> This guide will use LineageOS 22.2 but have same install process than other versions
 
 # Installation
 
@@ -192,18 +197,10 @@ Cloning into 'kernels'...
 # Build full installer
 ## LOS 21
 $ ./build.py -k beyond1lte-los -14 -fs full
-## LOS 22.1
+## LOS 22.2
 $ ./build.py -k beyond1lte-los -15 -fs full
-## LOS 22.2
-$ ./build.py -k beyond1lte-los-22.2 -15 -fs full
-
-# Build Kernel Only
-## LOS 21
-$ ./build.py -k beyond1lte-los -14 -i
-## LOS 22.1
-$ ./build.py -k beyond1lte-los -15 -i
-## LOS 22.2
-$ ./build.py -k beyond1lte-los-22.2 -15 -i
+## LOS 23.0
+$ ./build.py -k beyond1lte-los -16 -fs full
 ```
 
 Push installer to your device.
@@ -216,19 +213,6 @@ Open Magisk, navigate to "Modules > Install from Storage", selecte nethunter ins
 
 Wait for nethunter installation to finish, and reboot when prompted.
 
-### Flash Kernel on Recovery - Optional but Recommended
-
-I recommend also to reboot to Recovery, and flash Kernel Only.
-
-Reboot to recovery and navigate to "Apply update > Apply from ADB" and flash Nethunter Kernel.
-
-```bash
-adb -d sideload kernel-nethunter-20250629_173026-beyond1lte-los-fifteen.zip
-```
-
-You will have a warning on your phone saying "Signature verification failed Install anyway?" press "Yes", and wait for Nethunter Kernel flashing to complete.
-
-Once flashing complete, reboot to system
 
 ## Magisk Modules (optional)
 
@@ -282,10 +266,6 @@ $ ifconfig wlan0 up
 $ nexutil -s0x613 -i -v2
 ```
 
-You can make custom command in NetHunter app to make that setup easier.
-
-<img src="custom_nexutil_command.jpg" width="300">
-
 Stop Monitor mode
 
 ```bash
@@ -311,7 +291,7 @@ Open Hijacker app and configure the following Settings.
 | Settings  | Value |
 | :--------------- | -----:|
 | Prefix | LD_PRELOAD=/data/user/0/com.hijacker/files/lib/libnexmon.so |
-| Enable Monitor Mode | if [ `dumpsys wifi | grep "Wi-Fi is" | cut -d" " -f3` == "enabled" ]; then svc wifi disable; sleep 2; ifconfig wlan0 up; fi; nexutil -s0x613 -i -v2 |
+| Enable Monitor Mode | if [ \`dumpsys wifi \| grep "Wi-Fi is" \| cut -d" " -f3\` == "enabled" ]; then svc wifi disable; sleep 2; ifconfig wlan0 up; fi; nexutil -s0x613 -i -v2 |
 | Disable Monitor Mode | nexutil -m0; svc wifi enable |
 | Start Monitor Mode on Airodump Start | ✅ |
 | Band | Both |
@@ -340,8 +320,12 @@ Wait flashing to complete, and it will automatically reboot your phone.
 
 # Credits
 
+Kernels and documentation maintened by <a href="https://linktr.ee/v0lk3n">V0lk3n</a>
+
+Nexmon module made by <a href="https://gitlab.com/yesimxev">yesimxev</a>
+
 Special thanks to :
-- <a href="https://gitlab.com/yesimxev">yesimxev</a> for help and support on Galaxy S10
 - **Arti** for help and support on Galaxy S10
+- <a href="https://github.com/akabul0us">Akabulous</a> for providing up to date RTL drivers and help
 - <a href="https://github.com/seemoo-lab/nexmon">Nexmon</a>
 - <a href="https://x.com/MarkusTieger">MarkusTieger</a> for nexmon
