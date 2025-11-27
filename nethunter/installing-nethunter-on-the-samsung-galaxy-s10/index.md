@@ -48,9 +48,8 @@ Let's start installation. You will walk through the following steps :
 - Flash LineageOS and Recovery
 - Root the device
 - Install Magisk Modules
-- Flash Kali Nethunter and it's kernel
+- Flash Kali Nethunter
 - Flash bootloader removing warning at boot
-- Final tweaks and troubleshooting
 
 ## Flash Stock Rom
 
@@ -216,20 +215,6 @@ Open Magisk, navigate to "Modules > Install from Storage", selecte nethunter ins
 
 Wait for nethunter installation to finish, and reboot when prompted.
 
-### Flash Kernel on Recovery - Optional but Recommended
-
-I recommend also to reboot to Recovery, and flash Kernel Only.
-
-Reboot to recovery and navigate to "Apply update > Apply from ADB" and flash Nethunter Kernel.
-
-```bash
-adb -d sideload kernel-nethunter-20250629_173026-beyond1lte-los-fifteen.zip
-```
-
-You will have a warning on your phone saying "Signature verification failed Install anyway?" press "Yes", and wait for Nethunter Kernel flashing to complete.
-
-Once flashing complete, reboot to system
-
 ## Magisk Modules (optional)
 
 Download Magisk Overlayfs module.
@@ -278,6 +263,7 @@ Start Monitor mode in Android terminal
 
 ```bash
 $ svc wifi disable
+$ sleep 2
 $ ifconfig wlan0 up
 $ nexutil -s0x613 -i -v2
 ```
