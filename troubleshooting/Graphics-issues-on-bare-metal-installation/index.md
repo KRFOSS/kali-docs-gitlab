@@ -5,15 +5,20 @@ icon:
 weight: 12
 author: ["Soroush Nekoozadeh"]
 ---
+
+This document covers several common graphics issues that occur when running Kali Linux on bare-metal systems (physical hardware) rather than in virtual machines. Users with NVIDIA graphics cards frequently encounter black screens, login failures, or system instability after kernel updates or driver installations.
+
+## Kernel Update and DKMS Module Issues
+
 When Kali receives frequent kernel updates, users who run full upgrades can see DKMS-backed modules (NVIDIA, VirtualBox, some Wi‑Fi drivers) break if the kernel headers for the new version are not installed. This most commonly appears after a kernel upgrade on a system using NVIDIA graphics: on boot the graphical session fails to start and you may see only a blinking cursor or dash.
 
-This document describes safe, repeatable ways to keep kernel headers and DKMS modules in sync, and how to prepare a system for installing proprietary NVIDIA drivers.
+This guide provides safe, repeatable methods to keep kernel headers and DKMS modules synchronized, and explains how to properly prepare a system for installing proprietary NVIDIA drivers.
 
 {{% notice info %}}
 This guide assumes you have Kali installed on physical hardware (not a live image). It was written for rolling releases — adapt package names and kernel versioning to your environment where necessary.
 {{% /notice %}}
 
-## 1 — Add an APT hook to auto-install headers and rebuild DKMS
+#### 1 — Add an APT hook to auto-install headers and rebuild DKMS
 
 Create the file `/etc/apt/apt.conf.d/99-kernel-headers-dkms`. This causes APT to check the highest kernel version in `/lib/modules`, attempt to install missing `linux-headers` for it, and run `dkms autoinstall` if DKMS is present. The hook is conservative: failures to install headers or build modules are ignored so system upgrades are not blocked.
 
@@ -29,7 +34,7 @@ kali@kali:~$
 This helps avoid the common case where a kernel upgrade arrives and the matching headers are not yet installed.
 
 
-## 2 — One‑time/manual: install headers and rebuild DKMS for the newest kernel
+##### 2 One‑time/manual: install headers and rebuild DKMS for the newest kernel
 
 If you just installed a new kernel and want to run the steps immediately (instead of waiting for the next APT run):
 
@@ -50,7 +55,7 @@ fi
 
 Tip: if `apt-get install` can't find a header package, check that your APT sources include the correct repositories (rolling vs. archive) and that the kernel package actually provides matching headers.
 
-## 3 — Optional: tune the GRUB kernel command line
+#### 3 — Optional: tune the GRUB kernel command line
 
 You can change the kernel command line for quieter boots or to work around firmware/ACPI issues. Edit `/etc/default/grub`, update `GRUB_CMDLINE_LINUX_DEFAULT`, then run `update-grub` and reboot to test.
 
@@ -65,7 +70,7 @@ kali@kali:~$
 Warning: do not disable ACPI unless you understand your hardware. Disabling ACPI can prevent the kernel from interacting with platform firmware and may cause devices (including the GPU) to not function correctly. Reducing boot verbosity can also make debugging harder.
 
 
-## 4 — Disable `nouveau` before installing NVIDIA drivers
+#### 4 — Disable `nouveau` before installing NVIDIA drivers
 
 Proprietary NVIDIA packages expect `nouveau` to be disabled. To blacklist it now and persistently:
 
@@ -88,12 +93,13 @@ Warning: If your system requires the open-source driver to boot the graphical en
 Recovery: to undo the blacklist if the system will not boot into the graphical environment, drop to a TTY (Ctrl+Alt+F3) or use a live USB and run:
 
 ```bash
-sudo rm /etc/modprobe.d/blacklist-nouveau.conf
-sudo update-initramfs -u
+kali@kali:~$ sudo rm /etc/modprobe.d/blacklist-nouveau.conf
+kali@kali:~$ sudo update-initramfs -u
+[...]
 sudo reboot
 ```
 
-## 5 — Quick steps if you already upgraded and you see a blinking cursor
+#### 5 — Quick steps if you already upgraded and you see a blinking cursor
 
 If you've already updated and the system boots to a blinking cursor, use these steps from a TTY (Ctrl+Alt+F3..F6):
 
@@ -115,4 +121,38 @@ sudo dkms autoinstall -k "$(uname -r)" || true
 
 ```bash
 sudo reboot
+```
+
+## GNOME on Wayland Issues
+
+Starting with GNOME version 49, the built-in support for X11 sessions has been deprecated and disabled by default. This change can cause login issues on systems that were previously relying on X11 sessions. You may encounter a black screen or no login interface, and see the following error in system logs:
+
+```bash
+Unit gnome-session-x11@gnome-login.target not found.
+```
+
+The recommended solution is to ensure Wayland is properly enabled and configured. First, verify that Wayland is not disabled in your GDM configuration:
+
+
+```bash
+kali@kali:~$ sudo grep -r "Wayland" /etc/gdm3/
+/etc/gdm3/daemon.conf:#WaylandEnable=true
+kali@kali:~$
+```
+NVIDIA drivers, especially drivers below version 550.163.01, have several issues loading GNOME on Wayland. The fastest fix we found to resolve the driver issue is adding the options below to the file `/etc/default/grub`:
+
+```bash
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=strict loglevel=3 nvidia_drm.modeset=1"
+```
+
+The option `nvidia_drm.modeset=1` allows the driver to manage displays early during boot or while the system is leaving suspend mode.
+
+If the solution above doesn't work and your NVIDIA driver is older than 540.x.x, add the option `nvidia_drm.fbdev=1`. This is a kernel boot parameter used with NVIDIA drivers in Debian (and other Linux distributions) to force the NVIDIA driver to manage the framebuffer (screen output).
+
+After making changes to `/etc/default/grub`, remember to run:
+
+```console
+kali@kali:~$ sudo update-grub
+[...]
+kali@kali:~$ sudo reboot
 ```

@@ -3,7 +3,7 @@ title: Updating Kali
 description:
 icon:
 weight:
-author: ["gamb1t",]
+author: ["gamb1t","soroush nekoozadeh"]
 ---
 
 ## When should you update Kali?
