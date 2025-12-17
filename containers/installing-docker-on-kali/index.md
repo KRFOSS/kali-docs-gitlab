@@ -32,10 +32,10 @@ If you would like to use a Kali Docker image, we have a doc page for that [here]
 
 ##### Installing docker-ce on Kali Linux
 
-`docker-ce` can be installed from Docker repository. One thing to bear in mind, [Kali Linux is based on Debian](/docs/policy/kali-linux-relationship-with-debian/), so we need to use [Debian's current stable version](https://www.debian.org/releases/stable/) (even though Kali Linux is a [rolling distribution](/docs/general-use/kali-branches/)). At the time of writing (Dec. 2023), its "bookworm":
+`docker-ce` can be installed from Docker repository. One thing to bear in mind, [Kali Linux is based on Debian](/docs/policy/kali-linux-relationship-with-debian/), so we need to use [Debian's current stable version](https://www.debian.org/releases/stable/) (even though Kali Linux is a [rolling distribution](/docs/general-use/kali-branches/)). At the time of writing (Dec. 2025), it's "trixie":
 
 ```console
-kali@kali:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian bookworm stable" | \
+kali@kali:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian trixie stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list
 ```
 
