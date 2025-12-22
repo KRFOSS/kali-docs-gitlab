@@ -170,7 +170,7 @@ When finished, reboot.
 
 ## NetHunter
 
-My favorite way is to build installer myself. But you may also [download it](https://kali.download/nethunter-images/kali-2025.3/kali-nethunter-2025.3-beyond1lte-los-fifteen-full.zip) if you wish to.
+My favorite way is to build installer myself. But you may also [download it](https://kali.download/nethunter-images/kali-2025.4/kali-nethunter-2025.4-beyond1lte-los-fifteen-full.zip) if you wish to.
 
 If you don't want to build your own installer, skip to the next step.
 

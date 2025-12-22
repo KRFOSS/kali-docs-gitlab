@@ -112,11 +112,11 @@ user@mint:~$
 
 - - -
 
-3. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.3-live-amd64.iso" and is in your current working directory.
+3. Proceed to (carefully!) image the Kali ISO file on the USB device. We will be assuming that the ISO image you're writing is named "kali-linux-2025.4-live-amd64.iso" and is in your current working directory.
 
 ```console
-user@mint:~$ file kali-linux-2025.3-live-amd64.iso
-kali-linux-2025.3-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
+user@mint:~$ file kali-linux-2025.4-live-amd64.iso
+kali-linux-2025.4-live-amd64.iso: ISO 9660 CD-ROM filesystem data (DOS/MBR boot sector) 'Kali Linux amd64' (bootable)
 user@mint:~$
 ```
 
@@ -154,7 +154,7 @@ REF: https://pkgs.org/download/coreutils
 To do this, we simply add the `status` flag:
 
 ```console
-user@mint:~$ sudo dd if=kali-linux-2025.3-live-amd64.iso of=/dev/sdX conv=fsync bs=4M status=progress
+user@mint:~$ sudo dd if=kali-linux-2025.4-live-amd64.iso of=/dev/sdX conv=fsync bs=4M status=progress
 ```
 
 - - -
@@ -162,7 +162,7 @@ user@mint:~$ sudo dd if=kali-linux-2025.3-live-amd64.iso of=/dev/sdX conv=fsync 
 Otherwise, for older systems:
 
 ```console
-user@mint:~$ sudo dd if=kali-linux-2025.3-live-amd64.iso of=/dev/sdX conv=fsync bs=4M
+user@mint:~$ sudo dd if=kali-linux-2025.4-live-amd64.iso of=/dev/sdX conv=fsync bs=4M
 ```
 
 <!--
@@ -170,10 +170,10 @@ Another option is to use [pv](https://pkg.kali.org/pkg/pv). We can also use the 
 
 Alt:
 ```console
-$ sudo dd if=kali-linux-2025.3-live-amd64.iso | pv -s 2.8G | dd of=/dev/sdX conv=fsync bs=4M
-$ sudo pv kali-linux-2025.3-live-amd64.iso -Yo /dev/sdX
-$ sudo cp kali-linux-2025.3-live-amd64.iso /dev/sdX
-$ wget -O- https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-live-amd64.iso | sudo tee /dev/sdX | sha256sum -
+$ sudo dd if=kali-linux-2025.4-live-amd64.iso | pv -s 2.8G | dd of=/dev/sdX conv=fsync bs=4M
+$ sudo pv kali-linux-2025.4-live-amd64.iso -Yo /dev/sdX
+$ sudo cp kali-linux-2025.4-live-amd64.iso /dev/sdX
+$ wget -O- https://cdimage.kali.org/kali-2025.4/kali-linux-2025.4-live-amd64.iso | sudo tee /dev/sdX | sha256sum -
 ```
 -->
 

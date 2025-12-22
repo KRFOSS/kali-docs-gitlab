@@ -40,7 +40,7 @@ While '/dev/sdX' is used through this page, the '/dev/sdX' should be replaced wi
 Ours was /dev/sdX:
 
 ```console
-kali@kali:~$ sudo dd if=kali-linux-2025.3-live-amd64.iso of=/dev/sdX conv=fsync bs=4M
+kali@kali:~$ sudo dd if=kali-linux-2025.4-live-amd64.iso of=/dev/sdX conv=fsync bs=4M
 ```
 
 Once done, you can inspect the USB partition structure using `parted /dev/sdX print`:
