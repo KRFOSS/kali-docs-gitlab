@@ -248,7 +248,9 @@ kali@kali:~$
 
 We must configure it as such:
 
-```
+```console
+kali@kali:~$ mkdir -p ~/.config/sbuild/
+kali@kali:~$
 kali@kali:~$ cat <<'EOF' > ~/.config/sbuild/config.pl
 # build 'Architecture: all' packages
 $build_arch_all = 1;
@@ -305,7 +307,7 @@ kali@kali:~$ sudo apt install -y approx
 
 After the package is installed, we just need a one-line edit of the configuration file `/etc/approx/approx.conf`, in order to define the remote repository to use for Kali. Add it just below the mappings already defined for Debian, so that your config file `/etc/approx/approx.conf` looks like that:
 
-```
+```plaintext
 debian          http://ftp.debian.org/debian
 debian-security	http://security.debian.org/debian-security
 kali            http://kali.download/kali
