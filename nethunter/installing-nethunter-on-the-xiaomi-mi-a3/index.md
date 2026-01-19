@@ -29,14 +29,14 @@ kali@kali:~$
 1. Go to Settings -> About Phone then tap 7 times on "Build number" to enable "Developer options"
 2. Go to Settings -> System -> Developer options and tap "OEM unlocking" then turn off device
 3. Hold Volume Down and Power Buttons till you see "FASTBOOT" screen now plug device to PC
-4. Open terminal and run `fastboot flashing unlock` and hold Volume Down then wait until "FASTBOOT" come back now run `fastboot flashing unlock_critical`
+4. Open terminal and run `fastboot flashing unlock` and hold Volume Down then wait until "FASTBOOT" come back now run `fastboot flashing unlock_critical` if FASTBOOT screen will not appear after first command just repeat Step 3 after phone boot and use `fastboot flashing unlock_critical`
 5. After reboot u should see "Unlocked" on boot screen
 
 ## 3. Flash LineageOS Recovery and LineageOS 22 and Magisk
 
 1. Download [boot_los22.img](https://thebiggestboi.skyblueborb.workers.dev/0:/boot_los22.img)
 2. Reboot device holding Volume Down till "FASTBOOT" screen appear and connect it to PC
-3. Now open terminal and cd to directory where you downloaded boot_los22.img and flash recovery like below
+3. Now open terminal and cd to directory where you downloaded `boot_los22.img` and flash recovery like below
 ```console
 kali@kali:~$ cd Downloads/
 [...]
@@ -82,7 +82,7 @@ kali@kali:~/Downloads$
 
 1. Download [kali-nethunter-2025.4-laurel-sprout-los-fifteen-full.zip](https://kali.download/nethunter-images/kali-2025.4/kali-nethunter-2025.4-laurel-sprout-los-fifteen-full.zip)
 2. Copy it from PC to device
-3. Open Magisk app, Modules -> Install from storage and select "kali-nethunter-2025.4-laurel-sprout-los-fifteen-full.zip"
+3. Open Magisk app, Modules -> Install from storage and select `kali-nethunter-2025.4-laurel-sprout-los-fifteen-full.zip`
 4. Then wait for installation to end, now tap "Reboot System"
 5. When phone starts you will see Kali Bootanimation
 ### Enjoy Kali NetHunter on the Xiaomi Mi A3
