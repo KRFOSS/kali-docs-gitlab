@@ -11,8 +11,9 @@ author: ["mr00k3",]
 # From unpacking to running NetHunter in 5 steps:
 1. Installing adb and fastboot
 2. Unlock Bootloader
-3. Flash LineageOS Recovery and LineageOS 22.1 and Magisk 27
-4. Install NetHunter
+3. Flash PixelExperience Recovery and setup for LineageOS
+4. Flash LineageOS 22.1 and Magisk 27
+5. Install NetHunter
 
 ## 1. Installing adb and fastboot
 
