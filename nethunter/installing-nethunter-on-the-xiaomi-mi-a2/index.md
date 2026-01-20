@@ -91,7 +91,7 @@ kali@kali:~/Downloads$
 
 ## 5. Install NetHunter
 
-1. Download [kali-nethunter-2026.1-jasmine-sprout-los-fifteen-full.zip](https://kali.download/nethunter-images/kali-2026.1/kali-nethunter-2026.1-laurel-sprout-los-fifteen-full.zip)
+1. Download [kali-nethunter-2026.1-jasmine-sprout-los-fifteen-full.zip](https://kali.download/nethunter-images/kali-2026.1/kali-nethunter-2026.1-jasmine-sprout-los-fifteen-full.zip)
 2. Copy it from PC to device
 3. Open Magisk app, Modules -> Install from storage and select "kali-nethunter-2026.1-jasmine-sprout-los-fifteen-full.zip"
 4. Then wait for installation to end, now tap "Reboot System"
