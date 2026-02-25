@@ -89,10 +89,11 @@ kali@kali:~$
 We can now install Python 2 and set it as our default Python version:
 
 ```console
-kali@kali:~$ pyenv install 2.7.18
+kali@kali:~$ CFLAGS='-std=c11' pyenv install 2.7.18
 Downloading Python-2.7.18.tar.xz...
 -> https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tar.xz
 Installing Python-2.7.18...
+[...]
 Installed Python-2.7.18 to /home/kali/.pyenv/versions/2.7.18
 
 kali@kali:~$
