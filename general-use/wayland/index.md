@@ -35,7 +35,7 @@ The Xfce desktop uses X11, and this won't change in the near future. One can che
 
 ### GNOME
 
-Since [Kali Linux 2025.4](/blog/kali-linux-2025.4-release/)<!-- ie. gnome-shell 49.1-1kali1 -->, Wayland is the default and only display server for the GNOME desktop.
+Since [Kali Linux 2025.4](/blog/kali-linux-2025-4-release/)<!-- ie. gnome-shell 49.1-1kali1 -->, Wayland is the default and only display server for the GNOME desktop.
 
 ### KDE
 
