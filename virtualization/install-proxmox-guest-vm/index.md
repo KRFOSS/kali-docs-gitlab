@@ -27,7 +27,7 @@ Proxmox has two ways of accessing a nested environment. The first is through vir
   - Select 'Do not use any media'.  Click Next
   - Enable 'Qemu Agent'. Click Next
   - Click on Delete next to the scsi0 disk (will change to No Disks). Click Next
-  - Set needed number of CPUs (or leave to default). Clck Next
+  - Set needed number of CPUs (or leave to default). Click Next
   - Set memory to 2048 or more. Click Next
   - Set network according to need (or leave to default). Click Next
   - Review configuration and click Finish
