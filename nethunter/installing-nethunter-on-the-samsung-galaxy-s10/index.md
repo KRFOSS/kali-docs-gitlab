@@ -40,7 +40,8 @@ author: ["v0lk3n","yesimxev",]
 | [LineageOS 21 (A14)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-21) | Old |
 | [LineageOS 22.1 (A15)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.1) | Old |
 | [LineageOS 22.2 (A15)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-22.2) | Old |
-| [LineageOS 23.0 (A16)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-23.0) | New |
+| [LineageOS 23.0 (A16)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-23.0) | Old |
+| [LineageOS 23.2 (A16)](https://github.com/V0lk3n/nethunter_kernel_samsung_exynos9820/tree/nethunter-lineage-23.2) | New |
 
 > This guide will use LineageOS 22.2 but have same install process than other versions
 
@@ -170,7 +171,7 @@ When finished, reboot.
 
 ## NetHunter
 
-My favorite way is to build installer myself. But you may also [download it](https://kali.download/nethunter-images/kali-2025.4/kali-nethunter-2025.4-beyond1lte-los-fifteen-full.zip) if you wish to.
+My favorite way is to build installer myself. But you may also [download it](https://www.kali.org/get-kali/#kali-mobile) if you wish to.
 
 If you don't want to build your own installer, skip to the next step.
 
@@ -191,7 +192,7 @@ Cloning into 'kernels'...
 $ ./build.py -k beyond1lte-los -14 -fs full
 ## LOS 22.2
 $ ./build.py -k beyond1lte-los -15 -fs full
-## LOS 23.0
+## LOS 23.2
 $ ./build.py -k beyond1lte-los -16 -fs full
 ```
 
