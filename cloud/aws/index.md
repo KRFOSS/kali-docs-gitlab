@@ -7,7 +7,7 @@ author: ["gamb1t",]
 ---
 
 {{% notice info %}}
-As of February 2023 the following is how to set up an AWS Kali instance. AWS's interface is constantly being updated, and in the future may not be 100% accurate. Should this be the case, please file an [issue on our GitLab](https://gitlab.com/kalilinux/documentation/kali-docs/-/issues) and follow [Amazon's tutorials](https://aws.amazon.com/ec2/getting-started/).
+As of February 2023 the following is how to set up an AWS Kali instance. AWS's interface is constantly being updated, and in the future may not be 100% accurate. Should this be the case, please file an [issue on our GitLab](https://gitlab.com/kalilinux/documentation/kali-docs/-/work_items) and follow [Amazon's tutorials](https://aws.amazon.com/ec2/getting-started/).
 {{% /notice %}}
 
 {{% notice info %}}

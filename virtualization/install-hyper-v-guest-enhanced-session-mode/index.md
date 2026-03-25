@@ -70,6 +70,6 @@ In the *Virtualization* menu, you will find a setting to disabled Hyper-V Enhanc
 
 ## Further notes
 
-More details and troubleshooting can be found in the following [conversation on GitLab](https://gitlab.com/kalilinux/build-scripts/live-build-config/-/issues/32#note_650129582).
+More details and troubleshooting can be found in the following [conversation on GitLab](https://gitlab.com/kalilinux/build-scripts/live-build-config/-/work_items/32#note_650129582).
 
 This feature was made possible thanks to the work of [Satoshi Mimura](https://github.com/mimura1133/linux-vm-tools) who ported the scripts (initially for Ubuntu) to Kali Linux, and Shane Bennett who helped to rework it for `kali-tweaks`, and provided most of the material for this documentation. Thanks!

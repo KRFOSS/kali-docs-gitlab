@@ -107,6 +107,6 @@ Please help with the development by submitting issues and pull requests. We much
 ### Broken APT 
 1. Use `echo 'APT::Sandbox::User "root";' > /etc/apt/apt.conf.d/01-android-nosandbox` in nethunter terminal
 2. Use `groupadd -g 3003 aid_inet && usermod -G nogroup -g aid_inet _apt` in nethunter terminal
-Credit: [yesimxev](https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project/-/issues/1528#note_1423179988)
+Credit: [yesimxev](https://gitlab.com/kalilinux/nethunter/build-scripts/kali-nethunter-project/-/work_items/1528#note_1423179988)
 ### Broken Ctrl+C
 Happens on newer Magisk Version so use 27
