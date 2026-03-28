@@ -26,6 +26,7 @@ If you want run a **private mirror**, see the dedicated section at the end.
   # space. 1TB IS NOT ENOUGH!
   #
   ## /kali, aka. the main package repository
+  - 2026.1     : 573 GB
   - 2025.3     : 567 GB
   - Pre-2024.3 : 653 GB
   - Pre-2024.1 : 813 GB
@@ -40,6 +41,7 @@ If you want run a **private mirror**, see the dedicated section at the end.
   - 2015       : 450 GB
 
   ## /kali-images, aka. the base images repository
+  - 2026.1     : 113 GB
   - 2025.3     : 141 GB
   - Pre-2024.3 : 158 GB
   - Pre-2024.1 : 171 GB
