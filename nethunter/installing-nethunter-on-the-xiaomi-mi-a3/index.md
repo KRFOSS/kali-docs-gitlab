@@ -29,8 +29,9 @@ kali@kali:~$
 1. Go to Settings -> About Phone then tap 7 times on "Build number" to enable "Developer options"
 2. Go to Settings -> System -> Developer options and tap "OEM unlocking" then turn off device
 3. Hold Volume Down and Power Buttons till you see "FASTBOOT" screen now plug device to PC
-4. Open terminal and run `fastboot flashing unlock` and hold Volume Down then wait until "FASTBOOT" come back now run `fastboot flashing unlock_critical` if FASTBOOT screen will not appear after first command just repeat Step 3 after phone boot and use `fastboot flashing unlock_critical`
-5. After reboot u should see "Unlocked" on boot screen
+4. Open terminal and run `fastboot flashing unlock` then wait for device to boot after that power it off
+5. Repeat Step 3 and run `fastboot flashing unlock_critical` then device will reboot
+6. After reboot u should see "Unlocked" on boot screen
 
 ## 3. Flash LineageOS Recovery and LineageOS 22 and Magisk
 
