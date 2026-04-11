@@ -148,11 +148,11 @@ kali@kali:~$ time ./build.sh \
   --verbose \
   --installer \
   --distribution kali-last-snapshot \
-  --version 2025.3 \
-  --subdir kali-2025.3
+  --version 2026.1 \
+  --subdir kali-2026.1
 [...]
 ***
-GENERATED KALI IMAGE: ./images/kali-2025.3/kali-linux-2025.3-installer-amd64.iso
+GENERATED KALI IMAGE: ./images/kali-2026.1/kali-linux-2026.1-installer-amd64.iso
 ***
 kali@kali:~$
 ```
@@ -184,7 +184,7 @@ This is not required with the installer images, as it includes Xfce, Gnome and K
 
 The list of packages included in your build will be present in the the respective `kali-config/` directory. For example, if you're wanting to edit:
 
-- The default Installer ISO, you would use the following package lists file - `kali-config/installer-default/packages`
+- The default Installer ISO, you would use the following package lists file - `kali-config/installer-default/packages` - that will add the packages to the pool in the Installer ISO. You likely also want the installer to _install_ those packages on the target system, and for that you can edit the file `simple-cdd/profiles/kali.postinst` and the install commands at the bottom of the file, eg. `apt install -y YOUR PACKAGES HERE`.
 - The default Live ISO, you would use the following package lists file - `kali-config/variant-default/package-lists/kali.list.chroot`
 - A non-default Live ISO desktop environment, such as Gnome - `kali-config/variant-gnome/package-lists/kali.list.chroot` _(You can replace Gnome with any supported desktop environments)_
 

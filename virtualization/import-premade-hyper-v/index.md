@@ -4,6 +4,8 @@ description:
 icon:
 weight: 216
 author: ["arnaudr", "gamb1t",]
+aliases:
+    -  "/docs/virtualization/import-premade-hyperv"
 ---
 
 Importing the [Kali Hyper-V image](/get-kali/#kali-virtual-machines) is very straightforward.

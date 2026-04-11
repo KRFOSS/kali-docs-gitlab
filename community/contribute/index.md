@@ -23,7 +23,7 @@ The [Kali community](/community/) is spread out through many different platforms
 
 ### GitLab
 
-[GitLab](https://gitlab.com/kalilinux) is where all of [our packages](https://gitlab.com/kalilinux/packages/), [docs pages](https://gitlab.com/kalilinux/documentation/kali-docs), [tool pages](https://gitlab.com/kalilinux/documentation/kali-tools), [build-scripts](https://gitlab.com/kalilinux/build-scripts/), and more live. Everything is open source and contributions are encouraged. If something is inefficient, there is a typo somewhere, or you want to see a new feature added to Kali this is the place to go. If you know exactly what you want to change, please create a [merge request](https://gitlab.com/groups/kalilinux/-/merge_requests) doing so. If you don't know, you can create an [issue](https://gitlab.com/groups/kalilinux/-/issues) describing the issue or feature that you want changed.
+[GitLab](https://gitlab.com/kalilinux) is where all of [our packages](https://gitlab.com/kalilinux/packages/), [docs pages](https://gitlab.com/kalilinux/documentation/kali-docs), [tool pages](https://gitlab.com/kalilinux/documentation/kali-tools), [build-scripts](https://gitlab.com/kalilinux/build-scripts/), and more live. Everything is open source and contributions are encouraged. If something is inefficient, there is a typo somewhere, or you want to see a new feature added to Kali this is the place to go. If you know exactly what you want to change, please create a [merge request](https://gitlab.com/groups/kalilinux/-/merge_requests) doing so. If you don't know, you can create an [issue](https://gitlab.com/groups/kalilinux/-/work_items) describing the issue or feature that you want changed.
 
 Example of a report about an outdated page:
 
@@ -51,20 +51,20 @@ Example of a tool upgrade request:
 
 # Kali Documentation
 
-All Kali documentation is written in **[markdown](https://en.wikipedia.org/wiki/Markdown) and is open source**. Our aim is to provide accurate, understandable, documentation about the Kali platform and the tools it contains. We encourage [merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html) and [issues](https://docs.gitlab.com/ee/user/project/issues/create_issues.html) to be created that help us to improve upon our documentation.
+All Kali documentation is written in **[markdown](https://en.wikipedia.org/wiki/Markdown) and is open source**. Our aim is to provide accurate, understandable, documentation about the Kali platform and the tools it contains. We encourage [merge requests](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html) and [issues](https://docs.gitlab.com/user/project/issues/create_issues/) to be created that help us to improve upon our documentation.
 
 ### [Kali Linux Docs](/docs/)
 
 The *[kali-docs](https://gitlab.com/kalilinux/documentation/kali-docs)* is a great way for people to support Kali, as it can be done with limited knowledge of some of the more intricate parts of Linux. From grammar or command improvements to brand new pages, there is plenty of work available to be done here.
 
-- [All currently open issues](https://gitlab.com/kalilinux/documentation/kali-docs/-/issues)
+- [All currently open issues](https://gitlab.com/kalilinux/documentation/kali-docs/-/work_items)
 - [All currently open merge requests](https://gitlab.com/kalilinux/documentation/kali-docs/-/merge_requests)
 
 ### [Kali Tools](/tools/)
 
 Another area of documentation that we maintain is *[kali-tools](https://gitlab.com/kalilinux/documentation/kali-tools/)*. This is the embodiment of all of the tools in Kali and how to use them. This is an important aspect of our documentation as it helps our users learn the fundamentals of a new tool they may be trying. While contributions here can be as minor as grammar adjustments, Kali Tools can greatly benefit from intimate knowledge of these tools and real world use cases.
 
-- [All currently open issues](https://gitlab.com/kalilinux/documentation/kali-tools/-/issues)
+- [All currently open issues](https://gitlab.com/kalilinux/documentation/kali-tools/-/work_items)
 - [All currently open merge requests](https://gitlab.com/kalilinux/documentation/kali-tools/-/merge_requests)
 
 # Technical Knowledge Applied
@@ -75,7 +75,7 @@ Packaging is the core of Kali. Packages are what helps tools to be so easy to in
 
 ### Upstream Package Updates
 
-When there is a **[new update from upstream](https://pkg.kali.org/derivative/kali-roll/#newer_version)** (in most cases, this is the tool creator) it is important we get that update verified and out as soon as we can. To do this we must first package up the new update, test the resulting `.deb` file to ensure it works as expected and includes anything new, then sign it and release it. For most people, this process is not something they would be able to do without first learning [Debian packaging](/docs/development/intro-to-packaging-example/). If you were to discover that a tool is outdated, and don't know packaging, you could **instead create a [bug report](https://gitlab.com/groups/kalilinux/packages/-/issues/)** about the outdated tool.
+When there is a **[new update from upstream](https://pkg.kali.org/derivative/kali-roll/#newer_version)** (in most cases, this is the tool creator) it is important we get that update verified and out as soon as we can. To do this we must first package up the new update, test the resulting `.deb` file to ensure it works as expected and includes anything new, then sign it and release it. For most people, this process is not something they would be able to do without first learning [Debian packaging](/docs/development/intro-to-packaging-example/). If you were to discover that a tool is outdated, and don't know packaging, you could **instead create a [bug report](https://gitlab.com/groups/kalilinux/packages/-/work_items/)** about the outdated tool.
 
 - **[Packages with newer upstream version](https://pkg.kali.org/derivative/kali-roll/#newer_version)**
 

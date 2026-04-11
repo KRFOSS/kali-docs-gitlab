@@ -36,7 +36,7 @@ Your kernel should have CAN support enabled. For more informations, follow <a hr
 
 
 ***Guide***
-* <a href="https://www.offsec.com/blog/introduction-to-car-hacking-the-can-bus" target="_blank">Introduction to Car Hacking: The CAN Bus</a>
+* <a href="https://www.offsec.com/blog/introduction-to-car-hacking-the-can-bus/" target="_blank">Introduction to Car Hacking: The CAN Bus</a>
 
 
 ## Credits

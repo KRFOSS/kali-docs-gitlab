@@ -35,34 +35,7 @@ The Xfce desktop uses X11, and this won't change in the near future. One can che
 
 ### GNOME
 
-In Kali Linux, the GNOME desktop uses the X11 display server by default.
-
-In this regard, Kali Linux is more conservative than other Linux distributions: Wayland became the default in Fedora 25 (released in November 2016), Debian 10 (July 2019), Ubuntu 21.04 (April 2021).
-
-Looking at the timeline above, you can expect Kali Linux to also switch to Wayland for its GNOME desktop at some point. But at the moment, this is not on the roadmap.
-
-#### Switch to Wayland
-
-{{% notice info %}}
-This part is for experienced users only. If you follow those steps, we expect you to be able to fix issues that might arise by yourself.
-{{% /notice %}}
-
-If you want to use Wayland instead of X11, open a terminal and type the following commands:
-
-```console
-kali@kali:~$ sudo mkdir -p /etc/systemd/system/gdm.service.d
-kali@kali:~$ sudo ln -sf /dev/null /etc/systemd/system/gdm.service.d/disable-wayland.conf
-```
-
-Then reboot and login: you're now using Wayland. If ever you want to switch back to X11, just remove the file `disable-wayland.conf` and reboot:
-
-```console
-kali@kali:~$ sudo rm /etc/systemd/system/gdm.service.d/disable-wayland.conf
-```
-
-Note that, after switching to Wayland, there is now an option to choose between Wayland or X11 from the login screen: at the bottom-right corner, click the _Settings_ icon, and choose _GNOME on Xorg_ if you prefer to use X11.
-
-![](images/gnome-login.png)
+Since [Kali Linux 2025.4](/blog/kali-linux-2025-4-release/)<!-- ie. gnome-shell 49.1-1kali1 -->, Wayland is the default and only display server for the GNOME desktop.
 
 ### KDE
 

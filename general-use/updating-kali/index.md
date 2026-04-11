@@ -3,7 +3,7 @@ title: Updating Kali
 description:
 icon:
 weight:
-author: ["gamb1t",]
+author: ["gamb1t","soroush nekoozadeh"]
 ---
 
 ## When should you update Kali?
@@ -27,13 +27,21 @@ deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmwa
 kali@kali:~$
 ```
 
-After that we can run the following commands which will upgrade us to the latest Kali version:
+After that we can run the following commands which will upgrade us to the latest Kali version safely:
 
 ```console
 kali@kali:~$ sudo apt update
 [...]
 kali@kali:~$
-kali@kali:~$ sudo apt full-upgrade -y
+kali@kali:~$ sudo apt dist-upgrade -y
+[...]
+kali@kali:~$
+```
+
+If the above command didn't work, you can force an update to the latest kernel using the command below.(Not recommended—it may break your system):
+
+```console
+kali@kali:~$ sudo apt update && sudo apt full-upgrade -y
 [...]
 kali@kali:~$
 ```

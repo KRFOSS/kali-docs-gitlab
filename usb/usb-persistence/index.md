@@ -34,7 +34,7 @@ In this example, we'll create a new partition to store our persistent data into,
 
 - - -
 
-1. First, begin by imaging the latest Kali Linux live ISO (currently [2025.3](/get-kali/)) to your USB drive as described in [this article](/docs/usb/live-usb-install-with-linux/).
+1. First, begin by imaging the latest Kali Linux live ISO (currently [2026.1](/get-kali/)) to your USB drive as described in [this article](/docs/usb/live-usb-install-with-linux/).
 
 {{% notice info %}}
 While '/dev/sdX' is used through this page, the '/dev/sdX' should be replaced with the proper device label. '/dev/sdX' will not overwrite any devices, and can safely be used in documentation to prevent accidental overwrites. Please use the correct device label.

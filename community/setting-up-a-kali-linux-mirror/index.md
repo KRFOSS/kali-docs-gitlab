@@ -22,7 +22,11 @@ If you want run a **private mirror**, see the dedicated section at the end.
   # size *before* a release, in order to get the upper bound. It's the upper
   # bound that mirror operators want to know.
   #
+  # On Mar 2026 there was a case of a mirror with a 1TB disk that went out of
+  # space. 1TB IS NOT ENOUGH!
+  #
   ## /kali, aka. the main package repository
+  - 2026.1     : 573 GB
   - 2025.3     : 567 GB
   - Pre-2024.3 : 653 GB
   - Pre-2024.1 : 813 GB
@@ -37,6 +41,7 @@ If you want run a **private mirror**, see the dedicated section at the end.
   - 2015       : 450 GB
 
   ## /kali-images, aka. the base images repository
+  - 2026.1     : 113 GB
   - 2025.3     : 141 GB
   - Pre-2024.3 : 158 GB
   - Pre-2024.1 : 171 GB
@@ -51,7 +56,7 @@ If you want run a **private mirror**, see the dedicated section at the end.
   - 2015       :  50 GB
 -->
 
-To be an official Kali Linux mirror, you will need a web-accessible server (HTTP required and HTTPS if possible too) with **lots of disk space, good bandwidth, rsync, and SSH access enabled**. The machine **must have a static IP address**. As of March 2024, the main package repository is about 500 GB and the images repository is about 175 GB but you can expect those numbers to fluctuate, and grow slowly over time. Thus your server should have 1 TB of storage available at least.
+To be an official Kali Linux mirror, you will need a web-accessible server (HTTP required and HTTPS if possible too) with **lots of disk space, good bandwidth, rsync, and SSH access enabled**. The machine **must have a static IP address**. As of March 2026, the main package repository is about 700 GB and the images repository is about 175 GB but you can expect those numbers to fluctuate, and grow slowly over time. Thus your server should have **1.5 TB of storage available at least**.
 
 A mirror site is expected to make the files available over HTTP and RSYNC so those services will need to be enabled. HTTPS is optional. HTTP must not be redirected to HTTPS. FTP access is optional.
 
