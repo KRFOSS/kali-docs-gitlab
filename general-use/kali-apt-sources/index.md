@@ -4,6 +4,8 @@ description:
 icon:
 weight: 61
 author: ["g0tmi1k",]
+aliases:
+  - "/docs/general-use/kali-apt-sources/"
 ---
 
 The topic of repositories is always a large one, and comes up frequently. It is an item which people often get wrong and confused with. Please take the time to read the information below and any references which is linked to before acting on anything.
