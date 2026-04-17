@@ -15,11 +15,11 @@ If you are using [last-snapshot](/docs/general-use/kali-branches/), you will not
 
 ## How to update Kali?
 
-To update Kali, first ensure that `/etc/apt/sources.list` is [properly populated](/docs/general-use/kali-linux-sources-list-repositories/):
+To update Kali, first ensure that `/etc/apt/sources.list` is [properly populated](/docs/general-use/kali-apt-sources/):
 
 ```console
 kali@kali:~$ cat /etc/apt/sources.list
-# See https://www.kali.org/docs/general-use/kali-linux-sources-list-repositories/
+# See https://www.kali.org/docs/general-use/kali-apt-sources/
 deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
 
 # Additional line for source packages
