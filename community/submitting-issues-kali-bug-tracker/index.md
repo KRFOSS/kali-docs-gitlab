@@ -28,11 +28,21 @@ Help us help you! To give us the best start in getting your issue resolved:
 
 ## How to Report a Bug
 
-The Kali Linux Bug Tracker can be found at [bugs.kali.org](https://bugs.kali.org/). This section will guide you through signing up for a new account, creating a system profile, and creating a detailed bug report for submission to the Bug Tracker.
+The Kali Linux Bug Tracker can be found at [bugs.kali.org](https://bugs.kali.org/). Browsing existing reports is open to everyone — no account is required. An account is only needed when you are ready to submit a new bug or comment on an existing one. This section walks through searching for an existing report, creating an account when it is time to submit, and putting together a detailed report.
+
+### Browsing Without an Account
+
+Anyone can read existing reports without signing in. From the bug tracker landing page you can use **View Issues** (or jump directly to [bugs.kali.org/view_all_bug_page.php](https://bugs.kali.org/view_all_bug_page.php)) to filter by category, status, or keyword and follow the discussion on any open or closed report. This is the recommended first step before opening a new report.
+
+### Be Sure You Are Not Duplicating a Previous Report
+
+Before starting your report, search the site for keywords related to your issue. If there is already an existing bug not related to hardware, please do not duplicate the request or add notes that provide no new information or are otherwise unnecessary (e.g. "Me Too" or "+1"). If the bug has already been reported, you can view the status of any progress toward resolving the issue by clicking the ID link.
+
+However, if you believe the issue to be hardware related, please submit a new report with your _specific_ information, even if it appears similar. There is a strong chance that your hardware does not exactly match that of another reporter. Do not assume that just because you have the same desktop or laptop model that your issue is not unique.
 
 ### Signing Up For a Bug Tracker Account
 
-You'll have to create an account before the Bug Tracker will allow you to submit reports or comment on existing ones.
+Once you have searched and confirmed that your issue is not already tracked, the next step is to create an account so you can submit your report. You only need to do this once.
 On the bug tracker website, click **Signup for new account**.
 
 ![](kali-bugtracker-signup-2.png)
@@ -47,15 +57,9 @@ Once your account has been activated, click **Proceed** to continue to the Bug T
 
 ![](kali-bugtracker-signup-1.png)
 
-### Be Sure You Are Not Duplicating a Previous Report
-
-Before starting your report, search the site for keywords related to your issue. If there is already an existing bug not related to hardware, please do not duplicate the request or add notes that provide no new information or are otherwise unnecessary (e.g. "Me Too" or "+1"). If the bug has already been reported, you can view the status of any progress toward resolving the issue by clicking the ID link.
-
-However, if you believe the issue to be hardware related, please submit a new report with your _specific_ information, even if it appears similar. There is a strong chance that your hardware does not exactly match that of another reporter. Do not assume that just because you have the same desktop or laptop model that your issue is not unique.
-
 ### Creating the Report
 
-To begin your report, log into your account and click the **Report Issue** link on the landing page. You will need to provide as much information as you possibly can. If unsure, review the pointers at the beginning of this document.
+To begin your report, log into your account, then use the **Report Issue** link in the navigation to open a new report. You will need to provide as much information as you possibly can. If unsure, review the pointers at the beginning of this document.
 
 The following fields are _mandatory_ within the report:
 
