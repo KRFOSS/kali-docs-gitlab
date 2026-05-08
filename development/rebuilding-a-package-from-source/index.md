@@ -16,7 +16,14 @@ Accomplishing this is a simple three-step process:
 
 In this example, we will rebuild the [libfreefare](https://github.com/nfc-tools/libfreefare) package in order to add some extra hardcoded Mifare access keys into the mifare-format tool.
 
-Before anything else, ensure that the `deb-src` line in `/etc/apt/sources.list` is not commented out.
+Before anything else, ensure that the `deb-src` type is enabled in `/etc/apt/sources.list.d/kali.sources`:
+
+```console
+kali@kali:~$ grep ^Types: /etc/apt/sources.list.d/kali.sources
+Types: deb deb-src
+
+kali@kali:~$
+```
 
 ## Downloading the Package Source
 

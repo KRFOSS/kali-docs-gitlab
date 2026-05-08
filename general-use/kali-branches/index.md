@@ -12,7 +12,7 @@ A branch is an alternative version of some software, in this case of the Kali OS
 
 You may have multiple branches enabled at once. However, switching branches may introduce problems, as packages may be at different versions, and unavailable or unstable in certain cases.
 
-Please see the [network sources](/docs/general-use/kali-apt-sources/) page for how to switch branches. For an example of how to use multiple branches, please see our [NVIDIA GPU Drivers](/docs/general-use/install-nvidia-drivers-on-kali-linux/) guide.
+Please see the [apt network sources](/docs/general-use/kali-apt-sources/) page for how to switch branches. For an example of how to use multiple branches, please see our [NVIDIA GPU Drivers](/docs/general-use/install-nvidia-drivers-on-kali-linux/) guide.
 
 ## Kali Branches
 
@@ -32,7 +32,9 @@ Note that the casual user will likely not need those branches, except in very sp
 
 ### Development
 
-- **kali-dev** is the development version of Kali Linux. It is created by combining three other branches: `kali-dev-only`, `kali-debian-picks` and `debian-testing`. Its mainly used for merging Debian's updates with the changes maintained by Kali Linux.
+These branches are not meant to be used by end-users.
+
+- **kali-dev** is the development version of Kali Linux. It is created by combining three other branches: `kali-dev-only`, `kali-debian-picks` and `debian-testing`. It's mainly used for merging Debian's updates with the changes maintained by Kali Linux.
 - **kali-dev-only** is the development distribution with Kali-specific packages. This branch is auto-merged into `kali-dev`.
 - **kali-rolling-only** is a repository for packages that need to quickly reach `kali-rolling`.
 
@@ -77,7 +79,17 @@ For more information about how Kali relates to Debian, please see our [policy pa
 
 Contrary to kali-dev, kali-rolling is expected to be of better quality because it's managed by a tool that ensures installability of all the package it contains. That tool picks updated packages from kali-dev and copies them to kali-rolling only when they have been verified to be installable. Note however that those checks do not include any functional testing. It might still contain broken software due to other problems that are not covered by the package dependencies. **Kali Rolling is the primary repository that most users should be using**. They can also report any issue they have with Kali specific packages on [bugs.kali.org](https://bugs.kali.org/). Make sure to select the "kali-dev" version in "Product version".
 
-Kali Rolling users are expected to have the following entry in their [/etc/apt/sources.list](/docs/general-use/kali-apt-sources/):
+Kali Rolling users are expected to have the following content in their [/etc/apt/sources.list.d/kali.sources](/docs/general-use/kali-apt-sources/):
+
+```plaintext
+Types: deb
+URIs: http://http.kali.org/kali/
+Suites: kali-rolling
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/kali-archive-keyring.gpg
+```
+
+Note that for systems installed before the release of [Kali 2026.2](/blog/kali-linux-2026-2-release/), this file might not exist, and instead users should have the following entry in `/etc/apt/sources.list`:
 
 ```plaintext
 deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
