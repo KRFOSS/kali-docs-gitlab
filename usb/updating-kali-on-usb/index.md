@@ -14,11 +14,17 @@ In order to properly [update Kali Linux](/docs/general-use/updating-kali/) on a 
 
 The best way to update Kali on a USB is to follow the same way you would on a full install.
 
-First ensure that `etc/apt/sources.list` is properly populated:
+First ensure that `etc/apt/sources.list.d/kali.sources` is properly populated:
 
 ```console
-kali@kali:~$ cat /etc/apt/sources.list
-deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
+kali@kali:~$ cat /etc/apt/sources.list.d/kali.sources
+# See https://www.kali.org/docs/general-use/kali-apt-sources/
+Types: deb
+URIs: http://http.kali.org/kali/
+Suites: kali-rolling
+Components: main contrib non-free non-free-firmware
+Signed-By: /usr/share/keyrings/kali-archive-keyring.gpg
+
 kali@kali:~$
 ```
 
