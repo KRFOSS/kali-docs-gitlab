@@ -53,9 +53,8 @@ Let's start installation. You will walk through the following steps :
 - Flash LineageOS and Recovery
 - Root the device
 - Install Magisk Modules
-- Flash Kali NetHunter and it's kernel
+- Flash Kali Nethunter
 - Flash bootloader removing warning at boot
-- Final tweaks and troubleshooting
 
 ## Flash Stock Rom
 
@@ -251,6 +250,7 @@ Start Monitor mode in Android terminal
 
 ```bash
 $ svc wifi disable
+$ sleep 2
 $ ifconfig wlan0 up
 $ nexutil -s0x613 -i -v2
 ```

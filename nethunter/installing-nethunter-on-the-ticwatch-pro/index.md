@@ -103,13 +103,6 @@ Download link: https://www.totalcommander.ch/android/tcandroid323-armeabi.apk
 - WPS Attacks
 - Bluetooth Arsenal
 
-## Upcoming features (not guaranteed)
-
-- Nexmon, as the chipset is supported, we are very close - ETA 2024.2
-- Router Keygen (to be optimised)
-- Hijacker (if nexmon succeeds) - ETA 2024.2
-- Mifare Classic Tool (need to build OS with android.hardware.nfc enabled) - ETA 2024.4
-
 ## Hardware limitations
 
 - Power resource is not enough for any external adapters / can't seem to have xhcdi chip for OTG

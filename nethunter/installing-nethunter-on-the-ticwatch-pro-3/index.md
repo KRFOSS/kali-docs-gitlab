@@ -10,13 +10,14 @@ author: ["yesimxev",]
 
 All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE).
 
-# From unpacking to running NetHunter in 5 steps:
+# From unpacking to running NetHunter in 6 steps:
 
 1. Unlock the bootloader
-2. Flash TWRP, WearOS image, Magisk, dm-verity disabler
-3. Finalise Magisk app to finish the rooting process
-4. Install NetHunter
-5. Set NetHunter watch face
+2. Revert to stock WearOS2
+3. Flash TWRP, WearOS image, Magisk, dm-verity disabler
+4. Finalise Magisk app to finish the rooting process
+5. Install NetHunter
+6. Set NetHunter watch face
 
 ## 1. Unlock the bootloader
 
@@ -27,9 +28,19 @@ All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE).
 - Reboot into bootloader with `adb reboot bootloader` from the terminal
 - Unlock bootloader with `fastboot oem unlock`
 
-## 2. Flash TWRP, WearOS image, Magisk, dm-verity disabler
+## 2. Revert to stock WearOS2
 
-Please note that Magisk **24.3** is recommended. OneOS is also recommended for wireless injection, as the system files will be replaced on Stock WearOS after reboot.
+Do this step **only** if you got your watch with WearOS3.
+
+- Reboot to bootloader again, using one of the above methods
+- Unpack stock WearOS2 zip (ROVER_STOCK_PMRL.220111.001.zip for LTE/Ultra LTE, RUBYFISH_STOCK_PMRB.220703.001.zip for GPS/Ultra GPS)
+- Run flash_all.sh or flash_all.bat if using Windows
+- Reboot and accept format data if required
+
+## 3. Flash TWRP, OneOS image, Magisk, dm-verity disabler
+
+Magisk **24.3** is recommended.
+**OneOS** is recommended for wireless injection, as the system files will be replaced on Stock WearOS after reboot.
 
 - Again enable ADB, and reboot to bootloader with `adb reboot bootloader`
 - Disable vbmeta verification: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`
@@ -38,17 +49,14 @@ Please note that Magisk **24.3** is recommended. OneOS is also recommended for w
 - Select Wipe -> Next page -> Advanced Wipe -> Format Data
 - Reboot to recovery
 - Select "Install -> ADB Sideload"
-If you want to install OneOS (recommended or wireless injection):
 - Flash OneOS with `adb sideload`
 - Flash Mobvoi Apps package with `adb sideload`
-- If you have an Ultra, `adb sideload` the Ultra addon package.
-If you want to keep Stock WearOS, continue from here.
-- Make a copy of your Magisk apk file to Magisk-v24.3.zip
-- Flash Magisk with `adb sideload Magisk-v24.3.zip`
+- If you have an Ultra, `adb sideload` the Ultra addon package (TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA(rover).zip for Ultra LTE, TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA_GPS(rubyfish).zip for Ultra GPS)
+- Flash Magisk with `adb sideload Magisk-v24.3.apk`
 - Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push Disable-DM-Verity_ForceEncrypt.zip /sdcard/` and install via TWRP
 - Reboot & do initial setup (pair with your phone through WearOS app)
 
-## 3. Finalise Magisk app to finish rooting
+## 4. Finalise Magisk app to finish rooting
 
 - Enable ADB again
 - Set density so app menu buttons will be reachable on OneOS `adb shell wm density 300`
@@ -57,22 +65,23 @@ If you want to keep Stock WearOS, continue from here.
 - Find the settings on top right corner (a bit tricky to reach)
 - You may want to disable auto-update, set grant access in auto response, and disable toast notifications for easier navigation in the future
 
-## 4. Install NetHunter
+## 5. Install NetHunter
 
 - Reboot to recovery
 - Select Install -> ADB Sideload
 - Flash NetHunter image with `adb sideload`
-- Flash Magisk zip with `adb sideload`
+- Flash Magisk apk again with `adb sideload`
 - Reboot
 - Start NetHunter app & chroot (it may reboot after first start)
 - Reboot
 
-Hijacker and Nexmon install guide can be found on [Kali Forums](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
+Hijacker and Nexmon wireless injection install guide can be found on [Kali Forums](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
 
-## 5. Set NetHunter watch face (optional)
+## 6. Set NetHunter watch face (optional)
 
-- Install Facer onto your phone and watch from Play Store
-- Search for NetHunter
+- Install Facer onto your phone
+- Unzip facer zip for wearos and install the contents using `adb install-multiple *.apk`
+- Search for NetHunter on your phone
 - Select & Sync
 
 ### Enjoy Kali NetHunter on the TicWatch Pro 3
@@ -84,8 +93,9 @@ Hijacker and Nexmon install guide can be found on [Kali Forums](https://forums.k
   - TWRP image for [rover](https://kali.download/nethunter-images/devices/rubyfish/rover_recovery.img) or [rubyfish](https://kali.download/nethunter-images/devices/rubyfish/rubyfish_recovery.img)
   - [vbmeta image](https://kali.download/nethunter-images/devices/rubyfish/vbmeta.img)
   - [dm-verity disabler](https://kali.download/nethunter-images/devices/rubyfish/Disable-DM-Verity_ForceEncrypt.zip)
-  - [OneOS, Stock ROMs and Mobvoi packages](https://kali.download/nethunter-images/devices/rubyfish/) _(optional)_
-- [TicWatch Pro 3 NetHunter zip](https://www.kali.org/get-kali/#kali-mobile) - Get the latest update under TicWatch section
+  - [OneOS, Stock ROMs, Ultra addon and Mobvoi packages](https://kali.download/nethunter-images/devices/rubyfish/) _(optional)_
+  - [TicWatch Pro 3 NetHunter zip](https://www.kali.org/get-kali/#kali-mobile) - Get the latest update under TicWatch section
+  - [Facer app for WearOS 2](https://kali.download/nethunter-images/devices/rubyfish/facer_wearos.zip)
 
 ## Additional recommended apps
 
@@ -93,7 +103,7 @@ Hijacker and Nexmon install guide can be found on [Kali Forums](https://forums.k
 
 ## Supported features
 
-- Monitor mode with injection - [install guide](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
+- Monitor mode with injection
 - Kali services
 - Custom Commands
 - Bluetooth Arsenal
@@ -112,4 +122,3 @@ Hijacker and Nexmon install guide can be found on [Kali Forums](https://forums.k
 ## Hardware limitations
 
 - Power resource is not enough for any external adapters, although this kernel might support Y cable in the future!
-
