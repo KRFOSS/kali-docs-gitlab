@@ -84,3 +84,23 @@ To figure out which may be the case in your situation, you can look up the packa
 This can occur when files move between packages and don't include the proper packaging field set to tell it that it is a replacing something else. In most cases this can be solved by retrying the installation or upgrade. In other cases, the APT command can have `-o dpkg::options::="--force-overwrite"` added in order to tell dpkg to ignore the overwrite error.
 
 For extra information and a more detailed understanding of this error, you can read about it [here](https://raphaelhertzog.com/2011/08/01/understanding-dpkgs-file-overwrite-error/)
+
+## EXPKEYSIG / "Missing key" / repository signature errors
+
+If `apt update` fails with a message like:
+
+```console
+Err:1 http://http.kali.org/kali kali-rolling InRelease
+  The following signatures were invalid: EXPKEYSIG ED444FF07D8D0BF6 Kali Linux Repository <devel@kali.org>
+```
+
+or, on newer Kali installs that use `sqv`:
+
+```console
+Err:1 https://http.kali.org/kali kali-rolling InRelease
+  Sub-process /usr/bin/sqv returned an error code (1), error message is: Missing key 827C8569F2518CC677FECA1AED65462EC8D5E4C5, which is needed to verify signature.
+```
+
+…it usually means the local copy of the Kali archive signing key is out of date. The key is rotated every 2-3 years; if the `kali-archive-keyring` package on your machine has not been upgraded for a long time, the key it ships expires (or is the wrong key) and `apt` refuses to trust the repository.
+
+The dedicated [Resolving APT Errors Caused by an Expired Kali Linux Signing Key](/docs/general-use/gpgkey-expiry/) page walks through both the prevention path (keep `kali-archive-keyring` upgraded) and the recovery path (fetch the current key from `archive.kali.org` and drop it into `/etc/apt/trusted.gpg.d/`).
