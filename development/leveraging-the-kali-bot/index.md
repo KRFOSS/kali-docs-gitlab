@@ -198,7 +198,7 @@ the changelog with `gbp dch`.
 You can reproduce all this locally by running `debian-svp new-upstream
 --debian-revision=0kali1 --require-uscan --refresh-patches --dry-run
 --skip-empty --diff <package>` on a kali-rolling system with the appropriate
-`deb-src` type in APT's kali.sources (and with `silver-platter` installed).
+`deb-src` line in APT's sources.list (and with `silver-platter` installed).
 
 <!-- TODO: where can we look at the changes made to the packaging
 git repository? is there any way to run it in a pre-existing

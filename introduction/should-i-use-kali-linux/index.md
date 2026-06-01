@@ -14,7 +14,7 @@ Kali Linux is specifically geared to meet the requirements of professional penet
 
 2. **Custom Linux kernel:** Kali Linux uses an upstream kernel, patched for wireless injection.
 
-3. **A _minimal_ and _trusted_ set of repositories:** given the aims and goals of Kali Linux, maintaining the integrity of the system as a whole is absolutely key. With that goal in mind, the set of upstream software sources which Kali uses is [kept to an absolute minimum](/docs/general-use/kali-apt-sources/). Many new Kali users are tempted to add additional repositories to their **kali.sources** (or legacy file **sources.list**), but doing so runs a _very serious risk_ of breaking your Kali Linux installation.
+3. **A _minimal_ and _trusted_ set of repositories:** given the aims and goals of Kali Linux, maintaining the integrity of the system as a whole is absolutely key. With that goal in mind, the set of upstream software sources which Kali uses is [kept to an absolute minimum](/docs/general-use/kali-apt-sources/). Many new Kali users are tempted to add additional repositories to their **sources.list**, but doing so runs a _very serious risk_ of breaking your Kali Linux installation.
 
 #### Is Kali Linux Right For You?
 

@@ -30,8 +30,8 @@ Afterwards, make sure you have [`contrib` & `non-free*` components are enabled i
 Additionally, ensure you have the appropriate kernel headers installed for your system:
 
 ```console
-kali@kali:~$ grep "contrib non-free" /etc/apt/sources.list.d/kali.sources 
-Components: main contrib non-free non-free-firmware
+kali@kali:~$ grep "contrib non-free" /etc/apt/sources.list
+deb http://http.kali.org/kali kali-rolling main contrib non-free non-free-firmware
 kali@kali:~$
 kali@kali:~$ sudo apt update
 [...]

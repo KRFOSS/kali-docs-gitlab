@@ -77,43 +77,24 @@ Thus it's a good idea to have a look at the changes that landed in the
 upstream git repository before deciding to upgrade a package to its
 kali-bleeding-edge version.
 
-## How to enable the repository interactively
+## How to enable the repository
 
 Ok. You have been warned and you promised to use kali-bleeding-edge
-in a reasonable way. How do you enable that repository?
-
-The easy way is to use the command-line tool `kali-tweaks`:
+in a reasonable way. How do you enable that repository? Easy:
 
 ```console
-kali@kali:~$ kali-tweaks
-```
-
-Navigate to the *Network Repositories* section, check `bleeding-edge`,
-confirm and quit.
-
-If you later want to disable the repository, follow the same procedure
-and uncheck `bleeding-edge`.
-
-## How to enable the repository programmatically
-
-To enable the kali-bleeding-edge repository programmatically from the
-terminal with a one-liner, you can use:
-
-```console
-kali@kali:~$ sudo sed -i 's/^Suites: .*/Suites: kali-rolling kali-bleeding-edge/' /etc/apt/sources.list.d/kali.sources
-
+kali@kali:~$ sudo tee /etc/apt/sources.list.d/kali-bleeding-edge.list <<EOF
+deb http://http.kali.org/kali kali-bleeding-edge main contrib non-free non-free-firmware
+EOF
 kali@kali:~$ sudo apt update
+[...]
 ```
 
-Note that the command above assumes that your system is configure to get
-updates from kali-rolling, if ever that's not the case adjust the
-command accordingly.
-
-If you later want to disable the kali-bleeding-edge repository and keep
-only the kali-rolling repository, use:
+If you later want to disable the repository, it's as easy as removing
+the file that you just created:
 
 ```console
-kali@kali:~$ sudo sed -i 's/^Suites: .*/Suites: kali-rolling/' /etc/apt/sources.list.d/kali.sources
+kali@kali:~$ sudo rm -f /etc/apt/sources.list.d/kali-bleeding-edge.list
 ```
 
 ## Install a package from kali-bleeding-edge
