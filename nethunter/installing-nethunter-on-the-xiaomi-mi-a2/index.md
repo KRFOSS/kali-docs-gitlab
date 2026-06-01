@@ -30,8 +30,9 @@ kali@kali:~$
 1. Go to Settings -> About Phone then tap 7 times on "Build number" to enable "Developer options"
 2. Go to Settings -> System -> Developer options and tap "OEM unlocking" then turn off device
 3. Hold Volume Down and Power Buttons till you see "FASTBOOT" screen now plug device to PC
-4. Open terminal and run `fastboot flashing unlock` and hold Volume Down then wait until "FASTBOOT" come back now run `fastboot flashing unlock_critical` if FASTBOOT screen will not appear after first command just repeat Step 3 after phone boot and use `fastboot flashing unlock_critical`
-5. After reboot u should see "Unlocked" on boot screen
+4. Open terminal and run `fastboot flashing unlock` then wait for device to boot after that power it off
+5. Repeat Step 3 and run `fastboot flashing unlock_critical` then device will reboot
+6. After reboot u should see "Unlocked" on boot screen
 
 ## 3. Flash PixelExperience Recovery and setup for LineageOS
 
@@ -73,12 +74,13 @@ kali@kali:~/Downloads$ adb sideload LineageOS-22.1-jasmine-sprout.zip
 kali@kali:~/Downloads$
 ```
 4. Now wait for LineageOS to install if some error appear just tap "Yes"
-5. When it is installed tap "Reboot system now"
-6. Now setup your device like any android phone
-7. When you finished setting up your device reboot it and hold Volume Up
-8. If you see "RECOVERY" screen tap "Apply update" -> "Apply from ADB"
-9. Download [Magisk-v27.apk](https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk)
-10. Flash Magisk
+5. When it is installed go back to recovery main menu and use "Factory reset"
+6. Use "Reboot System now" and device will reboot
+7. Now setup your device like any android phone
+8. When you finished setting up your device reboot it and hold Volume Up
+9. If you see "RECOVERY" screen tap "Apply update" -> "Apply from ADB"
+10. Download [Magisk-v27.apk](https://github.com/topjohnwu/Magisk/releases/download/v27.0/Magisk-v27.0.apk)
+11. Flash Magisk
 ```console
 kali@kali:~/Downloads$ adb devices
 dea044c9    sideload
