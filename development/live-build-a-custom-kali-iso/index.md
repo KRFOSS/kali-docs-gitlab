@@ -12,10 +12,10 @@ author: ["g0tmi1k",]
 
 Building a customized Kali Linux image is not as complex as you may be thinking. It is easy, fun, and rewarding! Kali Linux traditionally, has been a **Live Image**, but since [Kali 2020.1](/blog/kali-linux-2020-1-release/) an **Installer Image** was introduced. Both these images have [different functions](/docs/introduction/what-image-to-download/), and are also built in different ways.
 
-- Live Image - allows you to try Kali, without altering the system (making it great for [USB](/docs/usb/)). It is created using [live-build](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html)
-- Installer Image - allows for you to customize Kali by picking packaging during installation, such as picking the [desktop environment](/docs/general-use/switching-desktop-environments/) as well as what [metapackages](/docs/general-use/metapackages/) get installed. This image is powered by [simple-cdd](https://wiki.debian.org/Simple-CDD) _(which uses `debian-cd` to make `Debian-Installer`)_.
+- Live Image - allows you to try Kali, without altering the system (making it great for [USB](/docs/usb/)). It is created using [live-build](https://live-team.pages.debian.net/live-manual/html/live-manual/index.en.html), and the build-scripts live in [`kalilinux/build-scripts/kali-live`](https://gitlab.com/kalilinux/build-scripts/kali-live).
+- Installer Image - allows for you to customize Kali by picking packaging during installation, such as picking the [desktop environment](/docs/general-use/switching-desktop-environments/) as well as what [metapackages](/docs/general-use/metapackages/) get installed. This image is powered by [simple-cdd](https://wiki.debian.org/Simple-CDD) _(which uses `debian-cd` to make `Debian-Installer`)_, and the build-scripts live in [`kalilinux/build-scripts/kali-installer`](https://gitlab.com/kalilinux/build-scripts/kali-installer).
 
-You can configure virtually any aspect of your Kali ISO build, such as adding packages from outside of Kali network repositories, unattended installations to changing the default wallpaper. Our build-scripts provides a framework that uses a configuration set to automate and customize all aspects of building the images. The Kali Linux development team use the same build-scripts to produce the official Kali ISO releases.
+The two images used to share a single repository (`live-build-config`), but the project has since been split into two parallel repositories — one per image type — so the rest of this guide treats them separately. The original `live-build-config` URL now redirects to `kali-live`. You can configure virtually any aspect of your Kali ISO build, such as adding packages from outside of Kali network repositories, unattended installations to changing the default wallpaper. Our build-scripts provides a framework that uses a configuration set to automate and customize all aspects of building the images. The Kali Linux development team use the same build-scripts to produce the official Kali ISO releases.
 
 ## Where Should You Build Your ISO?
 
@@ -25,22 +25,29 @@ Ideally, you should build your custom Kali ISO from **within a pre-existing Kali
 
 #### Getting Ready - Setting Up The build-script Kali System
 
-We first need to prepare the Kali ISO build environment by installing and setting up the required packages with the following commands:
+We first need to prepare the Kali ISO build environment by installing the required packages and cloning the build-scripts. Pick the repository that matches the image type you want to build:
 
 ```console
 kali@kali:~$ sudo apt update
-kali@kali:~$ sudo apt install -y git live-build simple-cdd cdebootstrap curl
 kali@kali:~$
-kali@kali:~$ git clone https://gitlab.com/kalilinux/build-scripts/live-build-config.git
+kali@kali:~$ # Live Image dependencies + repo:
+kali@kali:~$ sudo apt install -y git live-build cdebootstrap curl
+kali@kali:~$ git clone https://gitlab.com/kalilinux/build-scripts/kali-live.git
+kali@kali:~$
+kali@kali:~$ # Installer Image dependencies + repo:
+kali@kali:~$ sudo apt install -y git simple-cdd debian-cd curl
+kali@kali:~$ git clone https://gitlab.com/kalilinux/build-scripts/kali-installer.git
 ```
+
+You only need the dependencies for the image type(s) you intend to build, but installing all of them is harmless.
 
 #### Building an Updated Live Image
 
-Now you can simply build an updated Kali ISO _(with our default configuration)_ by entering the `live-build-config/` directory and running our `build.sh` wrapper script, as follows:
+Now you can simply build an updated Kali Live ISO _(with our default configuration)_ by entering the `kali-live/` directory and running our `build.sh` wrapper script, as follows:
 
 ```console
-kali@kali:~$ cd live-build-config/
-kali@kali:~/live-build-config$ ./build.sh --verbose
+kali@kali:~$ cd kali-live/
+kali@kali:~/kali-live$ ./build.sh --verbose
 [...]
 ***
 GENERATED KALI IMAGE: ./images/kali-linux-rolling-live-amd64.iso
@@ -52,10 +59,11 @@ The `build.sh` script will take a while to complete, as it downloads all of the 
 
 #### Building an Updated Installer Image
 
-By default, it will generate a **Live Image**. If you want an **Installer Image**, add `--installer`:
+The Installer Image is now built from its own repository — there is no longer an `--installer` flag in `kali-live`. Switch into the `kali-installer/` directory and run the same wrapper script:
 
 ```console
-kali@kali:~/live-build-config$ ./build.sh --verbose --installer
+kali@kali:~$ cd kali-installer/
+kali@kali:~/kali-installer$ ./build.sh --verbose
 ```
 
 We are using the `--verbose` to output more on the screen rather than it being captured in just the `build.log` output. If you want even more output, you can use `--debug` instead, which will then give even more information.
@@ -89,7 +97,7 @@ $ sudo dpkg -i kali-archive-keyring_2022.1_all.deb
 $ sudo dpkg -i live-build_20230502+kali3_all.deb
 ```
 
-With the environment all prepared, we start the process by setting up the build-script profile and clone out the build config:
+With the environment all prepared, we start the process by setting up the build-script profile and cloning out the build-scripts. As above, pick the repository for the image type you want — `kali-live` for Live ISOs, `kali-installer` for Installer ISOs:
 
 ```console
 $ cd /usr/share/debootstrap/scripts/
@@ -98,9 +106,9 @@ $ sudo mv /tmp/kali .
 $ sudo ln -s kali kali-rolling
 $
 $ cd ~/
-$ git clone https://gitlab.com/kalilinux/build-scripts/live-build-config.git
+$ git clone https://gitlab.com/kalilinux/build-scripts/kali-live.git
 $
-$ cd live-build-config/
+$ cd kali-live/
 ```
 
 At this point, depending on the host OS and its version, we may need to edit `build.sh` to bypass a version check for **debootstrap**. We do this by commenting out the `exit 1` below:
@@ -144,9 +152,9 @@ $ ./build.sh --verbose
 By using the [kali-last-snapshot](/docs/general-use/kali-branches/) branch, you are able to re-create the latest distributed image. We can do this by using `--distribution kali-last-snapshot`:
 
 ```console
-kali@kali:~$ time ./build.sh \
+kali@kali:~$ cd kali-installer/
+kali@kali:~/kali-installer$ time ./build.sh \
   --verbose \
-  --installer \
   --distribution kali-last-snapshot \
   --version 2026.1 \
   --subdir kali-2026.1
@@ -154,8 +162,10 @@ kali@kali:~$ time ./build.sh \
 ***
 GENERATED KALI IMAGE: ./images/kali-2026.1/kali-linux-2026.1-installer-amd64.iso
 ***
-kali@kali:~$
+kali@kali:~/kali-installer$
 ```
+
+The same flags work in `kali-live/` if you want to re-build the Live image instead.
 
 - - -
 
@@ -168,14 +178,14 @@ If you want to customize your Kali Linux ISO, this section will explain some of 
 Since [Kali 2.0](/blog/kali-linux-2-0-release/), we now support built in configurations for various [desktop environments](/docs/general-use/switching-desktop-environments/), including Xfce _(default)_, Gnome, KDE, E17, I3WM, LXDE, MATE. To build any of these, you would use syntax similar to the following:
 
 ```console
-kali@kali:~/live-build-config$ # These are the different Desktop Environment build options:
-kali@kali:~/live-build-config$ #./build.sh --variant {xfce,gnome,kde,mate,e17,lxde,i3} --verbose
-kali@kali:~/live-build-config$
-kali@kali:~/live-build-config$ # To build a Gnome ISO:
-kali@kali:~/live-build-config$ ./build.sh --variant gnome --verbose
-kali@kali:~/live-build-config$
-kali@kali:~/live-build-config$ # To build a KDE ISO:
-kali@kali:~/live-build-config$ ./build.sh --variant kde --verbose
+kali@kali:~/kali-live$ # These are the different Desktop Environment build options:
+kali@kali:~/kali-live$ #./build.sh --variant {xfce,gnome,kde,mate,e17,lxde,i3} --verbose
+kali@kali:~/kali-live$
+kali@kali:~/kali-live$ # To build a Gnome ISO:
+kali@kali:~/kali-live$ ./build.sh --variant gnome --verbose
+kali@kali:~/kali-live$
+kali@kali:~/kali-live$ # To build a KDE ISO:
+kali@kali:~/kali-live$ ./build.sh --variant kde --verbose
 ```
 
 This is not required with the installer images, as it includes Xfce, Gnome and KDE by default. You can add others by including their packages as explained in the section below.
@@ -224,9 +234,9 @@ By default, the build-script will generate the Kali image based on the architect
 If you build multiple images, you will find you are often waiting on `build.sh` to finish. There are a few ways to speed up the build process, such as:
 
 <!--
-$ time ./build.sh --installer >/dev/null && time ./build.sh --live >/dev/null
-./build.sh --installer >/dev/null  164.10s user 12.80s system 49% cpu 5:55.25 total
-./build.sh --live >/dev/null  728.35s user 67.41s system 90% cpu 14:41.27 total
+$ time (cd kali-installer && ./build.sh >/dev/null) && time (cd kali-live && ./build.sh >/dev/null)
+kali-installer/build.sh >/dev/null  164.10s user 12.80s system 49% cpu 5:55.25 total
+kali-live/build.sh >/dev/null       728.35s user 67.41s system 90% cpu 14:41.27 total
 -->
 
 - Building Installer images as they often build quicker than Live images
@@ -238,8 +248,8 @@ You often find that you are waiting on packages to be pulled down. You can eithe
 We can instruct the build-script to use a different mirror, by doing the following (assuming our network mirror is located at `http://192.168.0.101/kali`):
 
 ```console
-kali@kali:~/live-build-config$ echo "http://192.168.0.101/kali/" > .mirror
-kali@kali:~/live-build-config$ ./build.sh --verbose
+kali@kali:~/kali-live$ echo "http://192.168.0.101/kali/" > .mirror
+kali@kali:~/kali-live$ ./build.sh --verbose
 ```
 
 - - -
@@ -249,7 +259,7 @@ kali@kali:~/live-build-config$ ./build.sh --verbose
 You can see all the available command-line options by doing `--help`:
 
 ```console
-kali@kali:~/live-build-config$ ./build.sh --help
+kali@kali:~/kali-live$ ./build.sh --help
 Usage: ./build.sh [<option>...]
 
   --distribution <arg>
@@ -257,9 +267,6 @@ Usage: ./build.sh [<option>...]
   --arch <arg>
   --verbose
   --debug
-  --salt
-  --installer
-  --live
   --variant <arg>
   --version <arg>
   --subdir <arg>
@@ -269,8 +276,10 @@ Usage: ./build.sh [<option>...]
   --help
 
 More information: https://www.kali.org/docs/development/live-build-a-custom-kali-iso/
-kali@bDesktop:~/live-build-config$
+kali@kali:~/kali-live$
 ```
+
+The `--help` output for `kali-installer/build.sh` is the same set of flags minus the `--proposed-updates` switch (Live ISOs only).
 
 - - -
 
@@ -300,7 +309,7 @@ Afterwards, to boot from the image produced _(we will be using the Live image on
 kali@kali:$ qemu-system-x86_64 \
   -enable-kvm \
   -drive if=virtio,aio=threads,cache=unsafe,format=qcow2,file=/tmp/kali-test.hdd.img \
-  -cdrom /home/kali/live-build-config/images/kali-linux-rolling-live-amd64.iso \
+  -cdrom /home/kali/kali-live/images/kali-linux-rolling-live-amd64.iso \
   -boot once=d
 ```
 
@@ -312,7 +321,7 @@ kali@kali:$ qemu-system-x86_64 \
   -drive if=virtio,aio=threads,cache=unsafe,format=qcow2,file=/tmp/kali-test.hdd.img \
   -drive if=pflash,format=raw,readonly,file=/usr/share/OVMF/OVMF_CODE.fd \
   -drive if=pflash,format=raw,readonly,file=/usr/share/OVMF/OVMF_VARS.fd \
-  -cdrom /home/kali/live-build-config/images/kali-linux-rolling-live-amd64.iso \
+  -cdrom /home/kali/kali-live/images/kali-linux-rolling-live-amd64.iso \
   -boot once=d
 ```
 
