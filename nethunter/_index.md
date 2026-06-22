@@ -183,7 +183,7 @@ Other resources recommended by Nethunter team :
 1. [Wireless Cards](/docs/nethunter/wireless-cards/)
 2. SDR - RTL-SDR (based on RTL2832U)
 3. Bluetooth adapters - Sena UD100, TP-Link UB500, generic CSR4.0 adapter
-4. CARsenal - [CAN USB Analyser](https://www.seeedstudio.com/USB-CAN-Analyzer-p-2888.html?srsltid=AfmBOooenIruMfjueidDJ9TK8t6e8ihd3wuCCV0i7e2YQfTTSBDhfyYw), [CANable USB](https://openlightlabs.com/), [ELM327 Adapter](www.carscanner.info/choosing-obdii-adapter/), [MCP25XX CAN Module](https://www.seeedstudio.com/I2C-CAN-Bus-Module-p-5054.html?srsltid=AfmBOorQK745b5IMop1r_Gmledh6YLwc1VlqrpDMOnUxBGrA6iCpLiEb).
+4. CARsenal - [CAN USB Analyser](https://www.seeedstudio.com/USB-CAN-Analyzer-p-2888.html?srsltid=AfmBOooenIruMfjueidDJ9TK8t6e8ihd3wuCCV0i7e2YQfTTSBDhfyYw), [CANable USB](https://openlightlabs.com/), [ELM327 Adapter](https://www.carscanner.info/choosing-obdii-adapter/), [MCP25XX CAN Module](https://www.seeedstudio.com/I2C-CAN-Bus-Module-p-5054.html?srsltid=AfmBOorQK745b5IMop1r_Gmledh6YLwc1VlqrpDMOnUxBGrA6iCpLiEb).
 
 About CARsenal adapters. All the recommended hardware as been tested and find out working. Clone from ali express MAY or MAY NOT work, i personally got clone for all of them and got these working excepted for ELM327 which was detected as clone by feediag and wasnt returning successfull connection with the car. Anyway i still recommend official product if you can afford these. Other recommendation may come with time.
 
