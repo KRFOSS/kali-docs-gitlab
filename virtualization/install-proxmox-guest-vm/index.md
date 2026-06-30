@@ -17,7 +17,7 @@ Proxmox has two ways of accessing a nested environment. The first is through vir
 - Go to [Kali images](/get-kali/#kali-installer-images) and select "Pre-built Virtual Machines"
 - Download the proper image (Qemu64 or Qemu32)
 - Extract the image from the downloaded file (note that this is [7Zip](https://www.7-zip.org/) format)
-- Rename the file to *.iso (i.e. change the file extension from qcow2 to iso). Take a note of the file name (eg. `kali-linux-2026.1-qemu-amd64.iso`)
+- Rename the file to *.iso (i.e. change the file extension from qcow2 to iso). Take a note of the file name (eg. `kali-linux-2026.2-qemu-amd64.iso`)
 - Open Proxmox
 - Select the storage to be used (eg. locate correct node and find local) in the left pane
 - In the middle pane select ISO images and click Upload
@@ -32,10 +32,10 @@ Proxmox has two ways of accessing a nested environment. The first is through vir
   - Set network according to need (or leave to default). Click Next
   - Review configuration and click Finish
 - Right click on node and select Shell
-- Locate the uploaded file by issuing a `find / -name {filename}` (eg. `find / -name kali-linux-2026.1-qemu-amd64.iso`)
+- Locate the uploaded file by issuing a `find / -name {filename}` (eg. `find / -name kali-linux-2026.2-qemu-amd64.iso`)
 - Change directory to the location of the file
-- Rename file from *.iso to *.qcow2 (eg. `mv kali-linux-2026.1-qemu-amd64.iso kali-linux-2026.1-qemu-amd64.qcow2`)
-- Run command `qm importdisk VM-ID {filename.qcow2} {storage}` (eg. `qm importdisk 108 kali-linux-2026.1-qemu-amd64.qcow2 local-lvm`)
+- Rename file from *.iso to *.qcow2 (eg. `mv kali-linux-2026.2-qemu-amd64.iso kali-linux-2026.2-qemu-amd64.qcow2`)
+- Run command `qm importdisk VM-ID {filename.qcow2} {storage}` (eg. `qm importdisk 108 kali-linux-2026.2-qemu-amd64.qcow2 local-lvm`)
 - Close shell
 - In Proxmox, locate the created VM
 - In the middle pane, click Hardware and then locate the 'Unused disk 0' in the right pane. Click Edit

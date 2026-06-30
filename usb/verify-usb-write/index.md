@@ -32,7 +32,7 @@ You can use disk manager to view the partitions created on the USB.
 ### On Linux/MacOS
 
 ```console
-kali@kali:~$ shasum -a 256 kali-linux-2026.1-live-amd64.iso
+kali@kali:~$ shasum -a 256 kali-linux-2026.2-live-amd64.iso
 ```
 
 Replace the iso file name with the one you downloaded. Verify the checksum with the one provided on the page from which you downloaded the iso.
@@ -42,7 +42,7 @@ Replace the iso file name with the one you downloaded. Verify the checksum with 
 If certutil is available you can run:
 
 ```powershell
-C:\Users\Win>certutil -hashfile kali-linux-2026.1-live-amd64.iso sha256
+C:\Users\Win>certutil -hashfile kali-linux-2026.2-live-amd64.iso sha256
 ```
 
 To verify your download.Certain versions of Windows do not have the native ability to calculate SHA256 checksums. If you do not have certutil installed, you can use a utility such as Microsoft File Checksum Integrity Verifier or Hashtab to verify your download.
