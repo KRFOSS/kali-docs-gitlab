@@ -12,6 +12,6 @@ As the specific exception to the above, Kali Linux's non-free section contains s
 
 If you want to build a Kali derivative, you should _review the license_ of each Kali-specific non-free package before including it in your distribution - but note that non-free packages which are imported from Debian are safe to redistribute.
 
-More importantly, all of the specific developments in Kali Linux's infrastructure or its integration with the included software have been put under the [GNU GPL](http://www.gnu.org/licenses/gpl.html).
+More importantly, all of the specific developments in Kali Linux's infrastructure or its integration with the included software have been put under the [GNU GPL v3](http://www.gnu.org/licenses/gpl.html) ([LICENSE](/docs/LICENSE)).
 
 If you want more information about the license of any given piece of software, you can either check `debian/copyright` in the source package or `/usr/share/doc/_package_/copyright` for a package that you have already installed.
