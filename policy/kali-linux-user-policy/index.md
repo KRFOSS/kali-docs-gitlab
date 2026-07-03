@@ -6,7 +6,7 @@ weight:
 author: ["g0tmi1k",]
 ---
 
-In order to execute commands at a privileged level, Kali uses two methods todo so:
+In order to execute commands at a privileged level, Kali uses two methods to do so:
 
 - pkexec (GUI & cli)
 - sudo (cli)
