@@ -245,9 +245,13 @@ Number  Start   End     Size    Type     File system  Flags
 kali@kali:~$
 ```
 
-We can have multiple persistence stores on the USB drive, both encrypted or not... and choose which persistence store we want to load, at boot time.
+We can have multiple persistence stores on the USB drive, encrypted or unencrypted, and choose which persistence store we want to load at boot time.
 
-Let's delete the previous large partition, which filled up the rest of the drive, and create two additional non-encrypted store. We'll label and call it "work".
+Before changing or removing persistence partitions, boot the USB drive in live mode without persistence. Do not modify the persistence partition that is currently active from inside a persistent session.
+
+In this example, we'll delete the previous large partition, which filled up the rest of the drive, and create two additional unencrypted persistence stores. We'll label them `work` and `ctf`.
+
+Each store created in this example must have its own partition, filesystem label, and `persistence.conf` file before it can be selected at boot.
 
 - - -
 
@@ -315,6 +319,8 @@ kali@kali:~$
 
 **0x02 - Format and label partitions**:
 
+The filesystem labels are used later with the `persistence-label` boot parameter to select the persistence store to load.
+
 ```console
 kali@kali:~$ sudo mkfs.ext4 /dev/sdX3
 mke2fs 1.47.2 (1-Jan-2025)
@@ -352,6 +358,8 @@ kali@kali:~$
 
 **0x03 - Mount these new partitions and create a persistence.conf on them**:
 
+Each persistence store needs a valid `persistence.conf` file at the root of the partition.
+
 ```console
 kali@kali:~$ sudo mkdir -pv /mnt/my_usb{3,4}
 mkdir: created directory '/mnt/my_usb3'
@@ -373,7 +381,7 @@ kali@kali:~$
 
 - - -
 
-Now you can you start any system, and set it to start from USB. When the boot menu appears, using the "tab" key, edit the persistence-label parameter to point to your preferred persistence store! We will select our "work" partition:
+Now you can start any system and set it to boot from USB. When the boot menu appears, use the "tab" key and edit the `persistence-label` parameter to point to your preferred persistence store. We will select our `work` partition:
 
 ```console
 kali@kali:~$ reboot
