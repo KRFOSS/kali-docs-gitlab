@@ -47,18 +47,23 @@ $ wget https://kali.download/arm-images/kali-2026.2/kali-linux-2026.2-raspberry-
 $ xzcat kali-linux-2026.2-raspberry-pi-arm64.img.xz | sudo dd of=/dev/sdX bs=512k status=progress
 ```
 
+{{% notice info %}}
+Current Kali Raspberry Pi images include cloud-init/NoCloud data on the boot partition. In testing with a Kali Raspberry Pi 64-bit FDE setup reporting `VERSION_ID="2026.2"`, cloud-init did not prevent the encrypted root filesystem from unlocking and booting. After the initial setup has completed, `cloud-init status --long` may report `disabled-by-marker-file`.
+{{% /notice %}}
+
 - - -
 
 ## Preparing the system
 
 ### Preparing the chroot
 
-We next are going to get things ready for a chroot. Let's create where we want to mount the microSD card, then mount it:
+We next are going to get things ready for a chroot. Let's create where we want to mount the microSD card, then mount it. Current Raspberry Pi images use `/boot/firmware` for the firmware boot partition, so we mount the first partition there:
 
 ```console
 $ sudo mkdir -vp /mnt/chroot/
 $ sudo mount /dev/sdX2 /mnt/chroot/
-$ sudo mount /dev/sdX1 /mnt/chroot/boot/
+$ sudo mkdir -vp /mnt/chroot/boot/firmware/
+$ sudo mount /dev/sdX1 /mnt/chroot/boot/firmware/
 $ sudo mount -t proc none /mnt/chroot/proc
 $ sudo mount -t sysfs none /mnt/chroot/sys
 $ sudo mount -o bind /dev /mnt/chroot/dev
@@ -86,27 +91,34 @@ $ sudo env LANG=C chroot /mnt/chroot/
 
 - - -
 
-We want to ensure we are on the latest kernel before we get started, so lets also make sure we have them installed:
+Current Raspberry Pi images already include the Raspberry Pi kernel and firmware packages needed for booting. On recent Kali Raspberry Pi images, the kernel modules use names such as `rpt-rpi-v8` or `rpt-rpi-2712`, rather than the older kernel names used by previous images.
+
+You can verify the available kernel module versions inside the chroot with:
 
 ```console
 ┌──(root㉿kali)-[/]
-└─# apt install -y kalipi-kernel kalipi-bootloader kalipi-re4son-firmware
+└─# ls /lib/modules/
 ```
+
+Use the kernel version that matches the image you are preparing in the later `mkinitramfs` steps.
 
 - - -
 
 ### Boot options
 
-Next we are going to edit `/boot/cmdline.txt` and change the root path. We will want to change the root path to be `/dev/mapper/crypt`, and then we will add in `cryptdevice=PARTUUID=$partuuid:crypt` right after that. The reason for this is that the kernel needs to know where the root filesystem is, in order to mount it and use it, and since we are encrypting the rootfs later in the post, during boot time it can't see the unencrypted device either, because of the encryption! While we are changing the name here to "crypt", you can call it whatever you want, really. The `/boot/cmdline.txt` file on a RaspberryPi device is used to pass the kernel command line options.
-The end result should look like this:
+Next we are going to edit `/boot/firmware/cmdline.txt` and change the root path. We will want to change the root path to `/dev/mapper/crypt`, and then add `cryptdevice=PARTUUID=$partuuid:crypt`. The reason for this is that the kernel needs to know where the root filesystem is in order to mount it. Since we are encrypting the root filesystem later in the process, the unencrypted root partition will no longer be available during boot.
+
+The `/boot/firmware/cmdline.txt` file on current Raspberry Pi images is used to pass the kernel command line options. Keep the command line on a single line. If your image already contains options such as `ds=nocloud`, keep them unless you intentionally want to remove that behaviour.
+
+The end result should look similar to this, with the `PARTUUID` adjusted for your system:
 
 ```console
 ┌──(root㉿kali)-[/]
-└─# vim /boot/cmdline.txt
+└─# vim /boot/firmware/cmdline.txt
 
 ┌──(root㉿kali)-[/]
-└─# cat /boot/cmdline.txt
-dwc_otg.fiq_fix_enable=2 console=serial0,115200 kgdboc=serial0,115200 console=tty1 root=/dev/mapper/crypt cryptdevice=PARTUUID=ed889dad-02:crypt rootfstype=ext4 fsck.repair=yes rootwait net.ifnames=0
+└─# cat /boot/firmware/cmdline.txt
+console=serial0,115200 console=tty1 root=/dev/mapper/crypt cryptdevice=PARTUUID=ed889dad-02:crypt rootfstype=ext4 fsck.repair=yes rootwait net.ifnames=0 ds=nocloud
 ```
 
 - - -
@@ -128,7 +140,7 @@ proc            /proc           proc    defaults          0       0
 
 /dev/mapper/crypt /               ext4 errors=remount-ro 0       0
 #UUID=747bfa7c-edd2-471f-8fff-0ecafc2d3791 /               ext4 errors=remount-ro 0       1
-LABEL=BOOT      /boot           vfat    defaults          0       2
+LABEL=BOOT      /boot/firmware  vfat    defaults          0       2
 ```
 
 - - -
@@ -368,48 +380,45 @@ CRYPTSETUP=y
 
 ### Kernel
 
-The next step is important for the people who are following along. What to select, depends on the RPi device you are using, will . Below are five kernel names/editions/flavours which you need to select one of for your needs _(please pay attention!)_:
+The kernel version depends on the Raspberry Pi image and Kali release you are using. Older versions of this guide used an older Raspberry Pi kernel naming scheme, but current Raspberry Pi images use Raspberry Pi kernel package names such as `rpt-rpi-v8` or `rpt-rpi-2712`.
 
-- `Re4son+`     is for 32-bit ARMEL armv6 devices - i.e. RPi1, RPi0, or RPi0w
-- `Re4son-v7+`  is for 32-bit ARMHF armv7 devices - i.e. RPi2 v1.2, RPi3 or RPi02w
-- `Re4son-v8+`  is for 64-bit ARM64 armv8 devices - i.e. RPi2 v1.2, RPi3 or RPi02w
-- `Re4son-v7l+` is for 32-bit ARMHF armv7 devices - i.e. RPi4 or RPi400 devices
-- `Re4son-v8l+` is for 64-bit ARM64 armv8 devices - i.e. RPi4 or RPi400 devices
-
-{{% notice info %}}
-The `l` in the name stands for lpae - [Large Physical Address Extension](https://wikipedia.org/wiki/ARM_architecture_family#LPAE)
-{{% /notice %}}
-
-As a reminder, we are using the RPi4, 64-bit image. So we would need `Re4son-v8l+`. Please make sure you adjust to your device.
-So now we know what kernel name to use, we now need to find what kernel version. This will alter from device to device, and it will also change as and when Kali gets updates At the time of writing, it is `5.15.44` for our RPi:
-
-Keep in mind the kernel versions may change, however the name will not:
+Check the available kernel module versions inside the chroot:
 
 ```console
 ┌──(root㉿kali)-[/]
-└─# ls -l /lib/modules/ | awk -F" " '{print $9}'
-5.15.44-Re4son+
-5.15.44-Re4son-v7+
-5.15.44-Re4son-v7l+
-5.15.44-Re4son-v8+
-5.15.44-Re4son-v8l+
-
-┌──(root㉿kali)-[/]
-└─# echo "initramfs initramfs.gz followkernel" >> /boot/config.txt
+└─# ls /lib/modules/
+6.12.34+rpt-rpi-2712
+6.12.34+rpt-rpi-v8
 ```
 
-{{% notice info %}}
-Keep in mind the kernel versions (`5.15.44`) may change, however the kernel name (`Re4son-v8l+`) will not.
-{{% /notice %}}
-
-- - -
-
-Now we need to create the `initramfs`. This is where the kernel version comes into play:
+For a 64-bit Raspberry Pi image, use the matching `rpt-rpi-v8` kernel version unless your image or device requires a different installed kernel. You can set it as a variable to avoid typing the version multiple times:
 
 ```console
 ┌──(root㉿kali)-[/]
-└─# mkinitramfs -o /boot/initramfs.gz 5.15.44-Re4son-v8l+
+└─# KERNEL_VERSION="$(ls /lib/modules | grep 'rpt-rpi-v8' | sort -V | tail -n1)"
+
+┌──(root㉿kali)-[/]
+└─# echo "$KERNEL_VERSION"
+6.12.34+rpt-rpi-v8
 ```
+
+Current Raspberry Pi images use `/boot/firmware/config.txt` for firmware boot configuration. Add an initramfs entry there:
+
+```console
+┌──(root㉿kali)-[/]
+└─# echo "initramfs initramfs.gz followkernel" >> /boot/firmware/config.txt
+```
+
+Now we need to create the `initramfs` using the kernel version selected above:
+
+```console
+┌──(root㉿kali)-[/]
+└─# mkinitramfs -o /boot/firmware/initramfs.gz "$KERNEL_VERSION"
+```
+
+{{% notice info %}}
+Kernel versions change between Kali releases and Raspberry Pi images. Always use the version present under `/lib/modules` on the image you are preparing.
+{{% /notice %}}
 
 - - -
 
@@ -417,7 +426,7 @@ Now we want to ensure that we created the `initramfs` correctly. If there is no 
 
 ```console
 ┌──(root㉿kali)-[/]
-└─# lsinitramfs /boot/initramfs.gz | grep cryptsetup
+└─# lsinitramfs /boot/firmware/initramfs.gz | grep cryptsetup
 usr/lib/aarch64-linux-gnu/libcryptsetup.so.12
 usr/lib/aarch64-linux-gnu/libcryptsetup.so.12.7.0
 usr/lib/cryptsetup
@@ -429,11 +438,11 @@ usr/lib/cryptsetup/functions
 usr/sbin/cryptsetup
 
 ┌──(root㉿kali)-[/]
-└─# lsinitramfs /boot/initramfs.gz | grep authorized
+└─# lsinitramfs /boot/firmware/initramfs.gz | grep authorized
 root-Q2iWOODUwk/.ssh/authorized_keys
 
 ┌──(root㉿kali)-[/]
-└─# lsinitramfs /boot/initramfs.gz | grep unlock.sh
+└─# lsinitramfs /boot/firmware/initramfs.gz | grep unlock.sh
 etc/unlock.sh
 ```
 
@@ -458,7 +467,7 @@ Now we can ensure that all the changes are written, then we can encrypt the disk
 
 ┌──(root㉿kali)-[/]
 └─# exit
-$ sudo umount /mnt/chroot/{boot,sys,proc,dev/pts,dev}
+$ sudo umount /mnt/chroot/{boot/firmware,sys,proc,dev/pts,dev}
 $ sudo mkdir -vp /mnt/{backup,encrypted}
 $ sudo rsync -avh /mnt/chroot/* /mnt/backup/
 $ sudo cryptsetup luksClose crypt
@@ -498,7 +507,8 @@ $ sync
 The final steps that we have to make are to fix up the `/etc/fstab` file for the new LUKS UUID, or you can leave it as `/dev/mapper/crypt` and replace the UUID in our unlock script and remake the initramfs file, this step is important as it will not properly boot if not done, because it won't have the information to use the encrypted filesystem! Remember to put the information in from **YOUR** system, as the UUID will be different for every system:
 
 ```console
-$ sudo mount /dev/sdX1 /mnt/encrypted/boot/
+$ sudo mkdir -vp /mnt/encrypted/boot/firmware/
+$ sudo mount /dev/sdX1 /mnt/encrypted/boot/firmware/
 $ sudo mount -t proc none /mnt/encrypted/proc
 $ sudo mount -t sysfs none /mnt/encrypted/sys
 $ sudo mount -o bind /dev /mnt/encrypted/dev
@@ -514,7 +524,7 @@ $ sudo env LANG=C chroot /mnt/encrypted
 proc            /proc           proc    defaults          0       0
 
 UUID=173e2de4-0501-4d8e-9039-a4923bfa5ee7 /               ext4 errors=remount-ro 0       1
-LABEL=BOOT      /boot           vfat    defaults          0       2
+LABEL=BOOT      /boot/firmware  vfat    defaults          0       2
 
 ┌──(root㉿kali)-[/]
 └─# vim /etc/initramfs-tools/unlock.sh
@@ -544,7 +554,10 @@ exit 0
 crypt	PARTUUID=e1750e08-02	none	luks
 
 ┌──(root㉿kali)-[/]
-└─# mkinitramfs -o /boot/initramfs.gz 5.15.44-Re4son-v8l+
+└─# KERNEL_VERSION="$(ls /lib/modules | grep 'rpt-rpi-v8' | sort -V | tail -n1)"
+
+┌──(root㉿kali)-[/]
+└─# mkinitramfs -o /boot/firmware/initramfs.gz "$KERNEL_VERSION"
 ```
 
 {{% notice info %}}
@@ -558,7 +571,7 @@ Now we can unmount and close up everything:
 ```console
 ┌──(root㉿kali)-[/]
 └─# exit
-$ sudo umount /mnt/encrypted/{boot,sys,proc,dev/pts,dev}
+$ sudo umount /mnt/encrypted/{boot/firmware,sys,proc,dev/pts,dev}
 $ sudo umount /mnt/encrypted
 $ sudo cryptsetup luksClose crypt
 ```
@@ -615,11 +628,10 @@ kali@kali:~$ cat kali-encrypted-basic/cryptmypi.conf
 
 # General settings ------------------------------------------------------------
 # You need to choose a kernel compatible with your RPi version.
-#   Kali RPi images name its kernels:
-#   - Re4son+ is for armv6 devices (ie. RPi1, RPi0, and RPi0w)
-#   - v7+ and v8+ suffixes are for the 32bit and 64bit armv7 devices (ie. RPi 3)
-#   - l+ suffix in the name means they will be ready for the RPi4.
-export _KERNEL_VERSION_FILTER="v8+"
+# Current Kali Raspberry Pi images use Raspberry Pi kernel names such as
+# rpt-rpi-v8 or rpt-rpi-2712. Adjust this filter to match the kernel
+# available under /lib/modules on the image you are using.
+export _KERNEL_VERSION_FILTER="rpt-rpi-v8"
 
 # HOSTNAME
 #   Each element of the hostname must be from 1 to 63 characters long and
