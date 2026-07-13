@@ -1,0 +1,55 @@
+name: Sync Kali Docs from GitLab
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Asia/Seoul 00:00, 12:00, 23:00
+    - cron: "0 15 * * *"
+    - cron: "0 3 * * *"
+    - cron: "0 14 * * *"
+
+concurrency:
+  group: kali-docs-gitlab-mirror
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Mirror GitLab refs
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SOURCE_URL: https://gitlab.com/kalilinux/documentation/kali-docs.git
+          TARGET_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        run: |
+          set -euo pipefail
+
+          git clone --bare "$SOURCE_URL" upstream.git
+          cd upstream.git
+
+          git remote add github "$TARGET_URL"
+
+          # 원본 브랜치는 gitlab/<branch> 이름으로 동기화한다.
+          # --prune은 gitlab/* 네임스페이스 안에서 삭제된 원본 브랜치만 제거한다.
+          git push --prune github \
+            '+refs/heads/*:refs/heads/gitlab/*'
+
+          # 원본 태그를 동기화한다. 기존 태그가 변경된 경우에도 원본을 따른다.
+          git push --force github \
+            'refs/tags/*:refs/tags/*'
+
+      - name: Write synchronization summary
+        if: always()
+        run: |
+          {
+            echo "## Kali Docs GitLab mirror"
+            echo
+            echo "- Source: https://gitlab.com/kalilinux/documentation/kali-docs"
+            echo "- Target namespace: refs/heads/gitlab/*"
+            echo "- Run time (UTC): $(date -u '+%Y-%m-%d %H:%M:%S')"
+          } >> "$GITHUB_STEP_SUMMARY"
