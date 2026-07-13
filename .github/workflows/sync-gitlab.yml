@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, superxeon]
     timeout-minutes: 30
 
     steps:
@@ -51,5 +51,6 @@ jobs:
             echo
             echo "- Source: https://gitlab.com/kalilinux/documentation/kali-docs"
             echo "- Target namespace: refs/heads/gitlab/*"
+            echo "- Runner: superxeon (self-hosted)"
             echo "- Run time (UTC): $(date -u '+%Y-%m-%d %H:%M:%S')"
           } >> "$GITHUB_STEP_SUMMARY"
