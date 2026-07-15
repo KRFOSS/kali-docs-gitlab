@@ -29,8 +29,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          git clone --bare "$SOURCE_URL" upstream.git
-          cd upstream.git
+          WORK_DIR="$(mktemp -d "${RUNNER_TEMP:-/tmp}/kali-docs-mirror.XXXXXX")"
+          trap 'rm -rf "$WORK_DIR"' EXIT
+
+          git clone --bare "$SOURCE_URL" "$WORK_DIR/upstream.git"
+          cd "$WORK_DIR/upstream.git"
 
           git remote add github "$TARGET_URL"
 
