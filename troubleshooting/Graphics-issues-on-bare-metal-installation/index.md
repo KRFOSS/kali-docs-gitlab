@@ -34,7 +34,7 @@ kali@kali:~$
 This helps avoid the common case where a kernel upgrade arrives and the matching headers are not yet installed.
 
 
-##### 2 One‑time/manual: install headers and rebuild DKMS for the newest kernel
+#### 2 — One‑time/manual: install headers and rebuild DKMS for the newest kernel
 
 If you just installed a new kernel and want to run the steps immediately (instead of waiting for the next APT run):
 
@@ -54,6 +54,7 @@ fi
 ```
 
 Tip: if `apt-get install` can't find a header package, check that your APT sources include the correct repositories (rolling vs. archive) and that the kernel package actually provides matching headers.
+
 
 #### 3 — Optional: tune the GRUB kernel command line
 
@@ -99,6 +100,7 @@ kali@kali:~$ sudo update-initramfs -u
 sudo reboot
 ```
 
+
 #### 5 — Quick steps if you already upgraded and you see a blinking cursor
 
 If you've already updated and the system boots to a blinking cursor, use these steps from a TTY (Ctrl+Alt+F3..F6):
@@ -139,17 +141,20 @@ kali@kali:~$ sudo grep -r "Wayland" /etc/gdm3/
 /etc/gdm3/daemon.conf:#WaylandEnable=true
 kali@kali:~$
 ```
-NVIDIA drivers, especially drivers below version 550.163.01, have several issues loading GNOME on Wayland. The fastest fix we found to resolve the driver issue is adding the options below to the file `/etc/default/grub`:
+
+NVIDIA drivers, especially drivers below version 550.163.01, have several issues loading GNOME on Wayland. Over the time, users reported and proposed various workarounds, but they are likely to be specific to a particular graphics card, driver version, kernel version, etc... We can't really provide a quick "fix it all", but here's a list of options that users found helpful:
+
+* `nvidia_drm.modeset=1` allows the driver to manage displays early during boot or while the system is leaving suspend mode.
+
+* `nvidia_drm.fbdev=1` can be used to force the NVIDIA driver to manage the framebuffer (screen output). Users found it useful with NVIDIA driver older than 540.x.x.
+
+* `nvidia.NVreg_PreserveVideoMemoryAllocations=1` prevents GPU memory from being cleared when the system enters suspend mode. Without this option, NVIDIA drivers erase all video memory allocations on suspend by default. When the system resumes, Wayland and GPU-accelerated applications expect their graphical data to still be present in GPU memory, but because it was erased, some elements fail to load. This parameter preserves video memory allocations across suspend/resume cycles, fixing the issue.
+
+In order to enable these options, edit the file `/etc/default/grub`, and add it to the variable `GRUB_CMDLINE_LINUX_DEFAULT`. For example:
 
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=strict loglevel=3 nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"
 ```
-
-The option `nvidia_drm.modeset=1` allows the driver to manage displays early during boot or while the system is leaving suspend mode.
-
-The option `nvidia.NVreg_PreserveVideoMemoryAllocations=1` prevents GPU memory from being cleared when the system enters suspend mode. Without this option, NVIDIA drivers erase all video memory allocations on suspend by default. When the system resumes, Wayland and GPU-accelerated applications expect their graphical data to still be present in GPU memory, but because it was erased, some elements fail to load. This parameter preserves video memory allocations across suspend/resume cycles, fixing the issue.
-
-If the solution above doesn't work and your NVIDIA driver is older than 540.x.x, add the option `nvidia_drm.fbdev=1`. This is a kernel boot parameter used with NVIDIA drivers in Debian (and other Linux distributions) to force the NVIDIA driver to manage the framebuffer (screen output).
 
 After making changes to `/etc/default/grub`, remember to run:
 
