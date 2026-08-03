@@ -142,10 +142,12 @@ kali@kali:~$
 NVIDIA drivers, especially drivers below version 550.163.01, have several issues loading GNOME on Wayland. The fastest fix we found to resolve the driver issue is adding the options below to the file `/etc/default/grub`:
 
 ```bash
-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=strict loglevel=3 nvidia_drm.modeset=1"
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi=strict loglevel=3 nvidia_drm.modeset=1 nvidia.NVreg_PreserveVideoMemoryAllocations=1"
 ```
 
 The option `nvidia_drm.modeset=1` allows the driver to manage displays early during boot or while the system is leaving suspend mode.
+
+The option `nvidia.NVreg_PreserveVideoMemoryAllocations=1` prevents GPU memory from being cleared when the system enters suspend mode. Without this option, NVIDIA drivers erase all video memory allocations on suspend by default. When the system resumes, Wayland and GPU-accelerated applications expect their graphical data to still be present in GPU memory, but because it was erased, some elements fail to load. This parameter preserves video memory allocations across suspend/resume cycles, fixing the issue.
 
 If the solution above doesn't work and your NVIDIA driver is older than 540.x.x, add the option `nvidia_drm.fbdev=1`. This is a kernel boot parameter used with NVIDIA drivers in Debian (and other Linux distributions) to force the NVIDIA driver to manage the framebuffer (screen output).
 
