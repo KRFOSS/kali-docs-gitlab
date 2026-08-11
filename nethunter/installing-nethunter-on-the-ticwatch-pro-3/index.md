@@ -33,14 +33,15 @@ All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE).
 Do this step **only** if you got your watch with WearOS3.
 
 - Reboot to bootloader again, using one of the above methods
-- Unpack stock WearOS2 zip (ROVER_STOCK_PMRL.220111.001.zip for LTE/Ultra LTE, RUBYFISH_STOCK_PMRB.220703.001.zip for GPS/Ultra GPS)
+- Unpack stock WearOS2 zip (ROVER_STOCK_FASTBOOT_PMRL.220704.001.zip for LTE/Ultra LTE, RUBYFISH_STOCK_FASTBOOT_PMRB.220703.001.zip for GPS/Ultra GPS)
 - Run flash_all.sh or flash_all.bat if using Windows
 - Reboot and accept format data if required
 
 ## 3. Flash TWRP, OneOS image, Magisk, dm-verity disabler
 
 Magisk **24.3** is recommended.
-**OneOS** is recommended for wireless injection, as the system files will be replaced on Stock WearOS after reboot.
+**OneOS** is recommended for wireless injection, as any added system files like nexmon firmware or libs will be replaced on Stock WearOS after reboot.
+**UPDATE** Stock WearOS2 is now also supported thanks to the Nexmon Magisk module by [apk0mix5900](https://github.com/apk0mix5900).
 
 - Again enable ADB, and reboot to bootloader with `adb reboot bootloader`
 - Disable vbmeta verification: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`
@@ -49,8 +50,9 @@ Magisk **24.3** is recommended.
 - Select Wipe -> Next page -> Advanced Wipe -> Format Data
 - Reboot to recovery
 - Select "Install -> ADB Sideload"
-- Flash OneOS with `adb sideload`
-- Flash Mobvoi Apps package with `adb sideload`
+- If you want to keep stock WearOS, skip the next two steps
+  - Flash OneOS with `adb sideload`
+  - Flash Mobvoi Apps package with `adb sideload`
 - If you have an Ultra, `adb sideload` the Ultra addon package (TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA(rover).zip for Ultra LTE, TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA_GPS(rubyfish).zip for Ultra GPS)
 - Flash Magisk with `adb sideload Magisk-v24.3.apk`
 - Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push Disable-DM-Verity_ForceEncrypt.zip /sdcard/` and install via TWRP
@@ -62,7 +64,7 @@ Magisk **24.3** is recommended.
 - Set density so app menu buttons will be reachable on OneOS `adb shell wm density 300`
 - Finalise Magisk installation with app install `adb install Magisk-v24.3.apk`
 - Launch Magisk Manager
-- Find the settings on top right corner (a bit tricky to reach)
+- Find the settings button on top right corner (a bit tricky to reach)
 - You may want to disable auto-update, set grant access in auto response, and disable toast notifications for easier navigation in the future
 
 ## 5. Install NetHunter
@@ -74,8 +76,6 @@ Magisk **24.3** is recommended.
 - Reboot
 - Start NetHunter app & chroot (it may reboot after first start)
 - Reboot
-
-Hijacker and Nexmon wireless injection install guide can be found on [Kali Forums](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242/7)
 
 ## 6. Set NetHunter watch face (optional)
 
@@ -94,12 +94,13 @@ Hijacker and Nexmon wireless injection install guide can be found on [Kali Forum
   - [vbmeta image](https://kali.download/nethunter-images/devices/rubyfish/vbmeta.img)
   - [dm-verity disabler](https://kali.download/nethunter-images/devices/rubyfish/Disable-DM-Verity_ForceEncrypt.zip)
   - [OneOS, Stock ROMs, Ultra addon and Mobvoi packages](https://kali.download/nethunter-images/devices/rubyfish/) _(optional)_
-  - [TicWatch Pro 3 NetHunter zip](https://www.kali.org/get-kali/#kali-mobile) - Get the latest update under TicWatch section
+  - [TicWatch Pro 3 NetHunter zip](https://drive.google.com/file/d/19zTKPTbrBKFMH_pA0sWpD_7UK1zBJKjc/view?usp=sharing) - Daily 2026.2 kalifs with patched systemd, udev, and latest stable NetHunter app (2026.1)
   - [Facer app for WearOS 2](https://kali.download/nethunter-images/devices/rubyfish/facer_wearos.zip)
 
 ## Additional recommended apps
 
 - [TotalCommander](https://www.totalcommander.ch/android/tcandroid323-armeabi.apk): useful for selecting eg. a Ducky script, use "adb install" method
+- [Hijacker & Nexmon](https://github.com/apk0mix5900/nexmon-twp3-magisk/releases/download/1.0/nexmon-magisk-twp3.zip): install via Magisk
 
 ## Supported features
 
