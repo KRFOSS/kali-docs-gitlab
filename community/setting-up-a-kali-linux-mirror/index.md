@@ -84,7 +84,7 @@ $ sudo chown archvsync:archvsync /srv/mirrors/kali{,-images}
 
 ### Configure rsync
 
-Next, configure the rsync daemon (enable it if needed) to export those directories:
+Next, configure the rsync daemon to export those directories:
 
 ```console
 $ sudo sed -i -e "s/RSYNC_ENABLE=false/RSYNC_ENABLE=true/" /etc/default/rsync
@@ -104,8 +104,18 @@ read only = true
 path = /srv/mirrors/kali-images
 comment = The Kali ISO images
 read only = true
-$ sudo service rsync start
-Starting rsync daemon: rsync.
+```
+
+Then start the service:
+
+```console
+$ sudo systemctl start rsync
+```
+
+And finally, enable it (so that it starts automatically at boot time):
+
+```console
+$ sudo systemctl enable rsync
 ```
 
 ### Configure Your Mirror
