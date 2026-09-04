@@ -70,6 +70,8 @@ The following table illustrates the differences in functionality:
 |    HID attacks     |         No         |       No       |    Yes    |
 |    BT Arsenal      |         No         |       No       |    Yes    |
 |    CARsenal        |         No         |       No       |    Yes    |
+|   EvilTwin    |         No         |       No       |    Yes    |
+
 
 The installation of NetHunter Rootless is documented here:
 [NetHunter-Rootless](/docs/nethunter/nethunter-rootless/)
@@ -152,6 +154,7 @@ Attacks will be greyed out if the chroot is not running. Some of the attacks wil
 - [**HID Attacks**](/docs/nethunter/nethunter-hid-attacks/) - Various HID attacks, Teensy style.
 - [**DuckHunter HID**](/docs/nethunter/nethunter-duckhunter/) - Rubber Ducky style HID attacks.
 - [**BadUSB MITM Attack**](/docs/nethunter/nethunter-badusb/) - Nuff said.
+- [**EvilTwin**](/docs/nethunter/nethunter-eviltwin/) - Rogue AP with captive portal to phish for passwords and verify them against captured WPA handshakes.
 - [**Wifipumpkin**](/docs/nethunter/nethunter-wifipumpkin/) - Setup a malicious Access Point with captive portal at the click of a button.
 - [**WPS Attacks**](/docs/nethunter/nethunter-wps/) - WPS attacks using OneShot.
 - [**Bluetooth Arsenal**](/docs/nethunter/nethunter-btarsenal/) - Recon, spoof, listen to or inject audio to various Bluetooth devices.
