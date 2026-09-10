@@ -47,24 +47,29 @@ kali@kali:~$
 
 ## SSH client: Support for GSS-API
 
-{{% notice info %}}
-This is for users of Kali Linux who have upgraded their system and lost this functionality. The package is pre-installed in Kali Linux starting in [2024.4](/blog/kali-linux-2024-4-release/).
+<!-- Add link to release: [Kali Linux 2026.3](/blog/kali-linux-2026-3-release/ -->
 
-As of September 23, 2024, this package currently only contains a changelog. This package is a placeholder for when the GSS-API changes occur in the OpenSSH package.
-{{% /notice %}}
+Starting with Kali Linux 2026.3, the SSH client doesn't include support for the GSS-API key exchange anymore.
 
-At some point in a near future, support for GSS-API will be split out into a separate package, in order to reduce the attack surface of the standard SSH package. Therefore the package `openssh-client` will come without support for GSS-API, and a separate package `openssh-client-gssapi` will need to be installed for those who need it.
+For those who need this functionality, it's possible to get it back by installing the alternative package `openssh-client-gssapi`. In practical terms, this package should be the same as the stock openssh package, but with the GSS-API patch applied. More information can be found in the announcement at <https://lists.debian.org/debian-devel/2024/04/msg00044.html>.
 
-For those running Kali rolling, and who want to make sure that GSS-API support doesn't get removed in the future, you can pro-actively install the package:
+So, in order to restore GSS-API support in your SSH client, just run the following:
 
 ```console
 kali@kali:~$ sudo apt update
 [...]
 kali@kali:~$
 kali@kali:~$ sudo apt install -y openssh-client-gssapi
+Installing:                     
+  openssh-client-gssapi
 [...]
-kali@kali:~$
+REMOVING:
+  openssh-client
+[...]
+Continue? [Y/n]
 ```
+
+Note that the package `openssh-client-gssapi` _replaces_ `openssh-client`, and the other way around, they are not co-installable.
 
 ## SSH server: automatic host keys generation
 
