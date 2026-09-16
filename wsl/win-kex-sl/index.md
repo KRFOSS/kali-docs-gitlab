@@ -12,7 +12,7 @@ Applications started via the panel will share the desktop with Microsoft Windows
 
 Seamless mode removes the visual segregation between Linux and Window apps and offers a great platform to run a penetration test in Kali Linux and copy the results straight into a Windows app for the final report.
 
-Win-KeX utilises [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/) to achieve seamless desktop integration.
+Win-KeX utilises [VcXsrv Windows X Server](https://github.com/marchaesen/vcxsrv) to achieve seamless desktop integration.
 
 ![](../win-kex/win-kex-sl.png)
 
