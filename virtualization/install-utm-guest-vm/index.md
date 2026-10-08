@@ -43,15 +43,19 @@ Now we can save and press play on the VM. Once prompted, we select "Install":
 
 ![](utm-setup-11.png)
 
+If you're still seeing a blank screen, make sure your Display is set to the Serial device:
+
+![](utm-setup-12.png)
+
 Once the install is finished, clear the ISO from the VM's CD/DVD drive.
 
 Then, go to the VM's settings and remove the "Serial" device by right-clicking and selecting "Remove":
 
-![](utm-setup-12.png)
+![](utm-setup-13.png)
 
 We should also update the Display Card emulation. Select the `virtio-gpu-pci`
 option:
 
-![](utm-setup-13.png)
+![](utm-setup-14.png)
 
 We should scroll down under "Shared Directory" and select the installer iso image and remove it, now we can now use our VM like normal.
