@@ -28,3 +28,5 @@ Navigate to ***File Systems -> Network File Systems*** and select the following 
   (CONFIG_NFSD_V4=y)
 
 ![](nh-kernel-280-nfs-1.png)
+
+## Exit, save, and build
