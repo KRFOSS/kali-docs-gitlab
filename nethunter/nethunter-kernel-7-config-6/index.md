@@ -51,7 +51,3 @@ Navigate to ***Device Drivers -> USB support -> USB Gadget Support*** and choose
   (CONFIG_USB_CONFIGFS_F_HID=y)
 
 ![](nh-kernel-280-usb-2.png)
-
-
-
-## Exit, save, and build
