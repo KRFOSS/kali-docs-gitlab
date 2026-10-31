@@ -113,7 +113,7 @@ Magisk **24.3** is recommended.
 ## Additional recommended features & apps
 
 - [TotalCommander](https://www.totalcommander.ch/android/tcandroid323-armeabi.apk): useful for selecting eg. a Ducky script, use "adb install" method
-- Hijacker & Nexmon: install [as Magisk module](https://github.com/apk0mix5900/nexmon-twp3-magisk/releases/download/v1.1/nexmon-magisk-twp3-v1.1.zip) or [manually](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242)
+- Hijacker & Nexmon: install [as Magisk module](https://github.com/apk0mix5900/nexmon-twp3-magisk/releases/download/v1.2/nexmon-magisk-twp3-v1.2.zip) or [manually](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242)
 - [Wardriving](https://forums.kali.org/t/wardriving-on-ticwatch-pro-3-series/16422)
 - [NetHunter Kex](https://github.com/yesimxev/nethunter_files/raw/refs/heads/main/NetHunterKeX-watch.apk)
 
