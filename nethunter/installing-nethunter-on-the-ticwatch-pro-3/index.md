@@ -21,18 +21,18 @@ All variants are supported (TicWatch Pro 3 GPS/LTE/Ultra GPS/Ultra LTE).
 
 ## 1. Unlock the bootloader
 
-- Connect your watch to your PC with a DIY USB cable or a [3D printed data dock](https://social.thangs.com/m/59021), and fire up a terminal.
-- If you have set up your watch on the phone you can access settings, otherwise hold both buttons for a few seconds on the welcome screen.
-- Enable developer settings by going to System -> About -> tap Build number 10 times
-- Enable ADB, re-plug USB and accept debug from PC
-- Reboot into bootloader with `adb reboot bootloader` from the terminal
+- Power off your watch or trigger a restart
+- Boot into bootloader (once powered off, or in the middle of reboot, hold both buttons until you see the bootloader menu)
+- Connect to your PC with a DIY USB cable or a [3D printed data dock](https://social.thangs.com/m/59021).
+- Confirm it's connected by running `fastboot devices`
 - Unlock bootloader with `fastboot oem unlock`
+- Select yes with second button, confirm with top button of watch
 
 ## 2. Revert to stock WearOS2
 
 Do this step **only** if you got your watch with WearOS3.
 
-- Reboot to bootloader again, using one of the above methods
+- Boot into bootloader again
 - Unpack stock WearOS2 zip (ROVER_STOCK_FASTBOOT_PMRL.220704.001.zip for LTE/Ultra LTE, RUBYFISH_STOCK_FASTBOOT_PMRB.220703.001.zip for GPS/Ultra GPS)
 - Run flash_all.sh or flash_all.bat if using Windows
 - Reboot and accept format data if required
@@ -43,7 +43,7 @@ Magisk **24.3** is recommended.
 **OneOS** is recommended for wireless injection, as any added system files like nexmon firmware or libs will be replaced on Stock WearOS after reboot.
 **UPDATE** Stock WearOS2 is now also supported thanks to the Nexmon Magisk module by [apk0mix5900](https://github.com/apk0mix5900).
 
-- Again enable ADB, and reboot to bootloader with `adb reboot bootloader`
+- Boot into bootloader again
 - Disable vbmeta verification: `fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img`
 - Flash recovery `fastboot flash recovery recovery.img`
 - Boot into recovery by selecting it with the side buttons (switch with bottom one, select with upper button)
@@ -52,7 +52,7 @@ Magisk **24.3** is recommended.
 - Select "Install -> ADB Sideload"
 - If you want to keep stock WearOS, skip the next two steps
   - Flash OneOS with `adb sideload`
-  - Flash Mobvoi Apps package with `adb sideload`
+  - Flash Mobvoi Apps package with `adb sideload` (choose size, pico recommended if you want only necessary apps)
 - If you have an Ultra, `adb sideload` the Ultra addon package (TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA(rover).zip for Ultra LTE, TWRP-OEM_FOR_TICWATCH_PRO_3_ULTRA_GPS(rubyfish).zip for Ultra GPS)
 - Flash Magisk with `adb sideload Magisk-v24.3.apk`
 - Copy and flash DM-Verity_ForceEncrypt Disabler with `adb push Disable-DM-Verity_ForceEncrypt.zip /sdcard/` and install via TWRP
@@ -60,7 +60,8 @@ Magisk **24.3** is recommended.
 
 ## 4. Finalise Magisk app to finish rooting
 
-- Enable ADB again
+- Enable ADB in Settings -> About -> Tap OneOS/WearOS version many times to unlock developer settings
+- Set screen timeout to 15 in Settings -> Display
 - Set density so app menu buttons will be reachable on OneOS `adb shell wm density 300`
 - Finalise Magisk installation with app install `adb install Magisk-v24.3.apk`
 - Launch Magisk Manager
@@ -74,16 +75,27 @@ Magisk **24.3** is recommended.
 - Flash NetHunter image with `adb sideload`
 - Flash Magisk apk again with `adb sideload`
 - Reboot
+- Push libnexmonkali.so to watch `adb push libnexmonkali.so /sdcard`
+- Copy into chroot in adb shell `su -c 'cp /sdcard/libnexmonkali.so /data/local/nhsystem/kali-armhf/usr/lib/'`
 - Start NetHunter app & chroot (it may reboot after first start)
-- Reboot
+- For monitor mode & wardriving, check the **Additional recommended features & apps** section
 
 ## 6. Set NetHunter watch face (optional)
 
-- Install Facer onto your phone
+- Install Facer app from Play Store on your phone
 - Unzip facer zip for wearos and install the contents using `adb install-multiple *.apk`
 - Search for NetHunter on your phone
 - Select & Sync
 
+## How to update
+
+- If you notice there is new app version, download the [latest NetHunter app](https://store.nethunter.com/NetHunter.apk) from NetHunter Store
+- Update using `adb install NetHunter.apk`
+- If you run **Update Metapackages** and you get stuck on a package changelog, send keystrokes to the watch from WearHunter in NetHunter app, or from PC, for example:
+- Send key q to exit changelog `adb shell input keyevent KEYCODE_Q`
+- Send key 1 to install package maintainer's config `adb shell input keyevent KEYCODE_1`
+- Send ENTER `adb shell input keyevent KEYCODE_ENTER`
+ 
 ### Enjoy Kali NetHunter on the TicWatch Pro 3
 
 ## Downloads
@@ -94,13 +106,16 @@ Magisk **24.3** is recommended.
   - [vbmeta image](https://kali.download/nethunter-images/devices/rubyfish/vbmeta.img)
   - [dm-verity disabler](https://kali.download/nethunter-images/devices/rubyfish/Disable-DM-Verity_ForceEncrypt.zip)
   - [OneOS, Stock ROMs, Ultra addon and Mobvoi packages](https://kali.download/nethunter-images/devices/rubyfish/) _(optional)_
-  - [TicWatch Pro 3 NetHunter zip](https://drive.google.com/file/d/19zTKPTbrBKFMH_pA0sWpD_7UK1zBJKjc/view?usp=sharing) - Daily 2026.2 kalifs with patched systemd, udev, and latest stable NetHunter app (2026.1)
+  - [TicWatch Pro 3 NetHunter zip](https://www.kali.org/get-kali/#kali-mobile) - Scroll down for TicWatch Pro 3
   - [Facer app for WearOS 2](https://kali.download/nethunter-images/devices/rubyfish/facer_wearos.zip)
+  - [libnexmonkali.so](https://github.com/yesimxev/nethunter_files/raw/refs/heads/main/twp3/libnexmonkali.so)
 
-## Additional recommended apps
+## Additional recommended features & apps
 
 - [TotalCommander](https://www.totalcommander.ch/android/tcandroid323-armeabi.apk): useful for selecting eg. a Ducky script, use "adb install" method
-- [Hijacker & Nexmon](https://github.com/apk0mix5900/nexmon-twp3-magisk/releases/download/1.0/nexmon-magisk-twp3.zip): install via Magisk
+- Hijacker & Nexmon: install [as Magisk module](https://github.com/apk0mix5900/nexmon-twp3-magisk/releases/download/v1.2/nexmon-magisk-twp3-v1.2.zip) or [manually](https://forums.kali.org/t/hijacker-on-ticwatch-pro-3-with-wireless-injection/6242)
+- [Wardriving](https://forums.kali.org/t/wardriving-on-ticwatch-pro-3-series/16422)
+- [NetHunter Kex](https://github.com/yesimxev/nethunter_files/raw/refs/heads/main/NetHunterKeX-watch.apk)
 
 ## Supported features
 
@@ -114,9 +129,11 @@ Magisk **24.3** is recommended.
 - DuckHunter
 - Nmap Scan
 - WPS Attacks
+- Wardriving
 
 ## Upcoming features (not guaranteed)
 
+- NetHunter terminal keyboard compatibility
 - Router Keygen (to be optimised)
 - Mifare Classic Tool (need to build OS with android.hardware.nfc enabled)
 
