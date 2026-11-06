@@ -2,11 +2,8 @@ name: Sync Kali Docs from GitLab
 
 on:
   workflow_dispatch:
-  schedule:
-    # Asia/Seoul 00:00, 12:00, 23:00
-    - cron: "0 15 * * *"
-    - cron: "0 3 * * *"
-    - cron: "0 14 * * *"
+  schedule:    
+    - cron: "0 * * * *"
 
 concurrency:
   group: kali-docs-gitlab-mirror
